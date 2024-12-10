@@ -1,7 +1,7 @@
 // `app/home.tsx` is the UI for the `/` URL
 "use client"
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./styles/page.module.css";
 
 import { useEffect, useRef } from "react";
 import { useRouter } from 'next/navigation'
@@ -57,7 +57,7 @@ export default function Home() {
           // attach a reference
           ref={imgRef}
           // source to the image
-          src={"/next.svg"}
+          src={"/media/next.svg"}
           width={180}
           height={38}
           // Or import in a next.js fashion
