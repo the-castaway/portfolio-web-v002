@@ -5,6 +5,8 @@ import styles from "./page.module.css";
 
 import { useEffect, useRef } from "react";
 import { useRouter } from 'next/navigation'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 export default function Home() {
@@ -39,7 +41,7 @@ export default function Home() {
 
   const route = useRouter()
   useEffect(() => {
-    console.log(route)
+    console.log(ScrollTrigger)
     //route.events.on('routeChangeStart', () => { console.log('start') })
   })
   return (
@@ -63,10 +65,10 @@ export default function Home() {
           // src={myImage}
           alt=""
           priority={true}
-          // Hide it from displaying
-          style={{
-            display: 'none',
-          }}
+        // Hide it from displaying
+        // style={{
+        //   display: 'none',
+        // }}
         />
         <ol>
           <li>
