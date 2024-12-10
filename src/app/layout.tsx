@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Head from 'next/head';
 import localFont from "next/font/local";
 import "./styles/globals.css";
 import Link from 'next/link';
@@ -31,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <div>LAYOUT</div>
         <Suspense fallback={<Loading />}>
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
