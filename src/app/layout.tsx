@@ -4,6 +4,7 @@ import "./styles/globals.css";
 import Link from 'next/link';
 import { Suspense } from "react";
 import Loading from "./loader";
+import Navigation from "./components/nav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,12 +32,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div>LAYOUT</div>
-        <Suspense fallback={<Loading />}>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/archive">Archive</Link>
-          {children}
-        </Suspense>
+        <Navigation />
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/archive">Archive</Link>
+        {children}
       </body>
     </html>
   );
