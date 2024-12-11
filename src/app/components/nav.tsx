@@ -1,4 +1,4 @@
-import TransitionLink from "./TransitionLink";
+import TransitionLink from "./transitionLink"
 
 const Navigation = () => {
     return (

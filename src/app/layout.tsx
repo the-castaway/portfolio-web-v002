@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./styles/globals.css";
 import Link from 'next/link';
 import { Suspense } from "react";
-import Loading from "./loader";
 import Navigation from "./components/nav";
 
 const geistSans = localFont({
@@ -31,11 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div>LAYOUT</div>
         <Navigation />
-        <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
-        <Link href="/archive">Archive</Link>
         {children}
       </body>
     </html>

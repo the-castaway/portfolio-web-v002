@@ -5,7 +5,7 @@ export default function AboutLayout({
 }>) {
     return (
 
-        <div>ABOUTLAYOUT
+        <div>
 
             {children}
 

@@ -7,11 +7,12 @@ export const transitionPageIn = () => {
     const maskBottom = document.getElementById("mask-bottom");
     const maskLeft = document.getElementById("mask-left");
     const maskRight = document.getElementById("mask-right");
+    const maskBorder = document.getElementById("mask-border");
     const transitionPageInTL = gsap.timeline();
     transitionPageInTL.set(
         mask,
         {
-            rotate: 180,
+            rotate: 90,
         })
         .set(
             maskBottom,
@@ -33,11 +34,19 @@ export const transitionPageIn = () => {
             {
                 right: "50%",
             })
-        .to(mask, { rotate: 0, duration: 1 }, 0)
-        .to(maskBottom, { bottom: 0, duration: 1 }, 0)
-        .to(maskTop, { top: 0, duration: 1 }, 0)
-        .to(maskLeft, { left: 0, duration: 1 }, 0)
-        .to(maskRight, { right: 0, duration: 1 }, 0)
+        .set(
+            maskBorder,
+            {
+                height: 0,
+                width: 0,
+            }
+        )
+        .to(mask, { rotate: 0, delay: 0.3, duration: 1 }, 0)
+        .to(maskBottom, { bottom: 0, delay: 0.3, duration: 1 }, 0)
+        .to(maskTop, { top: 0, delay: 0.3, duration: 1 }, 0)
+        .to(maskLeft, { left: 0, delay: 0.3, duration: 1 }, 0)
+        .to(maskRight, { right: 0, delay: 0.3, duration: 1 }, 0)
+        .to(maskBorder, { height: '100vh', width: "100vw", delay: 0.3, duration: 1 }, 0)
 }
 
 export const transitionPageOut = (href: string, router: AppRouterInstance) => {
@@ -46,6 +55,7 @@ export const transitionPageOut = (href: string, router: AppRouterInstance) => {
     const maskBottom = document.getElementById("mask-bottom");
     const maskLeft = document.getElementById("mask-left");
     const maskRight = document.getElementById("mask-right");
+    const maskBorder = document.getElementById("mask-border");
     const transitionPageOutTL = gsap.timeline();
     transitionPageOutTL.set(
         mask,
@@ -72,10 +82,18 @@ export const transitionPageOut = (href: string, router: AppRouterInstance) => {
             {
                 right: 0,
             })
-        .to(mask, { rotate: 180, duration: 1, onComplete: () => { router.push(href) } }, 0)
+        .set(
+            maskBorder,
+            {
+                height: "100vh",
+                width: "100vw",
+            }
+        )
+        .to(mask, { rotate: 90, duration: 1, onComplete: () => { router.push(href) } }, 0)
         .to(maskBottom, { bottom: "50%", duration: 1 }, 0)
         .to(maskTop, { top: "50%", duration: 1 }, 0)
         .to(maskLeft, { left: "50%", duration: 1 }, 0)
         .to(maskRight, { right: "50%", duration: 1 }, 0)
+        .to(maskBorder, { height: 0, width: 0, duration: 1 }, 0)
 
 }
