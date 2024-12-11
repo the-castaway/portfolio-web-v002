@@ -27,10 +27,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
                     zIndex: '100',
                     boxSizing: 'content-box',
                 }}>
-
-
-
-
                 <div id="mask-bottom"
                     style={{
                         height: '100vh',

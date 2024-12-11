@@ -1,6 +1,28 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Fonts */
+  --jc-default-font: 'Urbanist', helvetica, sans-serif;
+  --jc-highlight-font: "Times New Roman", serif;
+  --jc-detail-font: "JetBrains Mono", sans-serif;
+
+  /* Colors */
+  --jc-black: #0E0E10;
+  --jc-off-black: #303030;
+  --jc-dark-grey: #4a4a4a;
+  --jc-grey: #7f7f7f;
+  --jc-light-grey: #dcdcdc;
+  --jc-off-white: #ececec;
+  --jc-white: #ffffff;
+  --jc-blue: #4552D9;
+  --jc-purple: #53229F;
+  /* Breakpoints */
+  --jc-breakpoint-tablet: 'max-width: 768px';
+  --jc-breakpoint-mobile: 'max-width: 360px';
+
+  /* UI */
+  --jc-ui-border: 1px solid #ffffff40;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,9 +41,13 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--jc-highlight-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 * {
