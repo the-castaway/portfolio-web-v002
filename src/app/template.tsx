@@ -77,7 +77,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                         transform: 'translate(-50%, -50%)',
                         boxSizing: 'content-box',
                         border: "1px solid #303030",
-                        borderRadius: '20px',
+                        borderRadius: '10px',
                     }}
                 >
                     <div id="mask-corner-top-left"

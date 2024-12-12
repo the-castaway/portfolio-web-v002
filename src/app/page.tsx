@@ -45,9 +45,10 @@ export default function Home() {
     //route.events.on('routeChangeStart', () => { console.log('start') })
   })
   return (
-    <div className={styles.page}>
+    <div className="grid">
       <main className={styles.main}>
         <canvas
+          className='col-start-15 col-span-10'
           ref={canvasRef}
           style={{
             border: 'solid 1px black',

@@ -1,19 +1,33 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./styles/globals.css";
+// Components
 import Navigation from "./components/nav";
+// Styles
+import "./styles/global.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+// Fonts
+const urbanist = localFont({
+  src: "./fonts/Urbanist-VariableFont_wght.ttf",
+  variable: "--font-urbanist",
+  weight: "100 200 300 400 500 600 700 800 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const urbanistItalic = localFont({
+  src: "./fonts/Urbanist-Italic-VariableFont_wght.ttf",
+  variable: "--font-urbanist-italic",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+const jetBrainsMono = localFont({
+  src: "./fonts/JetBrainsMono-VariableFont_wght.ttf",
+  variable: "--font-jetbrains-mono",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+const jetBrainsMonoItalic = localFont({
+  src: "./fonts/JetBrainsMono-Italic-VariableFont_wght.ttf",
+  variable: "--font-jetbrains-mono-italic",
+  weight: "100 200 300 400 500 600 700 800 900",
 });
 
+// Metadata
 export const metadata: Metadata = {
   title: "Jaime Castaneda | 2025 Folio",
   description: "A Bay Area-based creative whose strategy and design come together to shape inspiring projects that resonate with our time.",
@@ -27,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
         <Navigation />
         {children}
       </body>
