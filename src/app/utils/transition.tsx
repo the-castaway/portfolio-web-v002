@@ -3,7 +3,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 const DURATION = 1;
 const DELAY = 0.3;
-const EASE = "power3.out";
+const EASE = "ease";
 
 export const transitionPageIn = () => {
     const mask = document.getElementById("mask");
@@ -49,5 +49,4 @@ export const transitionPageOut = (href: string, router: AppRouterInstance) => {
         .to(maskLeft, { left: "50%", duration: DURATION, ease: EASE }, 0)
         .to(maskRight, { right: "50%", duration: DURATION, ease: EASE }, 0)
         .to(maskBorder, { height: 0, width: 0, duration: DURATION, ease: EASE }, 0)
-
 }

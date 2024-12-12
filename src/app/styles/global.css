@@ -17,7 +17,11 @@
   --jc-breakpoint-tablet: 'max-width: 768px';
   --jc-breakpoint-mobile: 'max-width: 360px';
   /* UI */
-  --jc-ui-border: 1px solid #ffffff40;
+  --jc-ui-border: 1px solid #303030;
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
@@ -41,12 +45,6 @@ body::-webkit-scrollbar {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
 
 /* Layout */
