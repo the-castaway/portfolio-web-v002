@@ -40,10 +40,6 @@ export default function Home() {
   }, [imgRef])
 
   const route = useRouter()
-  useEffect(() => {
-    console.log(ScrollTrigger)
-    //route.events.on('routeChangeStart', () => { console.log('start') })
-  })
   return (
     <div className="grid">
       <main className={styles.main}>

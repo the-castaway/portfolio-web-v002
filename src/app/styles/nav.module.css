@@ -1,3 +1,5 @@
+/* Nav */
+
 .nav {
     width: 100%;
     height: 80px;
@@ -5,6 +7,8 @@
     z-index: 1000;
     margin-top: 10px
 }
+
+/* Icon */
 
 .navIconContainer {
     grid-column-start: 1;
@@ -17,6 +21,8 @@
     fill: var(--jc-off-white);
     mix-blend-mode: difference;
 }
+
+/* Addition Info */
 
 .navTitleContainer {
     grid-column-start: 5;
@@ -44,16 +50,23 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
 }
+
+/* Button */
 
 .navButton {
     flex-shrink: 0;
     height: 60px;
     width: 60px;
-    position: relative;
-    /* border: var(--jc-ui-border); */
+    position: absolute;
+    border: var(--jc-ui-border);
+    top: 0%;
+    right: 0%;
     border-radius: 10px;
     box-sizing: border-box;
+    background: #0E0E1060;
+    backdrop-filter: blur(5px);
 }
 
 .navButtonCornerTopLeft {
@@ -123,4 +136,20 @@
     height: 1px;
     width: 20px;
     background-color: var(--jc-off-white);
+}
+
+/* Modal */
+
+.navModal {
+    height: 100%;
+    width: 100%;
+    padding: 60px 20px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navModalContent {
+    height: 100%;
+    width: 100%;
+
 }

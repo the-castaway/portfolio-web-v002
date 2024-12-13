@@ -1,11 +1,16 @@
 "use client"
 import TransitionLink from "./transitionLink"
 import styles from "../styles/nav.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import gsap from "gsap";
 
 const Nav = () => {
     // State
     const [currentTime, setCurrentTime] = useState('');
+    const [collapsed, setCollapsed] = useState(true);
+    // Refs
+    const navButton = useRef<HTMLDivElement>(null!);
+    const navButtonIcon = useRef<HTMLDivElement>(null!);
 
     // Get current time
     useEffect(() => {
@@ -26,6 +31,63 @@ const Nav = () => {
         // Clear the interval on component unmount
         return () => clearInterval(intervalId);
     }, []);
+
+    // useLayoutEffect(() => {
+    //     const buttonHoverTL = gsap.timeline();
+
+
+    //     navButton.current.addEventListener('mouseenter', () => { buttonHoverTL.play() })
+    //     navButton.current.addEventListener('mouseleave', () => { buttonHoverTL.reverse() })
+
+    // }, [])
+
+
+
+
+    // Handle expanded nav
+    const expandNav = () => {
+        setCollapsed(false);
+        console.log(navButtonIcon)
+        const expandNavTL = gsap.timeline();
+        expandNavTL.to(navButton.current,
+            {
+                width: "60vw",
+                height: "calc(100vh - 20px)",
+                duration: 0.5,
+                ease: "ease"
+            }, 0
+        )
+            .to(navButtonIcon.current, { rotate: -45, duration: 0.2, ease: "ease" }, 0)
+
+
+
+    }
+
+    // Handle collapsed nav
+    const collapseNav = () => {
+        if (collapsed === false) {
+            setCollapsed(true);
+            const collapseNavTL = gsap.timeline();
+            collapseNavTL.to(navButton.current,
+                {
+                    width: "60px",
+                    height: "60px",
+                    duration: 0.5,
+                    ease: "ease"
+                }, 0
+            ).to(navButtonIcon.current, { rotate: 0, duration: 0.2, ease: "ease" }, 0)
+
+        }
+    }
+
+    const toggleNav = () => {
+        if (collapsed) {
+            expandNav();
+        }
+        else {
+            collapseNav();
+        }
+    }
 
     return (
         <nav className={`${styles.nav} grid`}>
@@ -49,29 +111,33 @@ const Nav = () => {
                 </p>
             </div>
             <div className={`${styles.navButtonContainer}`}>
-                <div className={`${styles.navButton}`}>
+                <div ref={navButton} className={`${styles.navButton}`} onClick={() => { toggleNav(); }}>
                     <div className={styles.navButtonCornerTopLeft} />
                     <div className={styles.navButtonCornerTopRight} />
                     <div className={styles.navButtonCornerBottomRight} />
                     <div className={styles.navButtonCornerBottomLeft} />
-                    <div className={styles.navButtonIcon}>
+                    <div ref={navButtonIcon} className={styles.navButtonIcon}>
                         <div className={styles.navButtonIconVertical} />
                         <div className={styles.navButtonIconHorizontal} />
                     </div>
-
-                    {/* <TransitionLink href="/" label="home" />
-                    <TransitionLink href="/archive" label="archive" />
-                    <TransitionLink href="/about" label="about" /> */}
-
+                    <div className={styles.navModal}>
+                        <div className={styles.navModalContent}>
+                            <div className={styles.navModalContentDirectory}>
+                                <div className={`${styles.navModalContentDirectoryHeader}`}>
+                                    <p className={`detail textColorGrey`}>
+                                        <span className={`textColorGrey`}>
+                                            Directory
+                                        </span>
+                                    </p>
+                                </div>
+                                <TransitionLink href="/" label="home" />
+                                <TransitionLink href="/archive" label="archive" />
+                                <TransitionLink href="/about" label="about" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
-
-
-
-
             </div>
-
         </nav>
     )
 }
