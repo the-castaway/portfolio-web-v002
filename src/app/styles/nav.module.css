@@ -1,0 +1,126 @@
+.nav {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 1000;
+    margin-top: 10px
+}
+
+.navIconContainer {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: flex;
+    align-items: center;
+}
+
+.navIconSVG {
+    fill: var(--jc-off-white);
+    mix-blend-mode: difference;
+}
+
+.navTitleContainer {
+    grid-column-start: 5;
+    grid-column-end: 8;
+    display: flex;
+    align-items: center;
+}
+
+.navCurrentlyContainer {
+    grid-column-start: 18;
+    grid-column-end: 21;
+    display: flex;
+    align-items: center;
+}
+
+.navGeoContainer {
+    grid-column-start: 21;
+    grid-column-end: 23;
+    display: flex;
+    align-items: center;
+}
+
+.navButtonContainer {
+    grid-column-start: 24;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navButton {
+    flex-shrink: 0;
+    height: 60px;
+    width: 60px;
+    position: relative;
+    /* border: var(--jc-ui-border); */
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.navButtonCornerTopLeft {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-top: 1px solid var(--jc-off-white);
+    border-left: 1px solid var(--jc-off-white);
+    border-radius: 2px 0 0 0;
+}
+
+.navButtonCornerTopRight {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-top: 1px solid var(--jc-off-white);
+    border-right: 1px solid var(--jc-off-white);
+    border-radius: 0 2px 0 0;
+}
+
+.navButtonCornerBottomRight {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 1px solid var(--jc-off-white);
+    border-right: 1px solid var(--jc-off-white);
+    border-radius: 0 0 2px 0;
+}
+
+.navButtonCornerBottomLeft {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    border-bottom: 1px solid var(--jc-off-white);
+    border-left: 1px solid var(--jc-off-white);
+    border-radius: 0 0 0 2px;
+}
+
+.navButtonIcon {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButtonIconVertical {
+    position: absolute;
+    height: 20px;
+    width: 1px;
+    background-color: var(--jc-off-white);
+}
+
+.navButtonIconHorizontal {
+    position: absolute;
+    height: 1px;
+    width: 20px;
+    background-color: var(--jc-off-white);
+}

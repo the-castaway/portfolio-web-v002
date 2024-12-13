@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import { transitionPageIn } from "./utils/transition"
 import { usePathname } from "next/navigation"
-import styles from "./styles/transition/template.module.css";
+import styles from "./styles/transition.module.css";
 
 export default function Template({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();

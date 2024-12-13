@@ -86,18 +86,6 @@
     border-radius: 0 5px 0 0;
 }
 
-.maskCornerTopRight {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    transform: translate(100%, -100%);
-    border-top: 1px solid var(--jc-off-white);
-    border-right: 1px solid var(--jc-off-white);
-    border-radius: 0 5px 0 0;
-}
-
 .maskCornerBottomRight {
     height: 20px;
     width: 20px;

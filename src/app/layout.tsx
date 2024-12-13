@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 // Components
-import Navigation from "./components/nav";
+import Nav from "./components/nav";
 // Styles
 import "./styles/global.css";
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
-        <Navigation />
+        <Nav />
         {children}
       </body>
     </html>

@@ -20,9 +20,9 @@
   --jc-ui-border: 1px solid #303030;
 }
 
-html {
+/* html {
   color-scheme: dark;
-}
+} */
 
 body {
   color: var(--jc-off-white);
@@ -47,6 +47,37 @@ a {
   text-decoration: none;
 }
 
+
+
+/* Text */
+
+p.detail {
+  font-family: var(--jc-detail-font);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--jc-off-white);
+  letter-spacing: 0;
+  mix-blend-mode: difference;
+}
+
+.textColorOffWhite {
+  color: var(--jc-off-white)
+}
+
+.textColorLightGrey {
+  color: var(--jc-light-grey)
+}
+
+.textColorGrey {
+  color: var(--jc-grey)
+}
+
+.textColorDarkGrey {
+  color: var(--jc-dark-grey)
+}
+
 /* Layout */
 
 .grid {
@@ -54,13 +85,5 @@ a {
   grid-template-columns: repeat(24, minmax(0, 1fr));
   gap: 20px;
   box-sizing: border-box;
-  padding: 0px 40px;
-}
-
-.col-start-15 {
-  grid-column-start: 15;
-}
-
-.col-span-10 {
-  grid-column: span 10 / span 10;
+  padding: 0px 20px;
 }
