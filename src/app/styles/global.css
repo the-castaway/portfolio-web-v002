@@ -62,6 +62,24 @@ p.detail {
   mix-blend-mode: difference;
 }
 
+p.labelLarge {
+  font-family: var(--jc-default-font);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--jc-off-white);
+  mix-blend-mode: difference;
+}
+
+p.labelSmall {
+  font-family: var(--jc-default-font);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--jc-off-white);
+  mix-blend-mode: difference;
+}
+
 .textColorOffWhite {
   color: var(--jc-off-white)
 }

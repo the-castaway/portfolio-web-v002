@@ -2,19 +2,20 @@
 
 .nav {
     width: 100%;
-    height: 80px;
+    height: auto;
     position: fixed;
     z-index: 1000;
-    margin-top: 10px
 }
 
 /* Icon */
 
-.navIconContainer {
-    grid-column-start: 1;
-    grid-column-end: 5;
+.navIcon {
     display: flex;
     align-items: center;
+    position: absolute;
+    height: 80px;
+    left: 20px;
+    top: 0;
 }
 
 .navIconSVG {
@@ -22,7 +23,12 @@
     mix-blend-mode: difference;
 }
 
-/* Addition Info */
+.navDetails {
+    width: 100%;
+    height: 80px;
+}
+
+/* Details */
 
 .navTitleContainer {
     grid-column-start: 5;
@@ -45,12 +51,18 @@
     align-items: center;
 }
 
-.navButtonContainer {
-    grid-column-start: 24;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
+/* Overlay */
+
+.navOverlay {
+    height: 100vh;
+    width: 100vw;
+    background: var(--jc-black);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: all;
+    display: none;
 }
 
 /* Button */
@@ -60,13 +72,23 @@
     height: 60px;
     width: 60px;
     position: absolute;
-    border: var(--jc-ui-border);
+    top: 10px;
+    right: 10px;
+    box-sizing: border-box;
+    background: #0E0E1090;
+    /* backdrop-filter: blur(10px); */
+}
+
+.navButtonBorder {
+    height: 100%;
+    width: 100%;
+    position: absolute;
     top: 0%;
     right: 0%;
+    border: var(--jc-ui-border);
     border-radius: 10px;
-    box-sizing: border-box;
-    background: #0E0E1060;
-    backdrop-filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .navButtonCornerTopLeft {
@@ -145,11 +167,62 @@
     width: 100%;
     padding: 60px 20px;
     opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
 .navModalContent {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.navModalContentDirectory {
+    height: auto;
+    width: 100%;
+}
+
+.navModalContentHeader {
+    height: auto;
+    width: 100%;
+    border-bottom: var(--jc-ui-border);
+    padding: 20px;
+}
+
+.navModalContentContact {
+    height: auto;
+    width: 100%;
+}
+
+.navModalContentContactList {
+    width: 100%;
+    height: auto;
+}
+
+.navModalContentContactLink {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-bottom: var(--jc-ui-border);
+
+}
+
+.navModalContentContactLinkText {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.navModalContentContactFooter {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 40px;
 }

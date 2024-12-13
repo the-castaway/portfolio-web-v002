@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { useRouter } from 'next/navigation'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import NavLink from "./components/navLink";
 
 
 export default function Home() {
