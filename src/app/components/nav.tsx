@@ -53,7 +53,6 @@ const Nav = () => {
     // Handle expanded nav
     const expandNav = () => {
         setCollapsed(false);
-        console.log(navButtonIcon)
         const expandNavTL = gsap.timeline();
         expandNavTL
             .to(navOverlay.current,
@@ -170,17 +169,17 @@ const Nav = () => {
                     </p>
                 </div>
             </div>
-            <div ref={navOverlay} className={styles.navOverlay} />
-            <div ref={navButton} className={`${styles.navButton}`} onClick={() => { toggleNav(); }}>
+            <div ref={navOverlay} className={styles.navOverlay} onClick={() => { collapseNav(); }} />
+            <div ref={navButton} className={`${styles.navButton}`}>
                 <div ref={navButtonBorder} className={styles.navButtonBorder} />
+                <div ref={navButtonIcon} className={styles.navButtonIcon} onClick={() => { toggleNav(); }}>
+                    <div className={styles.navButtonIconVertical} />
+                    <div className={styles.navButtonIconHorizontal} />
+                </div>
                 <div className={styles.navButtonCornerTopLeft} />
                 <div className={styles.navButtonCornerTopRight} />
                 <div className={styles.navButtonCornerBottomRight} />
                 <div className={styles.navButtonCornerBottomLeft} />
-                <div ref={navButtonIcon} className={styles.navButtonIcon}>
-                    <div className={styles.navButtonIconVertical} />
-                    <div className={styles.navButtonIconHorizontal} />
-                </div>
                 <div ref={navModal} className={styles.navModal}>
                     <div className={styles.navModalContent}>
                         <div className={styles.navModalContentDirectory}>
@@ -191,7 +190,7 @@ const Nav = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className={`${styles.navModalContentDirectoryList}`}>
+                            <div className={`${styles.navModalContentDirectoryList}`} onClick={() => { collapseNav(); }} >
                                 <NavLink href="/" label="Work" number="[ 01 ]" />
                                 <NavLink href="/archive" label="About" number="[ 02 ]" />
                                 <NavLink href="/about" label="Lab" number="[ 03 ]" />

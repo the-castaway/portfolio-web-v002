@@ -20,6 +20,10 @@
     gap: 20px;
 }
 
+.navLink:hover .navLinkText p {
+    transition: 0.2s ease;
+}
+
 .navLinkTextNumber {
     width: auto;
     height: auto;
@@ -49,6 +53,7 @@
     border-top: 1px solid var(--jc-off-white);
     border-left: 1px solid var(--jc-off-white);
     border-radius: 2px 0 0 0;
+    transition: 0.2s ease;
 }
 
 .navLinkButtonCornerTopRight {
@@ -60,6 +65,7 @@
     border-top: 1px solid var(--jc-off-white);
     border-right: 1px solid var(--jc-off-white);
     border-radius: 0 2px 0 0;
+    transition: 0.2s ease;
 }
 
 .navLinkButtonCornerBottomRight {
@@ -71,6 +77,7 @@
     border-bottom: 1px solid var(--jc-off-white);
     border-right: 1px solid var(--jc-off-white);
     border-radius: 0 0 2px 0;
+    transition: 0.2s ease;
 }
 
 .navLinkButtonCornerBottomLeft {
@@ -82,6 +89,7 @@
     border-bottom: 1px solid var(--jc-off-white);
     border-left: 1px solid var(--jc-off-white);
     border-radius: 0 0 0 2px;
+    transition: 0.2s ease;
 }
 
 .navLinkButtonIcon {
@@ -95,4 +103,39 @@
 
 .navLinkButtonIconSVG {
     stroke: var(--jc-off-white);
+    transition: 0.2s ease;
+}
+
+/* Hover */
+
+.navLink:hover .navLinkButtonIconSVG {
+    stroke: var(--jc-blue);
+}
+
+.navLink:hover .navLinkText p {
+    color: var(--jc-blue);
+}
+
+.navLink:hover .navLinkButtonCornerTopLeft {
+    border-top: 1px solid var(--jc-blue);
+    border-left: 1px solid var(--jc-blue);
+    transform: translate(100%, 100%);
+}
+
+.navLink:hover .navLinkButtonCornerTopRight {
+    border-top: 1px solid var(--jc-blue);
+    border-right: 1px solid var(--jc-blue);
+    transform: translate(-100%, 100%);
+}
+
+.navLink:hover .navLinkButtonCornerBottomRight {
+    border-bottom: 1px solid var(--jc-blue);
+    border-right: 1px solid var(--jc-blue);
+    transform: translate(-100%, -100%);
+}
+
+.navLink:hover .navLinkButtonCornerBottomLeft {
+    border-bottom: 1px solid var(--jc-blue);
+    border-left: 1px solid var(--jc-blue);
+    transform: translate(100%, -100%);
 }

@@ -103,5 +103,5 @@ p.labelSmall {
   grid-template-columns: repeat(24, minmax(0, 1fr));
   gap: 20px;
   box-sizing: border-box;
-  padding: 0px 20px;
+  padding: 0px 40px;
 }

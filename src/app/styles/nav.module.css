@@ -100,6 +100,7 @@
     border-top: 1px solid var(--jc-off-white);
     border-left: 1px solid var(--jc-off-white);
     border-radius: 2px 0 0 0;
+    transition: 0.2s ease;
 }
 
 .navButtonCornerTopRight {
@@ -111,6 +112,7 @@
     border-top: 1px solid var(--jc-off-white);
     border-right: 1px solid var(--jc-off-white);
     border-radius: 0 2px 0 0;
+    transition: 0.2s ease;
 }
 
 .navButtonCornerBottomRight {
@@ -122,6 +124,7 @@
     border-bottom: 1px solid var(--jc-off-white);
     border-right: 1px solid var(--jc-off-white);
     border-radius: 0 0 2px 0;
+    transition: 0.2s ease;
 }
 
 .navButtonCornerBottomLeft {
@@ -133,6 +136,7 @@
     border-bottom: 1px solid var(--jc-off-white);
     border-left: 1px solid var(--jc-off-white);
     border-radius: 0 0 0 2px;
+    transition: 0.2s ease;
 }
 
 .navButtonIcon {
@@ -151,6 +155,7 @@
     height: 20px;
     width: 1px;
     background-color: var(--jc-off-white);
+    transition: 0.2s ease;
 }
 
 .navButtonIconHorizontal {
@@ -158,6 +163,36 @@
     height: 1px;
     width: 20px;
     background-color: var(--jc-off-white);
+    transition: 0.2s ease;
+}
+
+.navButtonIcon:hover .navButtonIconVertical,
+.navButtonIcon:hover .navButtonIconHorizontal {
+    background-color: var(--jc-blue);
+}
+
+.navButtonIcon:hover+.navButtonCornerTopLeft {
+    border-top: 1px solid var(--jc-blue);
+    border-left: 1px solid var(--jc-blue);
+    transform: translate(100%, 100%);
+}
+
+.navButtonIcon:hover+.navButtonCornerTopLeft+.navButtonCornerTopRight {
+    border-top: 1px solid var(--jc-blue);
+    border-right: 1px solid var(--jc-blue);
+    transform: translate(-100%, 100%);
+}
+
+.navButtonIcon:hover+.navButtonCornerTopLeft+.navButtonCornerTopRight+.navButtonCornerBottomRight {
+    border-bottom: 1px solid var(--jc-blue);
+    border-right: 1px solid var(--jc-blue);
+    transform: translate(-100%, -100%);
+}
+
+.navButtonIcon:hover+.navButtonCornerTopLeft+.navButtonCornerTopRight+.navButtonCornerBottomRight+.navButtonCornerBottomLeft {
+    border-bottom: 1px solid var(--jc-blue);
+    border-left: 1px solid var(--jc-blue);
+    transform: translate(100%, -100%);
 }
 
 /* Modal */
@@ -206,7 +241,14 @@
     height: auto;
     padding: 20px;
     border-bottom: var(--jc-ui-border);
+}
 
+.navModalContentContactTextLabel {
+    transition: 0.2s ease;
+}
+
+.navModalContentContactLink:hover .navModalContentContactTextLabel {
+    color: var(--jc-blue);
 }
 
 .navModalContentContactLinkText {
