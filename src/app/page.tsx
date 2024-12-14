@@ -5,9 +5,10 @@ import styles from "./styles/page.module.css";
 
 import { useEffect, useRef } from "react";
 import { useRouter } from 'next/navigation'
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import NavLink from "./components/navLink";
+import dynamic from 'next/dynamic'
+import { Canvas } from "@react-three/fiber";
+import LogoModel from "./components/scene/logoModel";
+import { Environment } from '@react-three/drei'
 
 
 export default function Home() {
@@ -42,8 +43,15 @@ export default function Home() {
 
   const route = useRouter()
   return (
-    <div className="grid">
+
+    <div>
       <main className={styles.main}>
+
+        <Canvas style={{ background: '#0E0E10' }}>
+          <LogoModel />
+          <Environment preset='night' />
+        </Canvas>
+
         <canvas
           className='col-start-15 col-span-10'
           ref={canvasRef}
