@@ -1,7 +1,7 @@
 "use client"
 import NavLink from "./navLink"
 import styles from "../styles/nav.module.css";
-import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
 const Nav = () => {
@@ -34,21 +34,6 @@ const Nav = () => {
         // Clear the interval on component unmount
         return () => clearInterval(intervalId);
     }, []);
-
-
-
-
-    // useLayoutEffect(() => {
-    //     const buttonHoverTL = gsap.timeline();
-
-
-    //     navButton.current.addEventListener('mouseenter', () => { buttonHoverTL.play() })
-    //     navButton.current.addEventListener('mouseleave', () => { buttonHoverTL.reverse() })
-
-    // }, [])
-
-
-
 
     // Handle expanded nav
     const expandNav = () => {
@@ -137,6 +122,7 @@ const Nav = () => {
         }
     }
 
+    // Handle toggle
     const toggleNav = () => {
         if (collapsed) {
             expandNav();
