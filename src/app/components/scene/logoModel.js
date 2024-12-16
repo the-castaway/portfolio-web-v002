@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import { MeshTransmissionMaterial, useGLTF, Text, Environment, PerspectiveCamera } from "@react-three/drei";
+import React, { useEffect, useRef, useState } from 'react'
+import { MeshTransmissionMaterial, useGLTF, Text, Environment, PerspectiveCamera, SpotLight, MeshDistortMaterial } from "@react-three/drei";
 import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
@@ -14,12 +14,16 @@ export default function LogoModel() {
     const logo = useRef(null);
     const logoLeft = useRef(null);
     const logoRight = useRef(null);
+    const marquee = useRef(null);
+    const logoLeftMat = useRef(null);
     gsap.registerPlugin(ScrollTrigger)
     const trigger = document.getElementById("trigger");
 
     useFrame(() => {
         //logo.current.rotation.x += 0.002
         logo.current.rotation.z -= 0.006
+        logo.current.rotation.y -= 0.003
+
     })
     const materialProps = useControls({
         thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
@@ -49,50 +53,111 @@ export default function LogoModel() {
                 markers: true,
             }
         });
-        tl.to(logo.current.scale, {
-            x: 3,
-            y: 3,
-            z: 3,
-        }, 0)
+        // tl.to(logo.current.scale, {
+        //     x: 0,
+        //     y: 0,
+        //     z: 0,
+        // }, 0)
         tl.to(logoRight.current.rotation, {
-            z: 10,
+            z: -Math.PI / 4,
         }, 0)
         tl.to(logoRight.current.position, {
-            x: 2,
+            x: 5,
         }, 0)
         tl.to(logoLeft.current.rotation, {
-            z: 10,
+            z: Math.PI / 4,
         }, 0)
         tl.to(logoLeft.current.position, {
-            x: -2,
+            x: -5,
         }, 0)
 
+        const marqueeTL = gsap.timeline();
+
+        marqueeTL.to(marquee.current.position, {
+            repeat: 200,
+            x: -2,
+            duration: 10,
+            ease: 'none',
+        })
+
+
     }, [])
+
+
+    // useEffect(() => {
+
+
+    //     const tl = gsap.timeline();
+    //     // tl.to(logo.current.scale, {
+    //     //     x: 0,
+    //     //     y: 0,
+    //     //     z: 0,
+    //     // }, 0)
+    //     tl.to(logoLeftMat.current, {
+    //         transmission: 1, // Target value
+    //         delay: 2,
+    //         duration: 2,
+    //     }, 0)
+
+    //     console.log(logoLeftMat.current)
+
+    // }, [])
     return (
         <>
             <PerspectiveCamera
                 makeDefault
-                fov={50}
-                position={[0, 0, 100]}
+                fov={10}
+                position={[0, 0, 500]}
             />
             <group scale={viewport.width / 3.75}>
-                <Text position={[0, 0, -2]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
+                <Text ref={marquee} position={[0, 0, 0]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
                     DESIGNER + DEVELOPER + DESIGNER + DEVELOPER
                 </Text>
                 <ambientLight intensity={1} />
-                <group ref={logo} position={[0, 0, -1]} scale={[0.6, 0.6, 0.6]} rotation={[1.3, 0, 0]}>
+                <group ref={logo} position={[0, 0, 1]} scale={[0.6, 0.6, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
-                        <MeshTransmissionMaterial {...materialProps} />
+                        <MeshTransmissionMaterial
+                            ref={logoLeftMat}
+                            thickness={1}
+                            samples={16}
+                            roughness={0.001}
+                            transmission={1}
+                            anisotropicBlur={10}
+                            envMapIntensity={0.5}
+                            clearcoat={2}
+                            ior={1.05}
+                            iridescence={1}
+                            iridescenceIOR={2}
+                            iridescenceThicknessRange={[1000, 1400]}
+                            transparent={true}
+                            backside={true} />
                     </mesh>
                     <mesh ref={logoRight} {...nodes.logo_right}>
-                        <MeshTransmissionMaterial {...materialProps} />
+                        <MeshTransmissionMaterial
+                            thickness={1}
+                            samples={16}
+                            roughness={0.001}
+                            transmission={1}
+                            anisotropicBlur={10}
+                            envMapIntensity={0.5}
+                            clearcoat={2}
+                            ior={1.05}
+                            iridescence={1}
+                            iridescenceIOR={2}
+                            iridescenceThicknessRange={[1000, 1400]}
+                            transparent={true}
+                            backside={false} />
                     </mesh>
                 </group>
-                <Environment preset='sunset' />
-                <EffectComposer>
-                    <DepthOfField {...postProcessingProps}        // Resolution of the effect
+                <Environment preset='city' environmentIntensity={0.2} />
+                {/* <EffectComposer multisampling={0} disableNormalPass={false}>
+                    <DepthOfField
+                        focusDistance={0}
+                        focalLength={1}
+                        bokehScale={2}
+                        height={480}       // Resolution of the effect
                     />
-                </EffectComposer>
+                </EffectComposer> */}
             </group >
         </>
     );
