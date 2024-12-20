@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { MeshTransmissionMaterial, useGLTF, Text, Environment, PerspectiveCamera, SpotLight, MeshDistortMaterial } from "@react-three/drei";
-import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
+import { MeshTransmissionMaterial, useGLTF, Text, Environment, PerspectiveCamera, SpotLight, MeshDistortMaterial, PerformanceMonitor, Lightformer } from "@react-three/drei";
+import { EffectComposer, DepthOfField, Bloom, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { DirectionalLight } from 'three';
@@ -20,25 +20,8 @@ export default function LogoModel() {
     const trigger = document.getElementById("trigger");
 
     useFrame(() => {
-        //logo.current.rotation.x += 0.002
         logo.current.rotation.z -= 0.006
         logo.current.rotation.y -= 0.003
-
-    })
-    const materialProps = useControls({
-        thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
-        roughness: { value: 0, min: 0, max: 1, step: 0.1 },
-        transmission: { value: 1, min: 0, max: 1, step: 0.1 },
-        ior: { value: 1.2, min: 0, max: 3, step: 0.1 },
-        chromaticAberration: { value: 0.02, min: 0, max: 1 },
-        backside: { value: true },
-    })
-
-    const postProcessingProps = useControls({
-        focusDistance: { value: 0.1, min: 0, max: 3, step: 0.01 },
-        focalLength: { value: 0.1, min: 0, max: 3, step: 0.01 },
-        bokehScale: { value: 1, min: 0, max: 10, step: 0.5 },
-        height: { value: 480 },
     })
 
     useEffect(() => {
@@ -53,11 +36,6 @@ export default function LogoModel() {
                 markers: true,
             }
         });
-        // tl.to(logo.current.scale, {
-        //     x: 0,
-        //     y: 0,
-        //     z: 0,
-        // }, 0)
         tl.to(logoRight.current.rotation, {
             z: -Math.PI / 4,
         }, 0)
@@ -70,94 +48,72 @@ export default function LogoModel() {
         tl.to(logoLeft.current.position, {
             x: -5,
         }, 0)
-
         const marqueeTL = gsap.timeline();
-
         marqueeTL.to(marquee.current.position, {
             repeat: 200,
             x: -2,
             duration: 10,
             ease: 'none',
         })
-
-
     }, [])
 
-
-    // useEffect(() => {
-
-
-    //     const tl = gsap.timeline();
-    //     // tl.to(logo.current.scale, {
-    //     //     x: 0,
-    //     //     y: 0,
-    //     //     z: 0,
-    //     // }, 0)
-    //     tl.to(logoLeftMat.current, {
-    //         transmission: 1, // Target value
-    //         delay: 2,
-    //         duration: 2,
-    //     }, 0)
-
-    //     console.log(logoLeftMat.current)
-
-    // }, [])
     return (
         <>
             <PerspectiveCamera
                 makeDefault
-                fov={10}
-                position={[0, 0, 500]}
+                fov={20}
+                position={[0, 0, 160]}
             />
+            <PerformanceMonitor onDecline={() => degrade(true)} />
+            <fog attach="fog" args={['#0E0E10', 160, 185]} />
             <group scale={viewport.width / 3.75}>
-                <Text ref={marquee} position={[0, 0, 0]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
+                <Text ref={marquee} position={[0, 0, 0]} fontSize={0.3} color="white" anchorX="center" anchorY="middle">
                     DESIGNER + DEVELOPER + DESIGNER + DEVELOPER
                 </Text>
                 <ambientLight intensity={1} />
-                <group ref={logo} position={[0, 0, 1]} scale={[0.6, 0.6, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
+                <group ref={logo} position={[0, 0, 1]} scale={[0.5, 0.5, 0.5]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
-                            ref={logoLeftMat}
-                            thickness={1}
+                            thickness={0.3}
                             samples={16}
+                            resolution={1024}
                             roughness={0.001}
                             transmission={1}
                             anisotropicBlur={10}
                             envMapIntensity={0.5}
-                            clearcoat={2}
+                            clearcoat={1}
                             ior={1.05}
                             iridescence={1}
                             iridescenceIOR={2}
                             iridescenceThicknessRange={[1000, 1400]}
+                            chromaticAberration={0.15}
+                            anisotropy={0.25}
+                            color='white'
                             transparent={true}
-                            backside={true} />
+                            backside={false} />
                     </mesh>
                     <mesh ref={logoRight} {...nodes.logo_right}>
                         <MeshTransmissionMaterial
-                            thickness={1}
+                            thickness={0.3}
                             samples={16}
+                            resolution={1024}
                             roughness={0.001}
                             transmission={1}
                             anisotropicBlur={10}
                             envMapIntensity={0.5}
-                            clearcoat={2}
+                            clearcoat={1}
                             ior={1.05}
                             iridescence={1}
                             iridescenceIOR={2}
                             iridescenceThicknessRange={[1000, 1400]}
+                            chromaticAberration={0.15}
+                            anisotropy={0.25}
+                            color='white'
                             transparent={true}
                             backside={false} />
                     </mesh>
                 </group>
                 <Environment preset='city' environmentIntensity={0.2} />
-                {/* <EffectComposer multisampling={0} disableNormalPass={false}>
-                    <DepthOfField
-                        focusDistance={0}
-                        focalLength={1}
-                        bokehScale={2}
-                        height={480}       // Resolution of the effect
-                    />
-                </EffectComposer> */}
             </group >
         </>
     );
