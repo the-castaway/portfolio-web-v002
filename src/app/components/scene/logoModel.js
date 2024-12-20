@@ -6,6 +6,9 @@ import { useControls } from 'leva'
 import { DirectionalLight } from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Perf } from 'leva';
+import { easing } from 'maath'
+
 
 
 export default function LogoModel() {
@@ -59,6 +62,7 @@ export default function LogoModel() {
 
     return (
         <>
+            {/* <Perf position="top-left" /> */}
             <PerspectiveCamera
                 makeDefault
                 fov={20}
@@ -113,8 +117,21 @@ export default function LogoModel() {
                             backside={false} />
                     </mesh>
                 </group>
+                <Rig />
                 <Environment preset='city' environmentIntensity={0.2} />
             </group >
         </>
     );
+}
+
+function Rig() {
+    useFrame((state, delta) => {
+        easing.damp3(
+            state.camera.position,
+            [Math.sin(-state.pointer.x) * 10, state.pointer.y * 6, 160],
+            0.2,
+            delta,
+        )
+        state.camera.lookAt(0, 0, 0)
+    })
 }
