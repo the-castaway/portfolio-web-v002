@@ -24,8 +24,8 @@ export default function LogoModel() {
     const trigger = document.getElementById("trigger");
 
     useFrame(() => {
-        logo.current.rotation.z -= 0.003
-        logo.current.rotation.y -= 0.001
+        logo.current.rotation.z -= 0.008
+        logo.current.rotation.y -= 0.008
     })
 
     useEffect(() => {
@@ -37,20 +37,20 @@ export default function LogoModel() {
                 start: 'top bottom',
                 end: '+2000',
                 scrub: 1,
-                markers: true,
+                markers: false,
             }
         });
         tl.to(logoRight.current.rotation, {
             z: -Math.PI / 4,
         }, 0)
         tl.to(logoRight.current.position, {
-            x: 5,
+            x: 10,
         }, 0)
         tl.to(logoLeft.current.rotation, {
             z: Math.PI / 4,
         }, 0)
         tl.to(logoLeft.current.position, {
-            x: -5,
+            x: -10,
         }, 0)
         const marqueeTL = gsap.timeline();
         const textWidth = 2;
@@ -73,14 +73,12 @@ export default function LogoModel() {
 
     return (
         <>
-            {/* <Perf position="top-left" /> */}
             <PerspectiveCamera
                 makeDefault
                 fov={20}
                 position={[0, 0, 160]}
             />
-            <PerformanceMonitor onDecline={() => degrade(true)} />
-            <fog attach="fog" args={['#0E0E10', 160, 185]} />
+            <fog attach="fog" args={['#0E0E10', 180, 250]} />
             <group scale={viewport.width / 3.75}>
                 <Text ref={marquee} position={[0, 0, 0]} fontSize={0.3} color="white" anchorX="center" anchorY="middle">
                     DESIGNER + DEVELOPER + DESIGNER + DEVELOPER

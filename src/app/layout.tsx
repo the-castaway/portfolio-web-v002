@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Nav from "./components/nav";
 // Styles
 import "./styles/global.css";
+import Footer from "./components/footer";
 
 // Fonts
 const urbanist = localFont({
@@ -46,6 +47,7 @@ export default function RootLayout({
         <div style={{ paddingTop: '100px' }}>
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );
