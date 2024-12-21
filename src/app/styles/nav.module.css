@@ -23,12 +23,12 @@
     mix-blend-mode: difference;
 }
 
+/* Details */
+
 .navDetails {
     width: 100%;
     height: 80px;
 }
-
-/* Details */
 
 .navTitleContainer {
     grid-column-start: 5;
@@ -267,4 +267,27 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding-top: 40px;
+}
+
+@media (max-width: 1024px) {
+    .navTitleContainer {
+        grid-column-start: 5;
+        grid-column-end: 8;
+        display: none;
+        align-items: center;
+    }
+
+    .navCurrentlyContainer {
+        grid-column-start: 18;
+        grid-column-end: 21;
+        display: none;
+        align-items: center;
+    }
+
+    .navGeoContainer {
+        grid-column-start: 21;
+        grid-column-end: 23;
+        display: none;
+        align-items: center;
+    }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF, Text, Environment, PerspectiveCamera, SpotLight, MeshDistortMaterial, PerformanceMonitor, Lightformer } from "@react-three/drei";
 import { EffectComposer, DepthOfField, Bloom, N8AO, TiltShift2 } from '@react-three/postprocessing';
 import { useFrame, useThree } from '@react-three/fiber'
@@ -23,8 +24,8 @@ export default function LogoModel() {
     const trigger = document.getElementById("trigger");
 
     useFrame(() => {
-        logo.current.rotation.z -= 0.006
-        logo.current.rotation.y -= 0.003
+        logo.current.rotation.z -= 0.003
+        logo.current.rotation.y -= 0.001
     })
 
     useEffect(() => {
@@ -52,12 +53,22 @@ export default function LogoModel() {
             x: -5,
         }, 0)
         const marqueeTL = gsap.timeline();
+        const textWidth = 2;
         marqueeTL.to(marquee.current.position, {
-            repeat: 200,
-            x: -2,
-            duration: 10,
+            repeat: -1,
+            x: -textWidth,
+            duration: 5,
             ease: 'none',
         })
+
+
+
+        // const logoMatTL = gsap.timeline();
+        // logoMatTL.from(logoLeftMat.current, {
+        //     transmission: 1,
+        //     duration: 1,
+        //     ease: 'ease',
+        // })
     }, [])
 
     return (
@@ -78,6 +89,7 @@ export default function LogoModel() {
                 <group ref={logo} position={[0, 0, 1]} scale={[0.5, 0.5, 0.5]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
+                            ref={logoLeftMat}
                             thickness={0.3}
                             samples={16}
                             resolution={1024}
@@ -93,7 +105,6 @@ export default function LogoModel() {
                             chromaticAberration={0.15}
                             anisotropy={0.25}
                             color='white'
-                            transparent={true}
                             backside={false} />
                     </mesh>
                     <mesh ref={logoRight} {...nodes.logo_right}>
@@ -113,7 +124,6 @@ export default function LogoModel() {
                             chromaticAberration={0.15}
                             anisotropy={0.25}
                             color='white'
-                            transparent={true}
                             backside={false} />
                     </mesh>
                 </group>
@@ -135,3 +145,22 @@ function Rig() {
         state.camera.lookAt(0, 0, 0)
     })
 }
+
+// function Banner(props) {
+//     const ref = useRef()
+//     const texture = <Text position={[0, 0, 0]} fontSize={0.3} color="white" anchorX="center" anchorY="middle">
+//         DESIGNER + DEVELOPER + DESIGNER + DEVELOPER
+//     </Text>
+//     texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+//     const scroll = useScroll()
+//     useFrame((state, delta) => {
+//         ref.current.material.time.value += Math.abs(scroll.delta) * 4
+//         ref.current.material.map.offset.x += delta / 2
+//     })
+//     return (
+//         <mesh ref={ref} {...props}>
+//             <cylinderGeometry args={[1.6, 1.6, 0.14, 128, 16, true]} />
+//             <meshSineMaterial map={texture} map-anisotropy={16} map-repeat={[30, 1]} side={THREE.DoubleSide} toneMapped={false} />
+//         </mesh>
+//     )
+// }

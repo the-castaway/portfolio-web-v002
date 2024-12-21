@@ -14,8 +14,9 @@
   --jc-blue: #4552D9;
   --jc-purple: #53229F;
   /* Breakpoints */
-  --jc-breakpoint-tablet: 'max-width: 768px';
-  --jc-breakpoint-mobile: 'max-width: 360px';
+  --jc-breakpoint-desktop: 1024px;
+  --jc-breakpoint-tablet: 768px;
+  --jc-breakpoint-mobile: 480px;
   /* UI */
   --jc-ui-border: 1px solid #303030;
 }

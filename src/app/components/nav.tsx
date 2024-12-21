@@ -1,13 +1,14 @@
 "use client"
 import NavLink from "./navLink"
 import styles from "../styles/nav.module.css";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import gsap from "gsap";
 
 const Nav = () => {
     // State
     const [currentTime, setCurrentTime] = useState('');
-    const [collapsed, setCollapsed] = useState(true);
+    const mediaQuery = useMemo(() => window.matchMedia(`(max-width: 768px)`), [`(max-width: 768px)`])
+    const [collapsed, setCollapsed] = useState(true); const [matches, setMatches] = useState(mediaQuery.matches);
     // Refs
     const navOverlay = useRef<HTMLDivElement>(null!);
     const navButton = useRef<HTMLDivElement>(null!);
@@ -35,6 +36,15 @@ const Nav = () => {
         return () => clearInterval(intervalId);
     }, []);
 
+    // Check window size
+    useEffect(() => {
+        const onMediaChange = () => {
+            setMatches(mediaQuery.matches);
+            mediaQuery.addEventListener("change", onMediaChange);
+        }
+        window.matchMedia(`(max-width: 768px)`).addEventListener('change', onMediaChange);
+    }, [mediaQuery]);
+
     // Handle expanded nav
     const expandNav = () => {
         setCollapsed(false);
@@ -49,7 +59,7 @@ const Nav = () => {
                 }, 0)
             .to(navButton.current,
                 {
-                    width: "60vw",
+                    width: () => { return matches ? "calc(100vw - 20px)" : "60vw" },
                     height: "calc(100vh - 20px)",
                     duration: 0.3,
                     ease: "ease"
@@ -142,7 +152,7 @@ const Nav = () => {
             </div>
             <div className={`${styles.navDetails} grid`}>
                 <div className={`${styles.navTitleContainer}`}>
-                    <p className={`detail`}>Product Designer<br /><span className={`textColorGrey`}>+ Developer</span></p>
+                    <p className={`detail`}>Product&nbsp;Designer<br /><span className={`textColorGrey`}>+ Developer</span></p>
                 </div>
                 <div className={`${styles.navCurrentlyContainer}`}>
                     <p className={`detail`}>
@@ -151,7 +161,7 @@ const Nav = () => {
                 </div>
                 <div className={`${styles.navGeoContainer}`}>
                     <p className={`detail`}>
-                        SF, Bay Area<br /><span className={`textColorGrey`}>{currentTime}</span>
+                        SF,&nbsp;Bay&nbsp;Area<br /><span className={`textColorGrey`}>{currentTime}</span>
                     </p>
                 </div>
             </div>
