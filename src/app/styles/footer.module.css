@@ -13,11 +13,30 @@
 }
 
 .footerInstructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
     height: auto;
     width: auto;
     transform: rotate(180deg);
     white-space: nowrap;
 
+}
+
+.footerInstructionsPercentage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: auto;
+    width: auto;
+}
+
+.footerInstructionsPercentageText {
+    text-align: center;
+    height: 30px;
+    width: auto;
 }
 
 .footerCopyright {
