@@ -8,21 +8,18 @@ interface Props {
 }
 
 const Footer = () => {
-
-
     return (
         <footer className={styles.footer}>
             <div className={styles.footerInstructions}>
-                <p className={`detail`}>
+                <p className={`${styles.footerText} detail`}>
                     <span className={`textColorDarkGrey`}>Loading [ 100% ]</span>
                 </p>
             </div>
             <div className={styles.footerCopyright}>
-                <p className={`detail`}>
+                <p className={`${styles.footerText} detail`}>
                     <span className={`textColorDarkGrey`}>©2025 v002</span>
                 </p>
             </div>
-
         </footer>
     )
 }

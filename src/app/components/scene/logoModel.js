@@ -57,7 +57,7 @@ export default function LogoModel() {
         marqueeTL.to(marquee.current.position, {
             repeat: -1,
             x: -textWidth,
-            duration: 5,
+            duration: 10,
             ease: 'none',
         })
 

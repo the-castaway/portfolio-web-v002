@@ -7,8 +7,8 @@ import gsap from "gsap";
 const Nav = () => {
     // State
     const [currentTime, setCurrentTime] = useState('');
-    const mediaQuery = useMemo(() => window.matchMedia(`(max-width: 768px)`), [`(max-width: 768px)`])
-    const [collapsed, setCollapsed] = useState(true); const [matches, setMatches] = useState(mediaQuery.matches);
+    const [collapsed, setCollapsed] = useState(true);
+    const [matches, setMatches] = useState(false);
     // Refs
     const navOverlay = useRef<HTMLDivElement>(null!);
     const navButton = useRef<HTMLDivElement>(null!);
@@ -38,12 +38,20 @@ const Nav = () => {
 
     // Check window size
     useEffect(() => {
-        const onMediaChange = () => {
+        if (typeof window !== "undefined") {
+            const mediaQuery = window.matchMedia("(max-width: 768px)");
+            // Set state
             setMatches(mediaQuery.matches);
-            mediaQuery.addEventListener("change", onMediaChange);
+
+            const handleMediaChange = (e: MediaQueryListEvent) => {
+                setMatches(e.matches);
+            };
+
+            mediaQuery.addEventListener("change", handleMediaChange);
+
+            return () => mediaQuery.removeEventListener("change", handleMediaChange);
         }
-        window.matchMedia(`(max-width: 768px)`).addEventListener('change', onMediaChange);
-    }, [mediaQuery]);
+    }, []);
 
     // Handle expanded nav
     const expandNav = () => {

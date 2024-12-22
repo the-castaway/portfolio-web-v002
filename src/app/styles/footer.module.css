@@ -1,6 +1,6 @@
 .footer {
     width: 100%;
-    height: 165px;
+    height: auto;
     position: fixed;
     bottom: 0;
     display: flex;
@@ -13,18 +13,21 @@
 }
 
 .footerInstructions {
-    height: 12px;
-    width: 0;
-    transform: rotate(-90deg);
-    transform-origin: left top;
+    height: auto;
+    width: auto;
+    transform: rotate(180deg);
     white-space: nowrap;
 
 }
 
 .footerCopyright {
-    height: 12px;
-    width: 0;
-    transform: rotate(-90deg);
-    transform-origin: left bottom;
+    height: auto;
+    width: auto;
+    transform: rotate(180deg);
     white-space: nowrap;
+}
+
+.footerText {
+    writing-mode: vertical-lr;
+    text-orientation: sideways-right;
 }
