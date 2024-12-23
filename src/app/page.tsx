@@ -15,15 +15,47 @@ export default function Home() {
     <div>
       <main className={styles.home}>
 
-        <Canvas className={styles.homeBannerModel}>
-          <LogoModel />
-        </Canvas>
+        <div className={styles.homeBanner}>
+          <Canvas className={styles.homeBannerModel}>
+            <LogoModel />
+          </Canvas>
+          <div className={styles.homeBannerUI}>
+            <div className={styles.homeBannerUIDetails}>
+              <div className={styles.homeBannerUIDetailsTopLeft}>
+                <div className={styles.homeBannerUIDetailsTopLeftCorner} />
+                <p className={`${styles.homeBannerUIDetailsTopLeftText} detail textColorGrey`}>
+                  <span className={`textColorBlue`}>
+                    Jaime Castaneda
+                  </span>
+                </p>
+              </div>
+              <div className={styles.homeBannerUIDetailsTopRight}>
+                <p className={`${styles.homeBannerUIDetailsTopRightText} detail textColorGrey`}>
+                  <span className={`textColorDarkGrey`}>
+                    @the_casta_way
+                  </span>
+                </p>
+                <div className={styles.homeBannerUIDetailsTopRightCorner} />
+              </div>
+              <div className={styles.homeBannerUIDetailsBottomRight}>
+                <p className={`${styles.homeBannerUIDetailsBottomRightText} detail textColorGrey`}>
+                  <span className={`textColorDarkGrey`}>
+                    ©2025 V.002
+                  </span>
+                </p>
+                <div className={styles.homeBannerUIDetailsBottomRightCorner} />
+              </div>
+              <div className={styles.homeBannerUIDetailsBottomLeft}>
+                <div className={styles.homeBannerUIDetailsBottomLeftCorner} />
+                <p className={`${styles.homeBannerUIDetailsBottomLeftText} detail textColorGrey`}>
+                  <span className={`textColorDarkGrey`}>
+                    2025 Folio
+                  </span>
+                </p>
+              </div>
+            </div>
 
-        <div className={styles.homeBannerDetails}>
-
-
-
-
+          </div>
         </div>
 
 

@@ -249,7 +249,7 @@ const Nav = () => {
                                 <div className={styles.navModalContentContactFooter}>
                                     <div className={styles.navModalContentContactFooterTrademark}>
                                         <p className={`detail`}>
-                                            <span className={`textColorDarkGrey`}>©2025 v002</span>
+                                            <span className={`textColorDarkGrey`}>©2025 V.002</span>
                                         </p>
                                     </div>
                                     <div className={styles.navModalContentContactFooterGeo}>

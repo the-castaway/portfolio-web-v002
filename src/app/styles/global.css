@@ -97,6 +97,10 @@ p.labelSmall {
   color: var(--jc-dark-grey)
 }
 
+.textColorBlue {
+  color: var(--jc-blue)
+}
+
 /* Layout */
 
 .grid {

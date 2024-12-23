@@ -102,7 +102,7 @@ const Footer = () => {
                 </div>
                 <div className={styles.footerDefaultCopyright}>
                     <p className={`${styles.footerDefaultText} detail`}>
-                        <span className={`textColorDarkGrey`}>©2025 v002</span>
+                        <span className={`textColorDarkGrey`}>©2025 V.002</span>
                     </p>
                 </div>
             </div>
@@ -116,7 +116,7 @@ const Footer = () => {
                 </a>
                 <div className={styles.footerBottomCopyright}>
                     <p className={`detail`}>
-                        <span className={`textColorOffWhite`}>©2025 v002</span>
+                        <span className={`textColorOffWhite`}>©2025 V.002</span>
                     </p>
                 </div>
             </div>
