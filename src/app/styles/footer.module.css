@@ -73,5 +73,6 @@
     pointer-events: all;
     box-sizing: border-box;
     padding: 20px;
+    opacity: 0;
     transform: translate(0, 100%);
 }

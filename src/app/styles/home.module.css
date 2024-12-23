@@ -1,0 +1,16 @@
+.home {
+    position: relative;
+}
+
+.homeBannerModel {
+    height: 100vh !important;
+    width: 100% !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+
+.homeBannerModel canvas {
+    height: 100vh;
+    width: 100%;
+}
