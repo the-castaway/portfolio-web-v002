@@ -29,7 +29,6 @@ export default function LogoModel() {
     })
 
     useEffect(() => {
-        console.log(trigger)
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: trigger,
@@ -60,15 +59,6 @@ export default function LogoModel() {
             duration: 10,
             ease: 'none',
         })
-
-
-
-        // const logoMatTL = gsap.timeline();
-        // logoMatTL.from(logoLeftMat.current, {
-        //     transmission: 1,
-        //     duration: 1,
-        //     ease: 'ease',
-        // })
     }, [])
 
     return (

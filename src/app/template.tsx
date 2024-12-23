@@ -2,6 +2,7 @@
 import { useEffect } from "react"
 import { transitionPageIn } from "./utils/transition"
 import { usePathname } from "next/navigation"
+import Footer from "./components/footer";
 import styles from "./styles/transition.module.css";
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -29,6 +30,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             </div>
             <div id="mask-content" className={styles.maskContent}>
                 {children}
+                <Footer />
             </div>
         </>
     )
