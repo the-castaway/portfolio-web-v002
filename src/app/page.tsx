@@ -14,7 +14,6 @@ export default function Home() {
 
     <div>
       <main className={styles.home}>
-
         {/* Banner */}
         <div className={styles.homeBanner}>
           <Canvas className={styles.homeBannerModel}>
@@ -70,13 +69,46 @@ export default function Home() {
 
 
 
-        <div id="trigger" style={{ marginTop: '100vh', height: '200vh' }}>
-          <ol>
-            <li>
-              Get started by editing <code>src/app/page.tsx</code>.
-            </li>
-            <li>Save and see your changes instantly.</li>
-          </ol>
+        <div id="trigger" className={styles.homeIntro}>
+          <div className={`${styles.homeIntroHeader} grid`}>
+            <div className={styles.homeIntroHeaderText}>
+              <h1>
+                Product designer at the crossroads of <br /><span className={`textColorBlue textFontHighlight`}><i>design</i></span> and <span className={`textColorBlue`}><i>development</i></span>
+              </h1>
+            </div>
+          </div>
+          <div className={`${styles.homeIntroDetails} grid`}>
+            <div className={styles.homeIntroDetails1}>
+              <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                <span className={`textColorGrey`}>
+                  [ 01 ]
+                </span>
+              </p>
+              <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                <span className={`textColorLightGrey`}>CURRENTLY DESIGN + ENGINEERING LEAD</span> <span className={`textColorDarkGrey`}>@META</span>
+              </p>
+            </div>
+            <div className={styles.homeIntroDetails2}>
+              <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                <span className={`textColorGrey`}>
+                  [ 02 ]
+                </span>
+              </p>
+              <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                <span className={`textColorLightGrey`}>OVER 10 YEARS OF INDUSTRY EXPERIENCE</span>
+              </p>
+            </div>
+            <div className={styles.homeIntroDetails3}>
+              <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                <span className={`textColorGrey`}>
+                  [ 02 ]
+                </span>
+              </p>
+              <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                <span className={`textColorLightGrey`}>DEEP PROFICIENCY IN DESIGN AND ENGINEERING </span>
+              </p>
+            </div>
+          </div>
         </div>
       </main>
     </div>

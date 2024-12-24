@@ -10,6 +10,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 
 /* Model */
@@ -173,4 +174,66 @@
     align-items: center;
     pointer-events: none;
     padding: 20px 0;
+}
+
+.homeIntro {
+    height: 100vh;
+    width: 100%;
+    margin-top: 100vh;
+    margin-bottom: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 5;
+    gap: 60px;
+}
+
+
+.homeIntroHeader {
+    width: 100%;
+    height: auto;
+}
+
+.homeIntroHeaderText {
+    text-align: center;
+    grid-column-start: 8;
+    grid-column-end: 18;
+}
+
+.homeIntroDetails {
+    width: 100%;
+    height: auto;
+}
+
+.homeIntroDetails1 {
+    text-align: center;
+    grid-column-start: 7;
+    grid-column-end: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-self: flex-start;
+}
+
+.homeIntroDetails2 {
+    text-align: center;
+    grid-column-start: 11;
+    grid-column-end: 14;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-self: flex-start;
+}
+
+.homeIntroDetails3 {
+    text-align: center;
+    grid-column-start: 15;
+    grid-column-end: 18;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-self: flex-start;
 }

@@ -35,7 +35,7 @@ export default function LogoModel() {
                 trigger: trigger,
                 pin: false,
                 start: 'top bottom',
-                end: '+2000',
+                end: 'top top',
                 scrub: 1,
                 markers: false,
             }

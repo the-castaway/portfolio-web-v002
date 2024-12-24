@@ -3,6 +3,7 @@
   --jc-default-font: 'Urbanist', helvetica, sans-serif;
   --jc-highlight-font: "Times New Roman", serif;
   --jc-detail-font: "JetBrains Mono", sans-serif;
+
   /* Colors */
   --jc-black: #0E0E10;
   --jc-off-black: #303030;
@@ -52,6 +53,15 @@ a {
 
 /* Text */
 
+h1 {
+  font-family: var(--jc-default-font);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 120%;
+  color: var(--jc-off-white);
+  mix-blend-mode: difference;
+}
+
 p.detail {
   font-family: var(--jc-detail-font);
   font-weight: 600;
@@ -79,6 +89,18 @@ p.labelSmall {
   line-height: 1;
   color: var(--jc-off-white);
   mix-blend-mode: difference;
+}
+
+.textFontDefault {
+  font-family: var(--jc-default-font);
+}
+
+.textFontDetail {
+  font-family: var(--jc-detail-font);
+}
+
+.textFontHighlight {
+  font-family: var(--jc-highlight-font);
 }
 
 .textColorOffWhite {
