@@ -83,7 +83,7 @@ export default function LogoModel() {
                 position={[0, 0, 160]}
             />
             <fog attach="fog" args={['#0E0E10', 180, 250]} />
-            <group scale={viewport.width / 3.75}>
+            <group scale={viewport.width / 4}>
                 {/* Marquee */}
                 {/* <Marquee position={[0, 0, -5]} /> */}
                 <mesh ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
