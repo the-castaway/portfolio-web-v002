@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* Fonts */
   --jc-default-font: 'Urbanist', helvetica, sans-serif;
