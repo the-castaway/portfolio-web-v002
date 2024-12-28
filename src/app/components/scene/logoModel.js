@@ -6,7 +6,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { easing } from 'maath'
 
-
 export default function LogoModel() {
     // Refs
     const logo = useRef(null);
@@ -14,6 +13,7 @@ export default function LogoModel() {
     const logoRight = useRef(null);
     const logoLeftMat = useRef(null);
     const marquee = useRef(null);
+    const marqueeText = useRef(null);
     const trigger = document.getElementById("trigger");
     // Three
     const { nodes } = useGLTF("/media/3D/jc_logo.glb");
@@ -27,7 +27,6 @@ export default function LogoModel() {
     // Plugins
     gsap.registerPlugin(ScrollTrigger)
 
-
     // Scroll timeline
     const getScrollTL = () => {
         const scrollTL = gsap.timeline({
@@ -40,8 +39,8 @@ export default function LogoModel() {
                 markers: false,
             }
         });
-        scrollTL.to(marquee.current.position, {
-            z: -10,
+        scrollTL.to(marqueeText.current.position, {
+            z: 10,
         }, 0)
         scrollTL.to(logoRight.current.rotation, {
             z: -Math.PI / 4,
@@ -55,12 +54,29 @@ export default function LogoModel() {
         scrollTL.to(logoLeft.current.position, {
             x: -10,
         }, 0)
+
+        return scrollTL;
+    }
+
+    // Intro timeline
+    const getIntroTL = () => {
+        const introTL = gsap.timeline({ duration: 0.4, ease: 'ease', delay: 0.5 });
+        introTL
+            .from(marquee.current.position, {
+                z: -10,
+            }, 0)
+            .from(logo.current.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+            }, 0)
+        return introTL;
     }
 
     // Initiate timelines
     useEffect(() => {
-        console.log(marquee.current)
         const ctx = gsap.context(() => {
+            getIntroTL();
             getScrollTL();
         })
         return () => {
@@ -72,7 +88,7 @@ export default function LogoModel() {
     useFrame((_state, delta) => {
         logo.current.rotation.z -= 0.008
         logo.current.rotation.y -= 0.008
-        marquee.current.material.map.offset.x += delta / 15
+        marqueeText.current.material.map.offset.x += delta / 15
     })
 
     return (
@@ -80,16 +96,17 @@ export default function LogoModel() {
             <PerspectiveCamera
                 makeDefault
                 fov={20}
-                position={[0, 0, 160]}
+                position={[0, 0, 8]}
             />
-            <fog attach="fog" args={['#0E0E10', 180, 250]} />
+            <fog attach="fog" args={['#0E0E10', 8, 12]} />
             <group scale={viewport.width / 4}>
                 {/* Marquee */}
-                {/* <Marquee position={[0, 0, -5]} /> */}
-                <mesh ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
-                    <cylinderGeometry args={[5, 5, 0.25, 128, 32, true]} />
-                    <meshBasicMaterial map={marqueeTexture} alphaMap={maskTexture} toneMapped={false} transparent={true} />
-                </mesh>
+                <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
+                    <mesh ref={marqueeText}>
+                        <cylinderGeometry args={[5, 5, 0.25, 128, 32, true]} />
+                        <meshBasicMaterial map={marqueeTexture} alphaMap={maskTexture} toneMapped={false} transparent={true} />
+                    </mesh>
+                </group>
                 {/* Logo */}
                 <group ref={logo} position={[0, 0, 1]} scale={[0.5, 0.5, 0.5]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
@@ -142,32 +159,10 @@ function Rig() {
     useFrame((state, delta) => {
         easing.damp3(
             state.camera.position,
-            [Math.sin(-state.pointer.x) * 10, state.pointer.y * 6, 160],
+            [Math.sin(-state.pointer.x) * 0.8, state.pointer.y * 0.3, 8],
             0.2,
             delta,
         )
         state.camera.lookAt(0, 0, 0)
     })
 }
-
-// function Marquee(props) {
-//     const marquee = useRef()
-
-//     const marqueeTexture = useTexture('/media/3D/marquee_texture.png')
-//     marqueeTexture.wrapS = marqueeTexture.wrapT = THREE.RepeatWrapping
-//     marqueeTexture.repeat.set(9, 1);
-
-//     const maskTexture = useTexture('/media/3D/marquee_mask.jpg')
-//     maskTexture.wrapS = maskTexture.wrapT = THREE.ClampToEdgeWrapping;
-//     maskTexture.repeat.set(1, 1);
-
-//     useFrame((_state, delta) => {
-//         marquee.current.material.map.offset.x += delta / 15
-//     })
-//     return (
-//         <mesh ref={marquee} {...props} rotation={[0, Math.PI, 0]}>
-//             <cylinderGeometry args={[5, 5, 0.25, 128, 32, true]} />
-//             <meshBasicMaterial map={marqueeTexture} alphaMap={maskTexture} toneMapped={false} transparent={true} />
-//         </mesh>
-//     )
-// }

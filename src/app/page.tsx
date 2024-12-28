@@ -1,6 +1,8 @@
 // `app/home.tsx` is the UI for the `/` URL
 "use client"
 import { useEffect, useRef } from "react";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "./styles/home.module.css"
 // Components
@@ -10,44 +12,113 @@ import LogoModel from "./components/scene/logoModel";
 
 
 export default function Home() {
-  return (
+  // Refs
+  const banner = useRef<HTMLDivElement>(null!);
+  const bannerUIDetails = useRef<HTMLDivElement>(null!);
+  const bannerTopLeft = useRef<HTMLDivElement>(null!);
+  const bannerTopLeftText = useRef<HTMLDivElement>(null!);
+  const bannerTopRight = useRef<HTMLDivElement>(null!);
+  const bannerTopRightText = useRef<HTMLDivElement>(null!);
+  const bannerBottomRight = useRef<HTMLDivElement>(null!);
+  const bannerBottomRightText = useRef<HTMLDivElement>(null!);
+  const bannerBottomLeft = useRef<HTMLDivElement>(null!);
+  const bannerBottomLeftText = useRef<HTMLDivElement>(null!);
+  const trigger = useRef<HTMLDivElement>(null!);
+  // Plugins
+  gsap.registerPlugin(ScrollTrigger)
 
+  // Banner intro timeline
+  const getBannerIntroTL = () => {
+    const bannerIntroTL = gsap.timeline();
+    bannerIntroTL.to(bannerUIDetails.current, {
+      width: '85%',
+      height: '20%',
+      duration: 0.5,
+      delay: 0.5,
+      ease: 'ease'
+    }, 0)
+      .to([bannerTopLeftText.current, bannerTopRightText.current, bannerBottomRightText.current, bannerBottomLeftText.current],
+        {
+          opacity: 1,
+          duration: 0.5,
+          delay: 0.8,
+        }, 0)
+    return bannerIntroTL;
+  }
+
+  // Scroll timeline
+  const getScrollTL = () => {
+    const scrollTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: trigger.current,
+        pin: false,
+        start: 'top bottom',
+        end: 'top top',
+        scrub: 1,
+        markers: false,
+      }
+    });
+    scrollTL.to(bannerUIDetails.current, {
+      width: '90%',
+      height: '25%',
+      duration: 0.5,
+    }, 0)
+    scrollTL.to(banner.current,
+      {
+        opacity: 0,
+        duration: 0.5,
+      }, 0)
+    return scrollTL;
+  }
+
+  // Initialize timelines
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      getBannerIntroTL();
+      getScrollTL();
+    })
+    return () => {
+      ctx.revert();
+    }
+  }, [])
+
+  return (
     <div>
       <main className={styles.home}>
         {/* Banner */}
-        <div className={styles.homeBanner}>
+        <div ref={banner} className={styles.homeBanner}>
           <Canvas className={styles.homeBannerModel}>
             <LogoModel />
           </Canvas>
           <div className={styles.homeBannerUI}>
-            <div className={styles.homeBannerUIDetails}>
-              <div className={styles.homeBannerUIDetailsTopLeft}>
+            <div ref={bannerUIDetails} className={styles.homeBannerUIDetails}>
+              <div ref={bannerTopLeft} className={styles.homeBannerUIDetailsTopLeft}>
                 <div className={styles.homeBannerUIDetailsTopLeftCorner} />
-                <p className={`${styles.homeBannerUIDetailsTopLeftText} detail textColorGrey`}>
+                <p ref={bannerTopLeftText} className={`${styles.homeBannerUIDetailsTopLeftText} detail textColorGrey`}>
                   <span className={`textColorBlue`}>
                     Jaime Castaneda
                   </span>
                 </p>
               </div>
-              <div className={styles.homeBannerUIDetailsTopRight}>
-                <p className={`${styles.homeBannerUIDetailsTopRightText} detail textColorGrey`}>
+              <div ref={bannerTopRight} className={styles.homeBannerUIDetailsTopRight}>
+                <p ref={bannerTopRightText} className={`${styles.homeBannerUIDetailsTopRightText} detail textColorGrey`}>
                   <span className={`textColorDarkGrey`}>
                     @the_casta_way
                   </span>
                 </p>
                 <div className={styles.homeBannerUIDetailsTopRightCorner} />
               </div>
-              <div className={styles.homeBannerUIDetailsBottomRight}>
-                <p className={`${styles.homeBannerUIDetailsBottomRightText} detail textColorGrey`}>
+              <div ref={bannerBottomRight} className={styles.homeBannerUIDetailsBottomRight}>
+                <p ref={bannerBottomRightText} className={`${styles.homeBannerUIDetailsBottomRightText} detail textColorGrey`}>
                   <span className={`textColorDarkGrey`}>
                     ©2025 V.002
                   </span>
                 </p>
                 <div className={styles.homeBannerUIDetailsBottomRightCorner} />
               </div>
-              <div className={styles.homeBannerUIDetailsBottomLeft}>
+              <div ref={bannerBottomLeft} className={styles.homeBannerUIDetailsBottomLeft}>
                 <div className={styles.homeBannerUIDetailsBottomLeftCorner} />
-                <p className={`${styles.homeBannerUIDetailsBottomLeftText} detail textColorGrey`}>
+                <p ref={bannerBottomLeftText} className={`${styles.homeBannerUIDetailsBottomLeftText} detail textColorGrey`}>
                   <span className={`textColorDarkGrey`}>
                     2025 Folio
                   </span>
@@ -66,10 +137,8 @@ export default function Home() {
             </svg>
           </div>
         </div>
-
-
-
-        <div id="trigger" className={styles.homeIntro}>
+        {/* Intro */}
+        <div ref={trigger} id="trigger" className={styles.homeIntro}>
           <div className={`${styles.homeIntroHeader} grid`}>
             <div className={styles.homeIntroHeaderText}>
               <h1>

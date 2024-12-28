@@ -45,14 +45,12 @@ const Footer = () => {
         })
 
         return () => {
-            console.log('revert')
             ctx.revert();
         };
     }, []);
 
     // Update scroll percentage
     useEffect(() => {
-
         const handleScroll = () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;

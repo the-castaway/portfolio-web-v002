@@ -12,6 +12,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
         if (pathname !== "/") {
             transitionPageIn()
         }
+
+        window.scrollTo(0, 0);
+
     }, [])
 
     return (
