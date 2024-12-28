@@ -1,21 +1,25 @@
 "use client"
-import NavLink from "./navLink"
-import styles from "../styles/nav.module.css";
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+// Styles
+import styles from "../styles/nav.module.css";
+// Components
+import NavLink from "./navLink"
+// Context
+import { useScreenSize } from "../context/screenSizeContext";
 
 const Nav = () => {
     // State
     const [currentTime, setCurrentTime] = useState('');
     const [collapsed, setCollapsed] = useState(true);
-    const [matches, setMatches] = useState(false);
     // Refs
     const navOverlay = useRef<HTMLDivElement>(null!);
     const navButton = useRef<HTMLDivElement>(null!);
     const navButtonIcon = useRef<HTMLDivElement>(null!);
     const navButtonBorder = useRef<HTMLDivElement>(null!);
     const navModal = useRef<HTMLDivElement>(null!);
-
+    // Vars
+    const { isMobile } = useScreenSize();
     // Get current time
     useEffect(() => {
         const updateTime = () => {
@@ -34,29 +38,14 @@ const Nav = () => {
         const intervalId = setInterval(updateTime, 60000);
         // Clear the interval on component unmount
         return () => clearInterval(intervalId);
-    }, []);
-
-    // Check window size
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            const mediaQuery = window.matchMedia("(max-width: 768px)");
-            // Set state
-            setMatches(mediaQuery.matches);
-
-            const handleMediaChange = (e: MediaQueryListEvent) => {
-                setMatches(e.matches);
-            };
-
-            mediaQuery.addEventListener("change", handleMediaChange);
-
-            return () => mediaQuery.removeEventListener("change", handleMediaChange);
-        }
-    }, []);
+    }, [])
 
     // Handle expanded nav
     const expandNav = () => {
         setCollapsed(false);
         const expandNavTL = gsap.timeline();
+        // Ensure isMobile is up-to-date
+        const navButtonWidth = isMobile ? "calc(100vw - 20px)" : "60vw";
         expandNavTL
             .to(navOverlay.current,
                 {
@@ -67,7 +56,7 @@ const Nav = () => {
                 }, 0)
             .to(navButton.current,
                 {
-                    width: () => { return matches ? "calc(100vw - 20px)" : "60vw" },
+                    width: navButtonWidth,
                     height: "calc(100vh - 20px)",
                     duration: 0.3,
                     ease: "ease"

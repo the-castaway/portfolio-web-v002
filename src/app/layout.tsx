@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+// Context
+import { ScreenSizeProvider } from "./context/screenSizeContext";
 // Components
 import Nav from "./components/nav";
 // Styles
@@ -42,10 +44,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
-        <Nav />
-        <div style={{ paddingTop: '100px' }}>
-          {children}
-        </div>
+        <ScreenSizeProvider>
+          <Nav />
+          <div style={{ paddingTop: '100px' }}>
+            {children}
+          </div>
+        </ScreenSizeProvider>
       </body>
     </html>
   );

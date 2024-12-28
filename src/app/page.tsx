@@ -9,11 +9,14 @@ import styles from "./styles/home.module.css"
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import LogoModel from "./components/scene/logoModel";
+// Context 
+import { useScreenSize } from "./context/screenSizeContext";
 
 
 export default function Home() {
   // Refs
   const banner = useRef<HTMLDivElement>(null!);
+  const bannerModel = useRef<HTMLCanvasElement>(null!);
   const bannerUIDetails = useRef<HTMLDivElement>(null!);
   const bannerTopLeft = useRef<HTMLDivElement>(null!);
   const bannerTopLeftText = useRef<HTMLDivElement>(null!);
@@ -24,30 +27,42 @@ export default function Home() {
   const bannerBottomLeft = useRef<HTMLDivElement>(null!);
   const bannerBottomLeftText = useRef<HTMLDivElement>(null!);
   const trigger = useRef<HTMLDivElement>(null!);
+  // Vars
+  const { isMobile } = useScreenSize();
   // Plugins
   gsap.registerPlugin(ScrollTrigger)
 
   // Banner intro timeline
   const getBannerIntroTL = () => {
     const bannerIntroTL = gsap.timeline();
-    bannerIntroTL.to(bannerUIDetails.current, {
-      width: '85%',
-      height: '20%',
-      duration: 0.5,
-      delay: 0.5,
-      ease: 'ease'
-    }, 0)
+    const bannerUIDetailsHeight = isMobile ? "50%" : "20%";
+    bannerIntroTL
+      .to(bannerUIDetails.current,
+        {
+          width: '85%',
+          height: bannerUIDetailsHeight,
+          duration: 0.5,
+          delay: 0.5,
+          ease: 'ease'
+        }, 0)
       .to([bannerTopLeftText.current, bannerTopRightText.current, bannerBottomRightText.current, bannerBottomLeftText.current],
         {
           opacity: 1,
           duration: 0.5,
           delay: 0.8,
         }, 0)
+      .from(bannerModel.current,
+        {
+          opacity: 0,
+          delay: 0.5,
+        }, 0)
     return bannerIntroTL;
   }
 
   // Scroll timeline
   const getScrollTL = () => {
+    console.log(isMobile)
+    const bannerUIDetailsHeight = isMobile ? "55%" : "25%";
     const scrollTL = gsap.timeline({
       scrollTrigger: {
         trigger: trigger.current,
@@ -60,7 +75,7 @@ export default function Home() {
     });
     scrollTL.to(bannerUIDetails.current, {
       width: '90%',
-      height: '25%',
+      height: bannerUIDetailsHeight,
       duration: 0.5,
     }, 0)
     scrollTL.to(banner.current,
@@ -80,14 +95,14 @@ export default function Home() {
     return () => {
       ctx.revert();
     }
-  }, [])
+  }, [isMobile])
 
   return (
     <div>
       <main className={styles.home}>
         {/* Banner */}
         <div ref={banner} className={styles.homeBanner}>
-          <Canvas className={styles.homeBannerModel}>
+          <Canvas ref={bannerModel} className={styles.homeBannerModel}>
             <LogoModel />
           </Canvas>
           <div className={styles.homeBannerUI}>

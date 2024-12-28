@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 
 // app/some-folder/layout.tsx

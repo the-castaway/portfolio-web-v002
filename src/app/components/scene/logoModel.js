@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF, Environment, PerspectiveCamera, useTexture } from "@react-three/drei";
@@ -5,6 +6,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { easing } from 'maath'
+import { useScreenSize } from "../../context/screenSizeContext";
 
 export default function LogoModel() {
     // Refs
@@ -15,6 +17,8 @@ export default function LogoModel() {
     const marquee = useRef(null);
     const marqueeText = useRef(null);
     const trigger = document.getElementById("trigger");
+    // Vars
+    const { isMobile } = useScreenSize();
     // Three
     const { nodes } = useGLTF("/media/3D/jc_logo.glb");
     const { viewport } = useThree();
@@ -99,7 +103,7 @@ export default function LogoModel() {
                 position={[0, 0, 8]}
             />
             <fog attach="fog" args={['#0E0E10', 8, 12]} />
-            <group scale={viewport.width / 4}>
+            <group scale={isMobile ? viewport.width / 3 : viewport.width / 4}>
                 {/* Marquee */}
                 <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
                     <mesh ref={marqueeText}>
