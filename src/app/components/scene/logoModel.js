@@ -13,11 +13,10 @@ export default function LogoModel() {
     const logo = useRef(null);
     const logoLeft = useRef(null);
     const logoRight = useRef(null);
-    const logoLeftMat = useRef(null);
     const marquee = useRef(null);
     const marqueeText = useRef(null);
     const trigger = document.getElementById("trigger");
-    // Vars
+    // Context
     const { isMobile } = useScreenSize();
     // Three
     const { nodes } = useGLTF("/media/3D/jc_logo.glb");
@@ -115,7 +114,6 @@ export default function LogoModel() {
                 <group ref={logo} position={[0, 0, 1]} scale={[0.5, 0.5, 0.5]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
-                            ref={logoLeftMat}
                             thickness={0.3}
                             samples={16}
                             resolution={1024}
@@ -124,12 +122,15 @@ export default function LogoModel() {
                             anisotropicBlur={10}
                             envMapIntensity={0.5}
                             clearcoat={1}
+                            clearcoatRoughness={10}
                             ior={1.05}
                             iridescence={1}
                             iridescenceIOR={2}
-                            iridescenceThicknessRange={[100, 800]}
+                            iridescenceThicknessRange={[1000, 1600]}
                             chromaticAberration={0.15}
-                            color='white'
+                            emissive='#ECECEC'
+                            emissiveIntensity={0.01}
+                            color='ECECEC'
                             backside={false} />
                     </mesh>
                     <mesh ref={logoRight} {...nodes.logo_right}>
@@ -145,9 +146,11 @@ export default function LogoModel() {
                             ior={1.05}
                             iridescence={1}
                             iridescenceIOR={2}
-                            iridescenceThicknessRange={[100, 800]}
+                            iridescenceThicknessRange={[1000, 1600]}
                             chromaticAberration={0.15}
-                            color='white'
+                            emissive='#ECECEC'
+                            emissiveIntensity={0.01}
+                            color='ECECEC'
                             backside={false} />
                     </mesh>
                 </group>

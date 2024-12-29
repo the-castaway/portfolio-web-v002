@@ -9,6 +9,7 @@ import styles from "./styles/home.module.css"
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import LogoModel from "./components/scene/logoModel";
+import Featured from "./components/featured";
 // Context 
 import { useScreenSize } from "./context/screenSizeContext";
 
@@ -23,10 +24,8 @@ export default function Home() {
   const bannerBottomRightText = useRef<HTMLDivElement>(null!);
   const bannerBottomLeftText = useRef<HTMLDivElement>(null!);
   const trigger = useRef<HTMLDivElement>(null!);
-  // Vars
+  // Context
   const { isMobile } = useScreenSize();
-  // Plugins
-  //gsap.registerPlugin(ScrollTrigger)
 
   // Banner intro timeline
   const getBannerIntroTL = () => {
@@ -97,7 +96,7 @@ export default function Home() {
     <div>
       <main className={styles.home}>
         {/* Banner */}
-        <div ref={banner} className={styles.homeBanner}>
+        <section ref={banner} className={styles.homeBanner}>
           <Canvas ref={bannerModel} className={styles.homeBannerModel}>
             <LogoModel />
           </Canvas>
@@ -147,9 +146,9 @@ export default function Home() {
               <path d="M44.5285 0L34.9033 5.55706V16.6712L44.5285 22.2283L54.1538 16.6712V5.55706L44.5285 0ZM44.8508 0.930044L53.187 5.74269L44.8508 10.556V0.930044ZM44.2063 10.556L35.87 5.74333L44.2063 0.930044V10.556ZM43.884 11.1141L35.5478 15.9268V6.30149L43.884 11.1141ZM44.2063 11.6723V21.2982L35.87 16.4856L44.2063 11.6723ZM44.8508 11.6723L53.187 16.4849L44.8508 21.2982V11.6723ZM45.1731 11.1141L53.5093 6.30149V15.9274L45.1731 11.1141Z" fill="#4A4A4A" />
             </svg>
           </div>
-        </div>
+        </section>
         {/* Intro */}
-        <div ref={trigger} id="trigger" className={styles.homeIntro}>
+        <section ref={trigger} id="trigger" className={styles.homeIntro}>
           <div className={`${styles.homeIntroHeader} grid`}>
             <div className={styles.homeIntroHeaderText}>
               <h1>
@@ -189,10 +188,11 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </section>
+        <section>
+          <Featured />
+        </section>
       </main>
     </div>
   );
-
-  return (<div />);
 }

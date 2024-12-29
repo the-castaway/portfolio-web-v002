@@ -18,7 +18,7 @@ const Nav = () => {
     const navButtonIcon = useRef<HTMLDivElement>(null!);
     const navButtonBorder = useRef<HTMLDivElement>(null!);
     const navModal = useRef<HTMLDivElement>(null!);
-    // Vars
+    // Context
     const { isMobile } = useScreenSize();
     // Get current time
     useEffect(() => {
