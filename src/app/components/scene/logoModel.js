@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { easing } from 'maath'
 import { useScreenSize } from "../../context/screenSizeContext";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 export default function LogoModel() {
     // Refs
@@ -19,7 +20,7 @@ export default function LogoModel() {
     // Context
     const { isMobile } = useScreenSize();
     // Three
-    const { nodes } = useGLTF("/media/3D/jc_logo.glb");
+    const { nodes } = useGLTF("/media/3D/jc_logo_model.glb");
     const { viewport } = useThree();
     const marqueeTexture = useTexture('/media/3D/marquee_texture.png')
     marqueeTexture.wrapS = marqueeTexture.wrapT = THREE.RepeatWrapping
@@ -78,6 +79,8 @@ export default function LogoModel() {
 
     // Initiate timelines
     useEffect(() => {
+
+        console.log(nodes)
         const ctx = gsap.context(() => {
             getIntroTL();
             getScrollTL();
@@ -102,6 +105,7 @@ export default function LogoModel() {
                 position={[0, 0, 8]}
             />
             <fog attach="fog" args={['#0E0E10', 8, 12]} />
+
             <group scale={isMobile ? viewport.width / 3 : viewport.width / 4}>
                 {/* Marquee */}
                 <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
@@ -111,52 +115,60 @@ export default function LogoModel() {
                     </mesh>
                 </group>
                 {/* Logo */}
-                <group ref={logo} position={[0, 0, 1]} scale={[0.5, 0.5, 0.5]} rotation={[Math.PI / 2, 0, 0]}>
+                <group ref={logo} position={[0, 0, 1]} scale={[0.45, 0.45, 0.45]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
-                            thickness={0.3}
+                            thickness={0.5}
                             samples={16}
                             resolution={1024}
-                            roughness={0.001}
+                            roughness={0}
                             transmission={1}
-                            anisotropicBlur={10}
+                            anisotropicBlur={0.5}
                             envMapIntensity={0.5}
                             clearcoat={1}
-                            clearcoatRoughness={10}
+                            clearcoatRoughness={1}
                             ior={1.05}
-                            iridescence={1}
-                            iridescenceIOR={2}
-                            iridescenceThicknessRange={[1000, 1600]}
-                            chromaticAberration={0.15}
+                            iridescence={2}
+                            iridescenceIOR={1}
+                            iridescenceThicknessRange={[100, 400]}
+                            chromaticAberration={0.2}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.01}
+                            emissiveIntensity={0.02}
                             color='ECECEC'
                             backside={false} />
                     </mesh>
                     <mesh ref={logoRight} {...nodes.logo_right}>
                         <MeshTransmissionMaterial
-                            thickness={0.3}
+                            thickness={0.5}
                             samples={16}
                             resolution={1024}
-                            roughness={0.001}
+                            roughness={0}
                             transmission={1}
-                            anisotropicBlur={10}
+                            anisotropicBlur={0.5}
                             envMapIntensity={0.5}
                             clearcoat={1}
+                            clearcoatRoughness={1}
                             ior={1.05}
-                            iridescence={1}
-                            iridescenceIOR={2}
-                            iridescenceThicknessRange={[1000, 1600]}
-                            chromaticAberration={0.15}
+                            iridescence={2}
+                            iridescenceIOR={1}
+                            iridescenceThicknessRange={[100, 400]}
+                            chromaticAberration={0.2}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.01}
+                            emissiveIntensity={0.02}
                             color='ECECEC'
                             backside={false} />
                     </mesh>
+                    {/* <EffectComposer>
+                        <Bloom
+                            intensity={0.5} // Bloom intensity
+                            luminanceThreshold={0.6} // Threshold for what is considered bright
+                            luminanceSmoothing={0.1} // Smooth transition between bright and non-bright areas
+                        />
+                    </EffectComposer> */}
                 </group>
                 {/* Camera rig */}
                 <Rig />
-                <Environment preset='city' environmentIntensity={0.2} />
+                <Environment preset='city' environmentIntensity={1} />
             </group >
         </>
     );

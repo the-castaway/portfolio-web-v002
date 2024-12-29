@@ -1,6 +1,6 @@
 "use client"
 import { useEffect } from "react"
-import { transitionPageIn } from "./utils/transition"
+import { transitionPageIn } from "./utils/transition/transition"
 import { usePathname } from "next/navigation"
 import Footer from "./components/footer";
 import styles from "./styles/transition.module.css";
@@ -12,9 +12,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         if (pathname !== "/") {
             transitionPageIn()
         }
-
         window.scrollTo(0, 0);
-
     }, [])
 
     return (
