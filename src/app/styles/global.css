@@ -146,3 +146,13 @@ p.labelSmall {
   box-sizing: border-box;
   padding: 0px 40px;
 }
+
+@media (max-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    box-sizing: border-box;
+    padding: 0px 20px;
+  }
+}

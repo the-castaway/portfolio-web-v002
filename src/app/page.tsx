@@ -18,19 +18,15 @@ export default function Home() {
   const banner = useRef<HTMLDivElement>(null!);
   const bannerModel = useRef<HTMLCanvasElement>(null!);
   const bannerUIDetails = useRef<HTMLDivElement>(null!);
-  const bannerTopLeft = useRef<HTMLDivElement>(null!);
   const bannerTopLeftText = useRef<HTMLDivElement>(null!);
-  const bannerTopRight = useRef<HTMLDivElement>(null!);
   const bannerTopRightText = useRef<HTMLDivElement>(null!);
-  const bannerBottomRight = useRef<HTMLDivElement>(null!);
   const bannerBottomRightText = useRef<HTMLDivElement>(null!);
-  const bannerBottomLeft = useRef<HTMLDivElement>(null!);
   const bannerBottomLeftText = useRef<HTMLDivElement>(null!);
   const trigger = useRef<HTMLDivElement>(null!);
   // Vars
   const { isMobile } = useScreenSize();
   // Plugins
-  gsap.registerPlugin(ScrollTrigger)
+  //gsap.registerPlugin(ScrollTrigger)
 
   // Banner intro timeline
   const getBannerIntroTL = () => {
@@ -61,7 +57,6 @@ export default function Home() {
 
   // Scroll timeline
   const getScrollTL = () => {
-    console.log(isMobile)
     const bannerUIDetailsHeight = isMobile ? "55%" : "25%";
     const scrollTL = gsap.timeline({
       scrollTrigger: {
@@ -88,6 +83,7 @@ export default function Home() {
 
   // Initialize timelines
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     const ctx = gsap.context(() => {
       getBannerIntroTL();
       getScrollTL();
@@ -107,7 +103,7 @@ export default function Home() {
           </Canvas>
           <div className={styles.homeBannerUI}>
             <div ref={bannerUIDetails} className={styles.homeBannerUIDetails}>
-              <div ref={bannerTopLeft} className={styles.homeBannerUIDetailsTopLeft}>
+              <div className={styles.homeBannerUIDetailsTopLeft}>
                 <div className={styles.homeBannerUIDetailsTopLeftCorner} />
                 <p ref={bannerTopLeftText} className={`${styles.homeBannerUIDetailsTopLeftText} detail textColorGrey`}>
                   <span className={`textColorBlue`}>
@@ -115,7 +111,7 @@ export default function Home() {
                   </span>
                 </p>
               </div>
-              <div ref={bannerTopRight} className={styles.homeBannerUIDetailsTopRight}>
+              <div className={styles.homeBannerUIDetailsTopRight}>
                 <p ref={bannerTopRightText} className={`${styles.homeBannerUIDetailsTopRightText} detail textColorGrey`}>
                   <span className={`textColorDarkGrey`}>
                     @the_casta_way
@@ -123,7 +119,7 @@ export default function Home() {
                 </p>
                 <div className={styles.homeBannerUIDetailsTopRightCorner} />
               </div>
-              <div ref={bannerBottomRight} className={styles.homeBannerUIDetailsBottomRight}>
+              <div className={styles.homeBannerUIDetailsBottomRight}>
                 <p ref={bannerBottomRightText} className={`${styles.homeBannerUIDetailsBottomRightText} detail textColorGrey`}>
                   <span className={`textColorDarkGrey`}>
                     ©2025 V.002
@@ -131,7 +127,7 @@ export default function Home() {
                 </p>
                 <div className={styles.homeBannerUIDetailsBottomRightCorner} />
               </div>
-              <div ref={bannerBottomLeft} className={styles.homeBannerUIDetailsBottomLeft}>
+              <div className={styles.homeBannerUIDetailsBottomLeft}>
                 <div className={styles.homeBannerUIDetailsBottomLeftCorner} />
                 <p ref={bannerBottomLeftText} className={`${styles.homeBannerUIDetailsBottomLeftText} detail textColorGrey`}>
                   <span className={`textColorDarkGrey`}>
@@ -197,4 +193,6 @@ export default function Home() {
       </main>
     </div>
   );
+
+  return (<div />);
 }
