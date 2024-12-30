@@ -93,7 +93,7 @@ export default function LogoModel() {
     // Constant animations
     useFrame((_state, delta) => {
         logo.current.rotation.z -= 0.008
-        logo.current.rotation.y -= 0.008
+        logo.current.rotation.y -= 0.001
         marqueeText.current.material.map.offset.x += delta / 15
     })
 
@@ -105,7 +105,6 @@ export default function LogoModel() {
                 position={[0, 0, 8]}
             />
             <fog attach="fog" args={['#0E0E10', 8, 12]} />
-
             <group scale={isMobile ? viewport.width / 3 : viewport.width / 4}>
                 {/* Marquee */}
                 <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
@@ -131,7 +130,7 @@ export default function LogoModel() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.2}
+                            chromaticAberration={0.1}
                             emissive='#ECECEC'
                             emissiveIntensity={0.02}
                             color='ECECEC'
@@ -152,29 +151,29 @@ export default function LogoModel() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.2}
+                            chromaticAberration={0.1}
                             emissive='#ECECEC'
                             emissiveIntensity={0.02}
                             color='ECECEC'
                             backside={false} />
                     </mesh>
-                    {/* <EffectComposer>
-                        <Bloom
-                            intensity={0.5} // Bloom intensity
-                            luminanceThreshold={0.6} // Threshold for what is considered bright
-                            luminanceSmoothing={0.1} // Smooth transition between bright and non-bright areas
-                        />
-                    </EffectComposer> */}
+
+
                 </group>
+
+
+
                 {/* Camera rig */}
                 <Rig />
+                <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
+
                 <Environment preset='city' environmentIntensity={1} />
             </group >
         </>
     );
 }
 
-function Rig() {
+const Rig = () => {
     useFrame((state, delta) => {
         easing.damp3(
             state.camera.position,

@@ -97,7 +97,7 @@ export default function Home() {
       <main className={styles.home}>
         {/* Banner */}
         <section ref={banner} className={styles.homeBanner}>
-          <Canvas ref={bannerModel} className={styles.homeBannerModel}>
+          <Canvas ref={bannerModel} className={styles.homeBannerModel} >
             <LogoModel />
           </Canvas>
           <div className={styles.homeBannerUI}>
