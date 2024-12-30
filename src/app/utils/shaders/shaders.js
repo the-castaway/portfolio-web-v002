@@ -6,14 +6,14 @@ class ColorShiftMaterial extends THREE.ShaderMaterial {
     super({
       uniforms: {
         tDiffuse: { value: null },
-        amount: { value: 10 },
-        angle: { value: 3 },
+        amount: { value: 40 },
+        angle: { value: 10 },
       },
       vertexShader: `
         varying vec2 vUv;
         void main() {
           vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 3.0);
         }
       `,
       fragmentShader: `
