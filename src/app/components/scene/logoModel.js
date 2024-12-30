@@ -167,7 +167,7 @@ export default function LogoModel() {
                 <Rig />
                 <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
 
-                <Environment preset='city' environmentIntensity={1} />
+                <Environment preset='city' environmentIntensity={0.3} />
             </group >
         </>
     );
