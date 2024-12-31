@@ -15,6 +15,7 @@ export default function LogoModel() {
     const logoRight = useRef(null);
     const marquee = useRef(null);
     const marqueeText = useRef(null);
+    const logoLeftMaterial = useRef(null);
     const trigger = document.getElementById("trigger");
     // Context
     const { isMobile } = useScreenSize();
@@ -73,6 +74,9 @@ export default function LogoModel() {
                 y: 0,
                 z: 0,
             }, 0)
+            .to(logo.current.rotation, {
+                z: -Math.PI,
+            }, 0)
         return introTL;
     }
 
@@ -90,7 +94,7 @@ export default function LogoModel() {
     // Constant animations
     useFrame((_state, delta) => {
         logo.current.rotation.z -= 0.005
-        logo.current.rotation.y -= 0.0005
+        logo.current.rotation.y -= 0.0001
         marqueeText.current.material.map.offset.x += delta / 15
     })
 
@@ -119,17 +123,18 @@ export default function LogoModel() {
                             resolution={1024}
                             roughness={0}
                             transmission={1}
-                            anisotropicBlur={0.5}
+                            metalness={0}
+                            anisotropicBlur={1}
                             envMapIntensity={0.5}
                             clearcoat={1}
                             clearcoatRoughness={1}
                             ior={1.05}
                             iridescence={2}
                             iridescenceIOR={1}
-                            iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.05}
+                            iridescenceThicknessRange={[100, 800]}
+                            chromaticAberration={0.06}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.02}
+                            emissiveIntensity={0.01}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
@@ -140,25 +145,28 @@ export default function LogoModel() {
                             resolution={1024}
                             roughness={0}
                             transmission={1}
-                            anisotropicBlur={0.5}
+                            metalness={0}
+                            anisotropicBlur={1}
                             envMapIntensity={0.5}
                             clearcoat={1}
                             clearcoatRoughness={1}
                             ior={1.05}
                             iridescence={2}
                             iridescenceIOR={1}
-                            iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.05}
+                            iridescenceThicknessRange={[100, 800]}
+                            chromaticAberration={0.06}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.02}
+                            emissiveIntensity={0.01}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
+
                 </group>
                 {/* Camera rig */}
                 <Rig />
                 <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
-                <Environment preset='city' environmentIntensity={1} />
+                <pointLight position={[0, 1, -4]} lookAt={[0, 0, 0]} intensity={10} color="white" />
+                <Environment preset='studio' environmentIntensity={0.5} />
             </group >
         </>
     );
