@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "../styles/featured.module.css"
 // Components
@@ -10,9 +10,41 @@ import { ScrollControls } from '@react-three/drei';
 import RGBMedia from './RGBmedia'
 
 const Featured = () => {
+    const featuredIntroContainer = useRef<HTMLDivElement>(null!);
+
+    // Scroll timeline
+    const getScrollTL = () => {
+
+        const scrollTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: featuredIntroContainer.current,
+                pin: true,
+                pinSpacing: false,
+                pinReparent: true,
+                start: "top top",
+                end: "+=1000",
+                scrub: 1,
+                markers: true,
+                invalidateOnRefresh: true,
+            }
+        });
+        return scrollTL;
+    }
+
+    // Initialize timelines
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        const ctx = gsap.context(() => {
+            getScrollTL();
+        })
+        return () => {
+            ctx.revert();
+        }
+    }, [])
+
     return (
         <div className={styles.featured}>
-            <div className={styles.featuredIntroContainer}>
+            <div ref={featuredIntroContainer} className={styles.featuredIntroContainer}>
                 <div className={`${styles.featuredIntro} grid`}>
                     <div className={styles.featuredIntroHeader}>
                         <h2>
@@ -39,15 +71,9 @@ const Featured = () => {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-            <Canvas>
+            {/* <Canvas>
                 <RGBMedia imageUrl="/media/thumbnails/ipt_thumbnail.webp" />
-            </Canvas>
+            </Canvas> */}
         </div>
     )
 }

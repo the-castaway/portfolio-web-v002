@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
 import styles from "./styles/home.module.css"
 // Components
@@ -82,10 +83,16 @@ export default function Home() {
 
   // Initialize timelines
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     const ctx = gsap.context(() => {
       getBannerIntroTL();
       getScrollTL();
+    })
+    ScrollSmoother.create({
+      content: "#smooth-content",
+      wrapper: "#smooth-wrapper",
+      smooth: 1,
+      effects: true
     })
     return () => {
       ctx.revert();
@@ -147,51 +154,55 @@ export default function Home() {
             </svg>
           </div>
         </section>
-        {/* Intro */}
-        <section ref={trigger} id="trigger" className={styles.homeIntro}>
-          <div className={`${styles.homeIntroHeader} grid`}>
-            <div className={styles.homeIntroHeaderText}>
-              <h1>
-                Product designer at the crossroads of <br /><span className={`textColorBlue textFontHighlight`}><i>design</i></span> and <span className={`textColorBlue`}><i>development</i></span>
-              </h1>
-            </div>
+        <div id="smooth-wrapper" className={styles.homeScroll}>
+          <div id="smooth-content">
+            {/* Intro */}
+            <section ref={trigger} id="trigger" className={styles.homeIntro}>
+              <div className={`${styles.homeIntroHeader} grid`}>
+                <div className={styles.homeIntroHeaderText}>
+                  <h1>
+                    Product designer at the crossroads of <br /><span className={`textColorBlue textFontHighlight`}><i>design</i></span> and <span className={`textColorBlue`}><i>development</i></span>
+                  </h1>
+                </div>
+              </div>
+              <div className={`${styles.homeIntroDetails} grid`}>
+                <div className={styles.homeIntroDetails1}>
+                  <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                    <span className={`textColorGrey`}>
+                      [ 01 ]
+                    </span>
+                  </p>
+                  <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                    <span className={`textColorLightGrey`}>CURRENTLY DESIGN + ENGINEERING LEAD</span> <span className={`textColorDarkGrey`}>@META</span>
+                  </p>
+                </div>
+                <div className={styles.homeIntroDetails2}>
+                  <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                    <span className={`textColorGrey`}>
+                      [ 02 ]
+                    </span>
+                  </p>
+                  <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                    <span className={`textColorLightGrey`}>OVER 10 YEARS OF INDUSTRY EXPERIENCE</span>
+                  </p>
+                </div>
+                <div className={styles.homeIntroDetails3}>
+                  <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                    <span className={`textColorGrey`}>
+                      [ 02 ]
+                    </span>
+                  </p>
+                  <p className={`${styles.navModalContentContactTextNumber} detail`}>
+                    <span className={`textColorLightGrey`}>DEEP PROFICIENCY IN DESIGN AND ENGINEERING </span>
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section>
+              <Featured />
+            </section>
           </div>
-          <div className={`${styles.homeIntroDetails} grid`}>
-            <div className={styles.homeIntroDetails1}>
-              <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                <span className={`textColorGrey`}>
-                  [ 01 ]
-                </span>
-              </p>
-              <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                <span className={`textColorLightGrey`}>CURRENTLY DESIGN + ENGINEERING LEAD</span> <span className={`textColorDarkGrey`}>@META</span>
-              </p>
-            </div>
-            <div className={styles.homeIntroDetails2}>
-              <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                <span className={`textColorGrey`}>
-                  [ 02 ]
-                </span>
-              </p>
-              <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                <span className={`textColorLightGrey`}>OVER 10 YEARS OF INDUSTRY EXPERIENCE</span>
-              </p>
-            </div>
-            <div className={styles.homeIntroDetails3}>
-              <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                <span className={`textColorGrey`}>
-                  [ 02 ]
-                </span>
-              </p>
-              <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                <span className={`textColorLightGrey`}>DEEP PROFICIENCY IN DESIGN AND ENGINEERING </span>
-              </p>
-            </div>
-          </div>
-        </section>
-        <section>
-          <Featured />
-        </section>
+        </div>
       </main>
     </div>
   );
