@@ -133,17 +133,17 @@ export default function LogoModel() {
                             roughness={0}
                             transmission={1}
                             metalness={0}
-                            anisotropicBlur={1}
-                            envMapIntensity={0.5}
+                            anisotropicBlur={2}
+                            envMapIntensity={1}
                             clearcoat={1}
                             clearcoatRoughness={1}
-                            ior={1.05}
+                            ior={1.1}
                             iridescence={2}
                             iridescenceIOR={1}
-                            iridescenceThicknessRange={[100, 800]}
-                            chromaticAberration={0.1}
+                            iridescenceThicknessRange={[400, 800]}
+                            chromaticAberration={0.2}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.015}
+                            emissiveIntensity={0.02}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
@@ -155,17 +155,17 @@ export default function LogoModel() {
                             roughness={0}
                             transmission={1}
                             metalness={0}
-                            anisotropicBlur={1}
-                            envMapIntensity={0.5}
+                            anisotropicBlur={2}
+                            envMapIntensity={1}
                             clearcoat={1}
                             clearcoatRoughness={1}
-                            ior={1.05}
+                            ior={1.1}
                             iridescence={2}
                             iridescenceIOR={1}
-                            iridescenceThicknessRange={[100, 800]}
-                            chromaticAberration={0.1}
+                            iridescenceThicknessRange={[400, 800]}
+                            chromaticAberration={0.2}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.015}
+                            emissiveIntensity={0.02}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
