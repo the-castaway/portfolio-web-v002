@@ -91,9 +91,6 @@ export default function LogoModel() {
                 duration: 0.4,
                 ease: 'ease',
                 delay: 0.5,
-                onUpdate: () => {
-                    logoLeftMaterial.current.needsUpdate = true; // Ensure the material updates
-                },
             })
         return introTL;
     }
