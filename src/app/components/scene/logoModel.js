@@ -12,10 +12,10 @@ export default function LogoModel() {
     // Refs
     const logo = useRef(null);
     const logoLeft = useRef(null);
+    const logoLeftMaterial = useRef(null);
     const logoRight = useRef(null);
     const marquee = useRef(null);
     const marqueeText = useRef(null);
-    const logoLeftMaterial = useRef(null);
     const trigger = document.getElementById("trigger");
     // Context
     const { isMobile } = useScreenSize();
@@ -47,13 +47,13 @@ export default function LogoModel() {
             z: 10,
         }, 0)
         scrollTL.to(logoRight.current.rotation, {
-            z: -Math.PI / 4,
+            z: -3,
         }, 0)
         scrollTL.to(logoRight.current.position, {
             x: 10,
         }, 0)
         scrollTL.to(logoLeft.current.rotation, {
-            z: Math.PI / 4,
+            z: -4,
         }, 0)
         scrollTL.to(logoLeft.current.position, {
             x: -10,
@@ -86,11 +86,22 @@ export default function LogoModel() {
                 ease: "sine.out",
                 delay: 0.5
             }, 0)
+            .to(logoLeftMaterial.current, {
+                transmission: 1,
+                duration: 0.4,
+                ease: 'ease',
+                delay: 0.5,
+                onUpdate: () => {
+                    logoLeftMaterial.current.needsUpdate = true; // Ensure the material updates
+                },
+            })
         return introTL;
     }
 
     // Initiate timelines
     useEffect(() => {
+
+        console.log(logoLeftMaterial.current.transmission)
         const ctx = gsap.context(() => {
             getIntroTL();
             getScrollTL();
@@ -127,6 +138,7 @@ export default function LogoModel() {
                 <group ref={logo} position={[0, 0, 1]} scale={[0.35, 0.35, 0.35]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
+                            ref={logoLeftMaterial}
                             thickness={1}
                             samples={16}
                             resolution={1024}
@@ -143,7 +155,7 @@ export default function LogoModel() {
                             iridescenceThicknessRange={[400, 800]}
                             chromaticAberration={0.2}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.02}
+                            emissiveIntensity={0.01}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
@@ -165,7 +177,7 @@ export default function LogoModel() {
                             iridescenceThicknessRange={[400, 800]}
                             chromaticAberration={0.2}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.02}
+                            emissiveIntensity={0.01}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
