@@ -64,18 +64,27 @@ export default function LogoModel() {
 
     // Intro timeline
     const getIntroTL = () => {
-        const introTL = gsap.timeline({ duration: 0.4, ease: 'ease', delay: 0.5 });
+        const introTL = gsap.timeline();
         introTL
             .from(marquee.current.position, {
                 z: -10,
+                duration: 0.4,
+                ease: 'ease',
+                delay: 0.5
             }, 0)
             .from(logo.current.scale, {
                 x: 0,
                 y: 0,
                 z: 0,
+                duration: 0.4,
+                ease: 'ease',
+                delay: 0.5
             }, 0)
             .to(logo.current.rotation, {
                 z: -Math.PI,
+                duration: 1,
+                ease: "sine.out",
+                delay: 0.5
             }, 0)
         return introTL;
     }
@@ -106,7 +115,7 @@ export default function LogoModel() {
                 position={[0, 0, 8]}
             />
             <fog attach="fog" args={['#0E0E10', 8, 12]} />
-            <group scale={isMobile ? viewport.width / 2.5 : viewport.width / 4}>
+            <group scale={isMobile ? viewport.width / 2.5 : viewport.width / 5}>
                 {/* Marquee */}
                 <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
                     <mesh ref={marqueeText}>
@@ -118,7 +127,7 @@ export default function LogoModel() {
                 <group ref={logo} position={[0, 0, 1]} scale={[0.35, 0.35, 0.35]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
-                            thickness={0.5}
+                            thickness={1}
                             samples={16}
                             resolution={1024}
                             roughness={0}
@@ -132,15 +141,15 @@ export default function LogoModel() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 800]}
-                            chromaticAberration={0.06}
+                            chromaticAberration={0.1}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.01}
+                            emissiveIntensity={0.015}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>
                     <mesh ref={logoRight} {...nodes.logo_right}>
                         <MeshTransmissionMaterial
-                            thickness={0.5}
+                            thickness={1}
                             samples={16}
                             resolution={1024}
                             roughness={0}
@@ -154,9 +163,9 @@ export default function LogoModel() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 800]}
-                            chromaticAberration={0.06}
+                            chromaticAberration={0.1}
                             emissive='#ECECEC'
-                            emissiveIntensity={0.01}
+                            emissiveIntensity={0.015}
                             color='#ECECEC'
                             backside={false} />
                     </mesh>

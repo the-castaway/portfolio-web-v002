@@ -31,11 +31,11 @@ export default function Home() {
   // Banner intro timeline
   const getBannerIntroTL = () => {
     const bannerIntroTL = gsap.timeline();
-    const bannerUIDetailsHeight = isMobile ? "50%" : "20%";
+    const bannerUIDetailsHeight = isMobile ? "50%" : "50%";
     bannerIntroTL
       .to(bannerUIDetails.current,
         {
-          width: '85%',
+          width: '60%',
           height: bannerUIDetailsHeight,
           duration: 0.5,
           delay: 0.5,

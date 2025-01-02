@@ -24,7 +24,7 @@ const Featured = () => {
                 start: "top top",
                 end: "+=1000",
                 scrub: 1,
-                markers: true,
+                markers: false,
                 invalidateOnRefresh: true,
             }
         });
