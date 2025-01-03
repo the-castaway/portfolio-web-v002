@@ -10,6 +10,7 @@ import styles from "./styles/home.module.css"
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import LogoModel from "./components/scene/logoModel";
+import CompanyModel from "./components/scene/companyModel"
 import Featured from "./components/featured";
 // Context 
 import { useScreenSize } from "./context/screenSizeContext";
@@ -32,7 +33,7 @@ export default function Home() {
   const getBannerIntroTL = () => {
     const bannerIntroTL = gsap.timeline();
     const bannerUIDetailsHeight = isMobile ? "50%" : "40%";
-    const bannerUIDetailsWidth = isMobile ? "85%" : "60%";
+    const bannerUIDetailsWidth = isMobile ? "85%" : "50%";
     bannerIntroTL
       .to(bannerUIDetails.current,
         {
@@ -59,7 +60,7 @@ export default function Home() {
   // Scroll timeline
   const getScrollTL = () => {
     const bannerUIDetailsHeight = isMobile ? "55%" : "45%";
-    const bannerUIDetailsWidth = isMobile ? "90%" : "65%";
+    const bannerUIDetailsWidth = isMobile ? "90%" : "55%";
     const scrollTL = gsap.timeline({
       scrollTrigger: {
         trigger: trigger.current,
@@ -73,13 +74,14 @@ export default function Home() {
     scrollTL.to(bannerUIDetails.current, {
       width: bannerUIDetailsWidth,
       height: bannerUIDetailsHeight,
+      opacity: 0,
       duration: 0.5,
     }, 0)
     scrollTL.to(banner.current,
       {
         opacity: 0,
         duration: 0.5,
-      }, 0)
+      }, 1)
     return scrollTL;
   }
 
