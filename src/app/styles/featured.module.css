@@ -1,13 +1,15 @@
 .featured {
     width: 100%;
     height: 800vh;
+    position: relative;
 }
 
 .featuredIntroContainer {
-    width: 100% !important;
-    max-width: none !important;
-    height: 100vh;
-    position: relative;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    position: sticky;
+    top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,63 +46,65 @@
     align-self: flex-start;
 }
 
-/* Brackets UI */
+/* Work */
 
-.featuredBrackets {
-    /* height: 20%;
-    width: 85%; */
-    height: 0px;
-    width: 0px;
+.featuredWorkContainer {}
+
+
+.featuredWorkTitles {
+    position: sticky;
+    top: 20px;
+    grid-column-start: 5;
+    grid-column-end: 11;
+}
+
+.featuredWorkTitle {
     position: absolute;
+    top: 0;
+    left: 0;
+    grid-column-start: 5;
+    grid-column-end: 11;
+}
+
+
+
+
+.featuredWorkPreviews {
+    display: flex;
+    flex-direction: column;
+    gap: 20vh;
+    grid-column-start: 13;
+    grid-column-end: 20;
+}
+
+.featuredWorkPreview {
+    position: relative;
+}
+
+.featuredWorkPreviewMedia {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+}
+
+.featuredWorkScroll {
+    grid-column-start: 21;
+    grid-column-end: 22;
+}
+
+.featuredWorkScrollList {
+    width: 100%;
+    height: auto;
+    position: sticky;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+
 }
 
-.featuredBracketTopLeft {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    transform: translate(-100%, -100%);
-    border-top: 1px solid var(--jc-off-white);
-    border-left: 1px solid var(--jc-off-white);
-    border-radius: 5px 0 0 0;
-}
-
-.featuredBracketTopRight {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    transform: translate(100%, -100%);
-    border-top: 1px solid var(--jc-off-white);
-    border-right: 1px solid var(--jc-off-white);
-    border-radius: 0 5px 0 0;
-}
-
-.featuredBracketBottomRight {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    transform: translate(100%, 100%);
-    border-bottom: 1px solid var(--jc-off-white);
-    border-right: 1px solid var(--jc-off-white);
-    border-radius: 0 0 5px 0;
-}
-
-.featuredBracketBottomLeft {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    transform: translate(-100%, 100%);
-    border-bottom: 1px solid var(--jc-off-white);
-    border-left: 1px solid var(--jc-off-white);
-    border-radius: 0 0 0 5px;
+.featuredWorkScrollListNode {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
 }

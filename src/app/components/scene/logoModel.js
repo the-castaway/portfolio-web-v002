@@ -137,7 +137,7 @@ export default function LogoModel() {
                             ior={1.1}
                             iridescence={2}
                             iridescenceIOR={1}
-                            iridescenceThicknessRange={[400, 800]}
+                            iridescenceThicknessRange={[100, 400]}
                             chromaticAberration={0.2}
                             emissive='#ECECEC'
                             emissiveIntensity={0.01}
@@ -159,7 +159,7 @@ export default function LogoModel() {
                             ior={1.1}
                             iridescence={2}
                             iridescenceIOR={1}
-                            iridescenceThicknessRange={[400, 800]}
+                            iridescenceThicknessRange={[100, 400]}
                             chromaticAberration={0.2}
                             emissive='#ECECEC'
                             emissiveIntensity={0.01}
@@ -174,7 +174,7 @@ export default function LogoModel() {
                 <Rig />
                 <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
                 <pointLight position={[0, 1, -4]} lookAt={[0, 0, 0]} intensity={10} color="white" />
-                <Environment preset='studio' environmentIntensity={0.5} />
+                <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={1} resolution={1024} />
             </group >
         </>
     );
@@ -182,6 +182,7 @@ export default function LogoModel() {
 
 const Rig = () => {
     useFrame((state, delta) => {
+        https://stock.adobe.com/v1/js/vendor/stock-portal/dist/assets/editorCoachmarkThumb..gif
         easing.damp3(
             state.camera.position,
             [Math.sin(-state.pointer.x) * 0.8, state.pointer.y * 0.3, 8],

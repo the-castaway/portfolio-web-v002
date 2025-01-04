@@ -10,7 +10,6 @@ import styles from "./styles/home.module.css"
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import LogoModel from "./components/scene/logoModel";
-import CompanyModel from "./components/scene/companyModel"
 import Featured from "./components/featured";
 // Context 
 import { useScreenSize } from "./context/screenSizeContext";
@@ -59,6 +58,7 @@ export default function Home() {
 
   // Scroll timeline
   const getScrollTL = () => {
+    console.log(isMobile)
     const bannerUIDetailsHeight = isMobile ? "55%" : "45%";
     const bannerUIDetailsWidth = isMobile ? "90%" : "55%";
     const scrollTL = gsap.timeline({
@@ -177,7 +177,7 @@ export default function Home() {
                     </span>
                   </p>
                   <p className={`${styles.navModalContentContactTextNumber} detail`}>
-                    <span className={`textColorLightGrey`}>CURRENTLY DESIGN + ENGINEERING LEAD</span> <span className={`textColorDarkGrey`}>@META</span>
+                    <span className={`textColorLightGrey`}>CURRENTLY DESIGN + ENGINEERING LEAD @META</span>
                   </p>
                 </div>
                 <div className={styles.homeIntroDetails2}>

@@ -8,21 +8,23 @@ import styles from "../styles/featured.module.css"
 import { Canvas } from '@react-three/fiber';
 import { ScrollControls } from '@react-three/drei';
 import RGBMedia from './RGBmedia'
+import Image from "next/image";
 
 const Featured = () => {
     const featuredIntroContainer = useRef<HTMLDivElement>(null!);
+    const featuredWorkContainer = useRef<HTMLDivElement>(null!);
+    const featuredWorkTitles = useRef<HTMLDivElement>(null!);
 
     // Scroll timeline
     const getScrollTL = () => {
 
         const scrollTL = gsap.timeline({
             scrollTrigger: {
-                trigger: featuredIntroContainer.current,
+                trigger: featuredWorkTitles.current,
                 pin: true,
                 pinSpacing: false,
-                pinReparent: true,
-                start: "top top",
-                end: "+=1000",
+                start: "top center",
+                end: "bottom bottom",
                 scrub: 1,
                 markers: false,
                 invalidateOnRefresh: true,
@@ -50,24 +52,118 @@ const Featured = () => {
                         <h2>
                             Featured
                         </h2>
+                    </div>
+                    <div className={styles.featuredIntroHeader}>
+                        <h2>
+                            <span className={` highlight textColorGrey`}>
+                                Work
+                            </span>
+                        </h2>
                         <p className={`detail`}>
                             <span className={`${styles.featuredIntroHeaderNumber} detail textColorGrey`}>
                                 [ 016 ]
                             </span>
                         </p>
                     </div>
-                    <div className={styles.featuredBrackets}>
-                        <div className={styles.featuredBracketTopLeft} />
-                        <div className={styles.featuredBracketTopRight} />
-                        <div className={styles.featuredBracketBottomRight} />
-                        <div className={styles.featuredBracketBottomLeft} />
+                </div>
+            </div>
+            <div ref={featuredWorkContainer} className={`${styles.featuredWorkContainer} grid`}>
+                <div ref={featuredWorkTitles} className={styles.featuredWorkTitles}>
+                    <div className={styles.featuredWorkTitle}>
+                        Interactive Product Tour
                     </div>
-                    <div className={styles.featuredIntroDescription}>
-                        <p className={` highlight`}>
-                            <i>
-                                We pool our expertise to turn your wildest projects
-                            </i>
-                        </p>
+                    <div className={styles.featuredWorkTitle}>
+                        Meta News Hub
+                    </div>
+                    <div className={styles.featuredWorkTitle}>
+                        Scroll to Play
+                    </div>
+                    <div className={styles.featuredWorkTitle}>
+                        Community Voices Hub
+                    </div>
+                    <div className={styles.featuredWorkTitle}>
+                        Metaverse Explainer
+                    </div>
+                    <div className={styles.featuredWorkTitle}>
+                        MTIA v2
+                    </div>
+                </div>
+                <div className={styles.featuredWorkPreviews}>
+                    <div className={styles.featuredWorkPreview}>
+                        <div className={styles.featuredWorkPreviewMedia}>
+                            <Image src={'/media/thumbnails/ipt_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkDetails}>
+                            Company Meta Platforms
+                            Involvement
+                        </div>
+                    </div>
+                    <div className={styles.featuredWorkPreview}>
+                        <div className={styles.featuredWorkPreviewMedia}>
+                            <Image src={'/media/thumbnails/news_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkDetails}>
+                            Company Meta Platforms
+                            Involvement
+                        </div>
+                    </div>
+                    <div className={styles.featuredWorkPreview}>
+                        <div className={styles.featuredWorkPreviewMedia}>
+                            <Image src={'/media/thumbnails/stp_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkDetails}>
+                            Company Meta Platforms
+                            Involvement
+                        </div>
+                    </div>
+                    <div className={styles.featuredWorkPreview}>
+                        <div className={styles.featuredWorkPreviewMedia}>
+                            <Image src={'/media/thumbnails/cv_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkDetails}>
+                            Company Meta Platforms
+                            Involvement
+                        </div>
+                    </div>
+                    <div className={styles.featuredWorkPreview}>
+                        <div className={styles.featuredWorkPreviewMedia}>
+                            <Image src={'/media/thumbnails/metaverse_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkDetails}>
+                            Company Meta Platforms
+                            Involvement
+                        </div>
+                    </div>
+                    <div className={styles.featuredWorkPreview}>
+                        <div className={styles.featuredWorkPreviewMedia}>
+                            <Image src={'/media/thumbnails/mtia_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkDetails}>
+                            Company Meta Platforms
+                            Involvement
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.featuredWorkScroll}>
+                    <div className={styles.featuredWorkScrollList}>
+                        <div className={styles.featuredWorkScrollListNode}>
+                            <Image src={'/media/thumbnails/ipt_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkScrollListNode}>
+                            <Image src={'/media/thumbnails/news_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkScrollListNode}>
+                            <Image src={'/media/thumbnails/stp_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkScrollListNode}>
+                            <Image src={'/media/thumbnails/cv_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkScrollListNode}>
+                            <Image src={'/media/thumbnails/metaverse_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
+                        <div className={styles.featuredWorkScrollListNode}>
+                            <Image src={'/media/thumbnails/mtia_thumbnail.webp'} alt="thumbnail" fill={true} />
+                        </div>
                     </div>
                 </div>
             </div>
