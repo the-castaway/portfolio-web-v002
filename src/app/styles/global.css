@@ -79,13 +79,13 @@ h1 {
 h2 {
   font-family: var(--jc-default-font);
   font-weight: 400;
-  font-size: 48px;
+  font-size: 32px;
   line-height: 120%;
   color: var(--jc-off-white);
   mix-blend-mode: difference;
 }
 
-p.detail {
+.detail {
   font-family: var(--jc-detail-font);
   font-weight: 600;
   text-transform: uppercase;
@@ -96,17 +96,17 @@ p.detail {
   mix-blend-mode: difference;
 }
 
-p.highlight {
+.highlight {
   font-family: var(--jc-highlight-font);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 32px;
   line-height: 1;
   color: var(--jc-off-white);
   letter-spacing: 0;
   mix-blend-mode: difference;
 }
 
-p.labelLarge {
+.labelLarge {
   font-family: var(--jc-default-font);
   font-weight: 600;
   font-size: 32px;
@@ -115,7 +115,7 @@ p.labelLarge {
   mix-blend-mode: difference;
 }
 
-p.labelSmall {
+.labelSmall {
   font-family: var(--jc-default-font);
   font-weight: 600;
   font-size: 16px;

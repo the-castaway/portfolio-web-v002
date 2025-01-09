@@ -5,24 +5,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "../styles/featured.module.css"
 // Components
-import { Canvas } from '@react-three/fiber';
-import { ScrollControls } from '@react-three/drei';
-import RGBMedia from './RGBmedia'
 import Image from "next/image";
 
 const Featured = () => {
-    const featuredIntroContainer = useRef<HTMLDivElement>(null!);
+    const featuredWorkDetailsContainer = useRef<HTMLDivElement>(null!);
     const featuredWorkContainer = useRef<HTMLDivElement>(null!);
     const featuredWorkTitles = useRef<HTMLDivElement>(null!);
 
     // Scroll timeline
     const getScrollTL = () => {
-
         const scrollTL = gsap.timeline({
             scrollTrigger: {
-                trigger: featuredWorkTitles.current,
+                trigger: featuredWorkDetailsContainer.current,
                 pin: true,
-                pinSpacing: false,
                 start: "top center",
                 end: "bottom bottom",
                 scrub: 1,
@@ -46,48 +41,70 @@ const Featured = () => {
 
     return (
         <div className={styles.featured}>
-            <div ref={featuredIntroContainer} className={styles.featuredIntroContainer}>
-                <div className={`${styles.featuredIntro} grid`}>
-                    <div className={styles.featuredIntroHeader}>
-                        <h2>
-                            Featured
-                        </h2>
-                    </div>
-                    <div className={styles.featuredIntroHeader}>
-                        <h2>
-                            <span className={` highlight textColorGrey`}>
-                                Work
-                            </span>
-                        </h2>
+            <div ref={featuredWorkDetailsContainer} className={`${styles.featuredWorkDetailsContainer} grid`}>
+                <div className={styles.featuredWorkDetailsHeader}>
+                    <div className={styles.featuredWorkDetailsHeaderText}>
                         <p className={`detail`}>
-                            <span className={`${styles.featuredIntroHeaderNumber} detail textColorGrey`}>
-                                [ 016 ]
-                            </span>
+                            <span className={`textColorOffBlack`}>Featured Works</span>
+                        </p>
+                    </div>
+                    <div className={styles.featuredWorkDetailsHeaderNumber}>
+                        <p className={`detail`}>
+                            <span className={`textColorGrey`}>001 / 006</span>
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.featuredWorkDetailsTitles}>
+                    <div className={styles.featuredWorkDetailsTitle}>
+                        <h3 className={`default`}>
+                            Interactive Product Tour
+                        </h3>
+
+                    </div>
+                    {/* <div className={styles.featuredWorkDetailsTitle}>
+                        Meta News Hub
+                    </div>
+                    <div className={styles.featuredWorkDetailsTitle}>
+                        Scroll to Play
+                    </div>
+                    <div className={styles.featuredWorkDetailsTitle}>
+                        Community Voices Hub
+                    </div>
+                    <div className={styles.featuredWorkDetailsTitle}>
+                        Metaverse Explainer
+                    </div>
+                    <div className={styles.featuredWorkDetailsTitle}>
+                        MTIA v2
+                    </div> */}
+                </div>
+                <div className={styles.featuredWorkDetailsCompany}>
+                    <div className={styles.featuredWorkDetailsCompanyHeader}>
+                        <p className={`detail`}>
+                            <span className={`textColorOffBlack`}>Company</span>
+                        </p>
+                    </div>
+                    <div className={styles.featuredWorkDetailsCompanyName}>
+                        <p className={`detail`}>
+                            <span className={`textColorGrey`}>Meta</span>
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.featuredWorkDetailsPurview}>
+                    <div className={styles.featuredWorkDetailsPurviewHeader}>
+                        <p className={`detail`}>
+                            <span className={`textColorOffBlack`}>Purview</span>
+                        </p>
+                    </div>
+                    <div className={styles.featuredWorkDetailsPurviewItems}>
+                        <p className={`detail`}>
+                            <span className={`textColorGrey`}>UI / UX</span>
                         </p>
                     </div>
                 </div>
             </div>
+
             <div ref={featuredWorkContainer} className={`${styles.featuredWorkContainer} grid`}>
-                <div ref={featuredWorkTitles} className={styles.featuredWorkTitles}>
-                    <div className={styles.featuredWorkTitle}>
-                        Interactive Product Tour
-                    </div>
-                    <div className={styles.featuredWorkTitle}>
-                        Meta News Hub
-                    </div>
-                    <div className={styles.featuredWorkTitle}>
-                        Scroll to Play
-                    </div>
-                    <div className={styles.featuredWorkTitle}>
-                        Community Voices Hub
-                    </div>
-                    <div className={styles.featuredWorkTitle}>
-                        Metaverse Explainer
-                    </div>
-                    <div className={styles.featuredWorkTitle}>
-                        MTIA v2
-                    </div>
-                </div>
+
                 <div className={styles.featuredWorkPreviews}>
                     <div className={styles.featuredWorkPreview}>
                         <div className={styles.featuredWorkPreviewMedia}>
@@ -141,28 +158,6 @@ const Featured = () => {
                         <div className={styles.featuredWorkDetails}>
                             Company Meta Platforms
                             Involvement
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.featuredWorkScroll}>
-                    <div className={styles.featuredWorkScrollList}>
-                        <div className={styles.featuredWorkScrollListNode}>
-                            <Image src={'/media/thumbnails/ipt_thumbnail.webp'} alt="thumbnail" fill={true} />
-                        </div>
-                        <div className={styles.featuredWorkScrollListNode}>
-                            <Image src={'/media/thumbnails/news_thumbnail.webp'} alt="thumbnail" fill={true} />
-                        </div>
-                        <div className={styles.featuredWorkScrollListNode}>
-                            <Image src={'/media/thumbnails/stp_thumbnail.webp'} alt="thumbnail" fill={true} />
-                        </div>
-                        <div className={styles.featuredWorkScrollListNode}>
-                            <Image src={'/media/thumbnails/cv_thumbnail.webp'} alt="thumbnail" fill={true} />
-                        </div>
-                        <div className={styles.featuredWorkScrollListNode}>
-                            <Image src={'/media/thumbnails/metaverse_thumbnail.webp'} alt="thumbnail" fill={true} />
-                        </div>
-                        <div className={styles.featuredWorkScrollListNode}>
-                            <Image src={'/media/thumbnails/mtia_thumbnail.webp'} alt="thumbnail" fill={true} />
                         </div>
                     </div>
                 </div>

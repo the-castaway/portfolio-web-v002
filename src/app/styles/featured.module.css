@@ -4,67 +4,50 @@
     position: relative;
 }
 
-.featuredIntroContainer {
-    width: 100%;
-    max-width: none;
-    height: auto;
-    position: sticky;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.featuredIntro {
-    width: 100%;
-    height: auto;
-}
-
-.featuredIntroHeader {
-    text-align: right;
-    grid-column-start: 7;
-    grid-column-end: 12;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 10px;
-    align-self: flex-start;
-}
-
-.featuredIntroHeaderNumber {
-    font-size: 8px;
-}
-
-.featuredIntroDescription {
-    text-align: left;
-    grid-column-start: 14;
-    grid-column-end: 19;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    align-self: flex-start;
-}
-
 /* Work */
 
-.featuredWorkContainer {}
-
-
-.featuredWorkTitles {
+.featuredWorkDetailsContainer {
+    height: auto;
     position: sticky;
-    top: 20px;
-    grid-column-start: 5;
-    grid-column-end: 11;
+    top: 80px;
+    height: auto;
+    width: 100%;
 }
 
-.featuredWorkTitle {
+.featuredWorkDetailsHeader {
+    grid-column-start: 5;
+    grid-column-end: 8;
+}
+
+.featuredWorkDetailsTitles {
+    position: relative;
+    grid-column-start: 9;
+    grid-column-end: 17;
+}
+
+.featuredWorkDetailsTitle {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+
+.featuredWorkTitles {
+    height: auto;
+    position: sticky;
+    top: 80px;
     grid-column-start: 5;
     grid-column-end: 11;
+    padding: 80px 0;
+    box-sizing: border-box;
 }
+
+.featuredWorkDetalsCompany {
+    grid-column-start: 18;
+    grid-column-end: 21;
+}
+
+
 
 
 
@@ -74,7 +57,8 @@
     flex-direction: column;
     gap: 20vh;
     grid-column-start: 13;
-    grid-column-end: 20;
+    grid-column-end: 21;
+    padding: 80px 0 0 0;
 }
 
 .featuredWorkPreview {
@@ -98,8 +82,6 @@
     height: auto;
     position: sticky;
     top: 50%;
-
-
 }
 
 .featuredWorkScrollListNode {

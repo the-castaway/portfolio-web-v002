@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF, Environment, PerspectiveCamera, useTexture } from "@react-three/drei";
+import { EffectComposer, Vignette, DepthOfField } from '@react-three/postprocessing';
 import { useFrame, useThree } from '@react-three/fiber'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -168,13 +169,16 @@ export default function LogoModel() {
                             roughness={0}
                             backside={false} />
                     </mesh>
-
                 </group>
+                {/* <EffectComposer>
+                    <Vignette eskil={false} offset={0.5} darkness={1.1} />
+                    <DepthOfField focusDistance={0.1} focalLength={0.5} bokehScale={2} />
+                </EffectComposer> */}
                 {/* Camera rig */}
                 <Rig />
                 <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
                 <pointLight position={[0, 1, -4]} lookAt={[0, 0, 0]} intensity={10} color="white" />
-                <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={1} resolution={1024} />
+                <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={2} resolution={1024} />
             </group >
         </>
     );
@@ -182,7 +186,6 @@ export default function LogoModel() {
 
 const Rig = () => {
     useFrame((state, delta) => {
-        https://stock.adobe.com/v1/js/vendor/stock-portal/dist/assets/editorCoachmarkThumb..gif
         easing.damp3(
             state.camera.position,
             [Math.sin(-state.pointer.x) * 0.8, state.pointer.y * 0.3, 8],

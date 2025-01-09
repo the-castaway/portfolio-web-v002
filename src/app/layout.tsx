@@ -47,9 +47,9 @@ export default function RootLayout({
       <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
         <ScreenSizeProvider>
           <Nav />
-          <div style={{ paddingTop: '100px' }}>
-            {children}
-          </div>
+
+          {children}
+
         </ScreenSizeProvider>
       </body>
     </html>

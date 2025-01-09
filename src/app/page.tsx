@@ -160,6 +160,7 @@ export default function Home() {
         </section>
         <div id="smooth-wrapper" className={styles.homeScroll}>
           <div id="smooth-content">
+            <section className={styles.homeBannerSpacer}></section>
             {/* Intro */}
             <section ref={trigger} id="trigger" className={styles.homeIntro}>
               <div className={`${styles.homeIntroHeader} grid`}>
