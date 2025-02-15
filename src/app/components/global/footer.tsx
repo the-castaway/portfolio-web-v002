@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
-import styles from "../styles/footer.module.css"
+import styles from "../../styles/footer.module.css"
 
 interface Props {
     href: string

@@ -163,21 +163,6 @@
     opacity: 0;
 }
 
-/* Banner icons */
-
-.homeBannerIcons {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    padding: 20px 0;
-}
-
 /* Scroll */
 
 .homeBannerSpacer {
@@ -204,7 +189,7 @@
 }
 
 .homeIntroHeaderText {
-    text-align: center;
+    text-align: left;
     grid-column-start: 8;
     grid-column-end: 18;
 }
@@ -214,10 +199,10 @@
     height: auto;
 }
 
-.homeIntroDetails1 {
-    text-align: center;
-    grid-column-start: 7;
-    grid-column-end: 11;
+.homeIntroDetail {
+    text-align: left;
+    grid-column-start: 8;
+    grid-column-end: 18;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -225,26 +210,12 @@
     align-self: flex-start;
 }
 
-.homeIntroDetails2 {
-    text-align: center;
-    grid-column-start: 11;
-    grid-column-end: 15;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    align-self: flex-start;
+.homeIntroDetailText {
+    font-size: 24px;
 }
 
-.homeIntroDetails3 {
-    text-align: center;
-    grid-column-start: 15;
-    grid-column-end: 19;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    align-self: flex-start;
+.homeIntroList {
+    list-style-type: none;
 }
 
 /* Mobile */
@@ -276,7 +247,7 @@
         height: auto;
     }
 
-    .homeIntroDetails1 {
+    .homeIntroDetail {
         text-align: left;
         grid-column-start: 7;
         grid-column-end: 11;
@@ -286,32 +257,6 @@
         gap: 10px;
         align-self: flex-start;
         grid-row: 1;
-        grid-column: 1 / -1;
-    }
-
-    .homeIntroDetails2 {
-        text-align: left;
-        grid-column-start: 11;
-        grid-column-end: 15;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        align-self: flex-start;
-        grid-row: 2;
-        grid-column: 1 / -1;
-    }
-
-    .homeIntroDetails3 {
-        text-align: left;
-        grid-column-start: 15;
-        grid-column-end: 19;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        align-self: flex-start;
-        grid-row: 3;
         grid-column: 1 / -1;
     }
 }

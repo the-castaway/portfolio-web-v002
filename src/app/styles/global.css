@@ -70,7 +70,7 @@ a {
 h1 {
   font-family: var(--jc-default-font);
   font-weight: 400;
-  font-size: 32px;
+  font-size: 64px;
   line-height: 120%;
   color: var(--jc-off-white);
   mix-blend-mode: difference;
@@ -130,6 +130,9 @@ h2 {
 
 .textFontDetail {
   font-family: var(--jc-detail-font);
+  letter-spacing: 0;
+  line-height: 1;
+  font-weight: 600;
 }
 
 .textFontHighlight {
@@ -171,6 +174,18 @@ h2 {
 }
 
 @media (max-width: 768px) {
+
+  /* Text */
+
+  h1 {
+    font-family: var(--jc-default-font);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    color: var(--jc-off-white);
+    mix-blend-mode: difference;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

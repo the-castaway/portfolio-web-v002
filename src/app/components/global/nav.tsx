@@ -2,12 +2,12 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 // Styles
-import styles from "../styles/nav.module.css";
+import styles from "../../styles/nav.module.css";
 // Components
-import NavLink from "./navLink"
-import NavLogo from "./navLogo";
+import NavLink from "../global/navLink"
+import NavLogo from "../global/navLogo";
 // Context
-import { useScreenSize } from "../context/screenSizeContext";
+import { useScreenSize } from "../../context/screenSizeContext";
 
 const Nav = () => {
     // State

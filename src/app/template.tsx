@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import { transitionPageIn } from "./utils/transition/transition"
 import { usePathname } from "next/navigation"
-import Footer from "./components/footer";
+import Footer from "./components/global/footer";
 import styles from "./styles/transition.module.css";
 
 export default function Template({ children }: { children: React.ReactNode }) {

@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 // Context
 import { ScreenSizeProvider } from "./context/screenSizeContext";
 // Components
-import Nav from "./components/nav";
+import Nav from "./components/global/nav";
 // Styles
 import "./styles/global.css";
 
