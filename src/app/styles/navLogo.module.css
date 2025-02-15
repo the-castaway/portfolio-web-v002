@@ -1,0 +1,15 @@
+/* NavLogo */
+
+.navLogo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 80px;
+    left: 20px;
+    top: 0;
+}
+
+.navLogoSVG {
+    fill: var(--jc-off-white);
+    mix-blend-mode: difference;
+}
