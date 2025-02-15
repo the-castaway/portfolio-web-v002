@@ -124,7 +124,7 @@ export default function LogoModel() {
                     </mesh>
                 </group>
                 {/* Logo */}
-                <group ref={logo} position={[0, 0, 1]} scale={[0.35, 0.35, 0.35]} rotation={[Math.PI / 2, 0, 0]}>
+                <group ref={logo} position={[0, 0, 1]} scale={[0.4, 0.4, 0.4]} rotation={[Math.PI / 2, 0, 0]}>
                     <mesh ref={logoLeft} {...nodes.logo_left}>
                         <MeshTransmissionMaterial
                             thickness={1}
@@ -139,7 +139,7 @@ export default function LogoModel() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.2}
+                            chromaticAberration={0.5}
                             emissive='#ECECEC'
                             emissiveIntensity={0.01}
                             color='#ECECEC'
@@ -161,7 +161,7 @@ export default function LogoModel() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.2}
+                            chromaticAberration={0.5}
                             emissive='#ECECEC'
                             emissiveIntensity={0.01}
                             color='#ECECEC'
