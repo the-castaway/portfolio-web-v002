@@ -4,37 +4,46 @@
     position: fixed;
     bottom: 0;
     box-sizing: border-box;
+    padding: 20px 40px
 }
 
-/* Default */
+.footerSignature {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: flex;
+    align-items: center;
+}
 
-.footerDefault {
+.footerVersion {
+    grid-column-start: 5;
+    grid-column-end: 8;
+    display: flex;
+    align-items: center;
+}
+
+.footerScrollTracker {
+    grid-column-start: 18;
+    grid-column-end: 25;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.footerScrollTrackerProgressBar {
     width: 100%;
-    height: auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    pointer-events: none;
-    box-sizing: border-box;
-    padding: 20px;
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--jc-off-black);
 }
 
-.footerDefaultInstructions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    height: auto;
-    width: auto;
-    transform: rotate(180deg);
-    white-space: nowrap;
+.footerScrollTrackerProgressBarFill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--jc-off-white);
 }
 
-.footerDefaultInstructionsPercentage {
+.footerScrollTrackerPercentage {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -43,36 +52,45 @@
     width: auto;
 }
 
-.footerDefaultInstructionsPercentageText {
+.footerScrollTrackerPercentageText {
     text-align: center;
-    height: 30px;
-    width: auto;
-}
-
-.footerDefaultCopyright {
+    width: 30px;
     height: auto;
-    width: auto;
-    transform: rotate(180deg);
-    white-space: nowrap;
 }
 
-.footerDefaultText {
-    writing-mode: vertical-lr;
-    text-orientation: sideways-right;
-}
 
-/* Bottom */
+@media (max-width: 1024px) {
+    .footer {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        box-sizing: border-box;
+        padding: 20px 20px
+    }
 
-.footerBottom {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    pointer-events: all;
-    box-sizing: border-box;
-    padding: 20px;
-    opacity: 0;
-    transform: translate(0, 100%);
+    .footerSignature {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        display: none;
+        align-items: center;
+    }
+
+    .footerVersion {
+        grid-column-start: 5;
+        grid-column-end: 8;
+        display: none;
+        align-items: center;
+    }
+
+    .footerScrollTracker {
+        grid-column-start: 18;
+        grid-column-end: 25;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        grid-column: 1 / -1;
+    }
+
 }

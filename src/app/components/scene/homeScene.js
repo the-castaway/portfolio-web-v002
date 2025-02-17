@@ -115,7 +115,7 @@ export default function HomeScene() {
                 fov={20}
                 position={[0, 0, 8]}
             />
-            {/* <fog attach="fog" args={['#0E0E10', 8, 12]} /> */}
+            <fog attach="fog" args={['#0E0E10', 8, 12]} />
             <group scale={isMobile ? viewport.width / 2.5 : viewport.width / 5}>
                 {/* Marquee */}
                 <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
@@ -177,7 +177,7 @@ export default function HomeScene() {
                 </EffectComposer> */}
                 {/* Camera rig */}
                 <Rig />
-                <Brackets />
+                {/* <Brackets /> */}
                 <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
                 <pointLight position={[0, 1, -4]} lookAt={[0, 0, 0]} intensity={10} color="white" />
                 <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={2} resolution={1024} />
@@ -265,11 +265,9 @@ const Brackets = ({ speed = 1, count = 40, depth = 80, easing = (x) => Math.sqrt
             <Environment preset="sunset" />
             {/* Multisampling (MSAA) is WebGL2 antialeasing, we don't need it (faster)
           The normal-pass is not required either, saves a bit of performance */}
-            <EffectComposer disableNormalPass multisampling={0}>
+            {/* <EffectComposer disableNormalPass multisampling={0}>
                 <DepthOfField target={[0, 0, 60]} focalLength={0.2} bokehScale={1} height={700} />
-                {/* As of three > r154 tonemapping is not applied on rendertargets any longer, it requires a pass */}
-                {/* <ToneMapping /> */}
-            </EffectComposer>
+            </EffectComposer> */}
         </>
     )
 }

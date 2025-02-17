@@ -3,20 +3,17 @@ import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
 import styles from "../../styles/footer.module.css"
 
-interface Props {
-    href: string
-    label: string
-    number: string
-}
-
 const Footer = () => {
     // State 
     const [scrollPercent, setScrollPercent] = useState(0);
     const [isAtBottom, setIsAtBottom] = useState(false);
     // Refs
-    const footerDefault = useRef<HTMLDivElement>(null);
-    const footerBottom = useRef<HTMLDivElement>(null);
     const footerTL = useRef<gsap.core.Timeline | null>(null);
+    const footerSignatureText = useRef<HTMLDivElement>(null);
+    const footerVersionText = useRef<HTMLDivElement>(null);
+    const footerProgressBar = useRef<HTMLDivElement>(null);
+    const footerProgressBarFill = useRef<HTMLDivElement>(null);
+
 
     // Initialize GSAP timeline
     useEffect(() => {
@@ -24,21 +21,20 @@ const Footer = () => {
             footerTL.current = gsap.timeline({ paused: true });
             footerTL.current
                 .to(
-                    footerDefault.current,
+                    footerProgressBar.current,
                     {
                         opacity: 0,
-                        y: 10,
+                        width: 0,
+                        flexGrow: 0,
                         duration: 0.3,
                     },
                     0
                 )
                 .to(
-                    footerBottom.current,
+                    [footerVersionText.current, footerSignatureText.current],
                     {
-                        opacity: 1,
-                        yPercent: -100,
+                        color: "#ececec",
                         duration: 0.3,
-                        delay: 0.3,
                     },
                     0
                 );
@@ -56,6 +52,9 @@ const Footer = () => {
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrolled = (scrollTop / docHeight) * 100;
             setScrollPercent(Math.min(Math.max(scrolled, 0), 100)); // Clamp to 0-100
+
+            // Animate progress bar width
+            gsap.to(footerProgressBarFill.current, { width: `${scrolled}%`, duration: 0.3, ease: "power2.out" });
 
             if (scrolled === 100 && !isAtBottom) {
                 footerTL.current?.play();
@@ -78,45 +77,46 @@ const Footer = () => {
 
 
     return (
-        <footer className={styles.footer}>
-            <div ref={footerDefault} className={styles.footerDefault}>
-                <div className={styles.footerDefaultInstructions}>
-                    <p className={`${styles.footerDefaultText} detail`}>
-                        <span className={`textColorDarkGrey`}>
-                            Scroll
-                        </span>
-                    </p>
-                    <p className={`${styles.footerDefaultInstructionsPercentage} ${styles.footerDefaultText} detail`}>
-                        <span className={`textColorDarkGrey`}>
-                            [
-                        </span>
-                        <span className={`${styles.footerDefaultInstructionsPercentageText} textColorDarkGrey`}>
-                            {Math.round(scrollPercent)}%
-                        </span>
-                        <span className={`textColorDarkGrey`}>
-                            ]
-                        </span>
-                    </p>
-                </div>
-                <div className={styles.footerDefaultCopyright}>
-                    <p className={`${styles.footerDefaultText} detail`}>
-                        <span className={`textColorDarkGrey`}>©2025 V.002</span>
-                    </p>
-                </div>
+        <footer className={`${styles.footer} grid`}>
+            <div className={styles.footerSignature}>
+                <p className={`detail`}>
+                    <span ref={footerSignatureText} className={`textColorDarkGrey`}>
+                        ://JAIMECASTANEDA
+                    </span>
+                </p>
             </div>
-            <div ref={footerBottom} className={styles.footerBottom}>
-                <a className={styles.footerBottomToTop} onClick={scrollToTop}>
+            <div className={styles.footerVersion}>
+                <p className={`detail`}>
+                    <span ref={footerVersionText} className={`textColorDarkGrey`}>
+                        ©2025 V.002
+                    </span>
+                </p>
+            </div>
+            <div className={styles.footerScrollTracker}>
+                {isAtBottom ?
+                    <a onClick={scrollToTop}>
+                        <p className={`detail`}>
+                            BACK&nbsp;TO&nbsp;TOP
+                        </p>
+                    </a> :
                     <p className={`detail`}>
-                        <span className={`textColorOffWhite`}>
-                            Back to Top
-                        </span>
+                        SCROLL
                     </p>
-                </a>
-                <div className={styles.footerBottomCopyright}>
-                    <p className={`detail`}>
-                        <span className={`textColorOffWhite`}>©2025 V.002</span>
-                    </p>
+                }
+                <div ref={footerProgressBar} className={styles.footerScrollTrackerProgressBar}>
+                    <div ref={footerProgressBarFill} className={styles.footerScrollTrackerProgressBarFill} />
                 </div>
+                <p className={`${styles.footerScrollTrackerPercentage} detail`}>
+                    <span>
+                        [
+                    </span>
+                    <span className={styles.footerScrollTrackerPercentageText}>
+                        {Math.round(scrollPercent)}%
+                    </span>
+                    <span>
+                        ]
+                    </span>
+                </p>
             </div>
         </footer>
     )
