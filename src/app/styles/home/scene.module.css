@@ -1,0 +1,15 @@
+.scene {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Canvas */
+
+.sceneCanvas {
+    height: 100vh !important;
+    width: 100% !important;
+}

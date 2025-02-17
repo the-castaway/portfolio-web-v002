@@ -3,21 +3,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF, Environment, PerspectiveCamera, useTexture, Detailed } from "@react-three/drei";
 import { EffectComposer, Vignette, DepthOfField } from '@react-three/postprocessing';
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree, Canvas } from '@react-three/fiber'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { easing } from 'maath'
 import { useScreenSize } from "../../context/screenSizeContext";
-//import Brackets from './brackets';
 
-export default function HomeScene() {
+export default function SceneBuilder() {
     // Refs
     const logo = useRef(null);
     const logoLeft = useRef(null);
     const logoRight = useRef(null);
     const marquee = useRef(null);
     const marqueeText = useRef(null);
-    const trigger = document.getElementById("trigger");
+    //const trigger = document.getElementById("trigger");
     // Context
     const { isMobile } = useScreenSize();
     // Three
@@ -36,10 +35,10 @@ export default function HomeScene() {
     const getScrollTL = () => {
         const scrollTL = gsap.timeline({
             scrollTrigger: {
-                trigger: trigger,
+
                 pin: false,
-                start: 'top bottom',
-                end: 'top top',
+                start: 0,
+                end: () => innerHeight / 2,
                 scrub: 1,
                 markers: false,
             }
@@ -115,7 +114,7 @@ export default function HomeScene() {
                 fov={20}
                 position={[0, 0, 8]}
             />
-            <fog attach="fog" args={['#0E0E10', 8, 12]} />
+            {/* <fog attach="fog" args={['#0E0E10', 8, 12]} /> */}
             <group scale={isMobile ? viewport.width / 2.5 : viewport.width / 5}>
                 {/* Marquee */}
                 <group ref={marquee} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}>
@@ -177,9 +176,9 @@ export default function HomeScene() {
                 </EffectComposer> */}
                 {/* Camera rig */}
                 <Rig />
-                {/* <Brackets /> */}
-                <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
-                <pointLight position={[0, 1, -4]} lookAt={[0, 0, 0]} intensity={10} color="white" />
+                <Brackets />
+                {/* <pointLight position={[-2, 0, -2]} lookAt={[0, 0, 0]} intensity={10} color="white" />
+                <pointLight position={[0, 1, -4]} lookAt={[0, 0, 0]} intensity={10} color="white" /> */}
                 <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={2} resolution={1024} />
             </group >
 
