@@ -3,7 +3,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
-import styles from "../../styles/banner.module.css"
+import styles from "../../styles/home/banner.module.css"
 // Context 
 import { useScreenSize } from "../../context/screenSizeContext";
 

@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 // Styles
-import styles from "../../styles/nav.module.css";
+import styles from "../../styles/global/nav.module.css";
 // Components
 import NavLink from "../global/navLink"
 import NavLogo from "../global/navLogo";

@@ -1,7 +1,8 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
 import { transitionPageOut } from "../../utils/transition/transition"
-import styles from "../../styles/navLink.module.css"
+// Styles
+import styles from "../../styles/global/navLink.module.css"
 
 interface Props {
     href: string

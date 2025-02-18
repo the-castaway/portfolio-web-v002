@@ -5,12 +5,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
-import styles from "./styles/home.module.css"
+import styles from "./styles/pages/home.module.css"
 // Components
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import Scene from "./components/scene/scene";
-//import Brackets from "./components/scene/brackets";
 import Banner from "./components/home/banner";
 import Featured from "./components/home/featured";
 // Context 
@@ -94,7 +93,6 @@ export default function Home() {
               <section>
                 <Featured />
               </section>
-
             </div>
           </div>
         </div >

@@ -1,7 +1,8 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
-import styles from "../../styles/footer.module.css"
+// Styles
+import styles from "../../styles/global/footer.module.css"
 
 const Footer = () => {
     // State 
