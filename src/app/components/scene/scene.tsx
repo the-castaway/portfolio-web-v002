@@ -35,10 +35,11 @@ export default function Scene() {
             .from(sceneBrackets.current, {
                 opacity: 0,
                 y: '20%',
+                delay: 0.2,
+                ease: 'ease',
             }, 0)
         return scrollTL;
     }
-
 
     // Initiate timelines
     useEffect(() => {
@@ -49,7 +50,6 @@ export default function Scene() {
             ctx.revert();
         }
     }, [])
-
 
     return (
         <div className={styles.scene}>

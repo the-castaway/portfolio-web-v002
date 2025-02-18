@@ -82,7 +82,7 @@ const Bracket = ({ index, z, speed }) => {
         <group ref={ref}>
             <mesh {...nodes.logo_left}>
                 <meshStandardMaterial
-                    color="#0E0E10"
+                    color="#4A4A4A"
                     metalness={1} // Fully metallic
                     roughness={0}
                     toneMapped={false} // Slightly smooth for reflections
@@ -92,7 +92,7 @@ const Bracket = ({ index, z, speed }) => {
     )
 }
 
-const Brackets = ({ speed = 1, count = 40, depth = 40, easing = (x) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) => {
+const Brackets = ({ speed = 1, count = 40, depth = 60, easing = (x) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) => {
     return (
         <>
             <spotLight position={[0, 20, 10]} penumbra={5} decay={0} intensity={3} color={'#4552D9'} />

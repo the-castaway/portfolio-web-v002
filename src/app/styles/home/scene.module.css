@@ -34,4 +34,5 @@
 .sceneCanvas {
     height: 100vh !important;
     width: 100% !important;
+    pointer-events: none;
 }
