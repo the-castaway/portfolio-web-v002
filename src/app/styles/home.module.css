@@ -2,8 +2,6 @@
     position: relative;
 }
 
-
-
 /* Scroll */
 
 .homeScroll {
@@ -21,7 +19,7 @@
 }
 
 .homeContent {
-    pointer-events: all;
+    pointer-events: none;
 }
 
 /* Intro */

@@ -7,7 +7,29 @@
     z-index: -1;
 }
 
-/* Canvas */
+.sceneLogo {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.sceneBrackets {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Scene */
 
 .sceneCanvas {
     height: 100vh !important;

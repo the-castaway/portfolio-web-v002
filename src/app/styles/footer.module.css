@@ -58,7 +58,6 @@
     height: auto;
 }
 
-
 @media (max-width: 1024px) {
     .footer {
         width: 100%;
@@ -92,5 +91,4 @@
         gap: 10px;
         grid-column: 1 / -1;
     }
-
 }

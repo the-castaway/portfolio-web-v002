@@ -1,19 +1,48 @@
 "use client"
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import * as THREE from 'three'
-import { useGLTF, Detailed } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, Environment } from "@react-three/drei";
 import { useFrame, useThree } from '@react-three/fiber'
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EffectComposer, DepthOfField, ToneMapping } from '@react-three/postprocessing'
+import { EffectComposer, DepthOfField, ToneMapping, Vignette } from '@react-three/postprocessing'
+import { easing } from 'maath'
+// Context
+import { useScreenSize } from "../../context/screenSizeContext";
 
 export default function SceneBrackets() {
+    const { viewport } = useThree();
+    // Context
+    const { isMobile } = useScreenSize();
 
     return (
-        <group>
-            <Brackets />
-        </group>
+        <>
+            <PerspectiveCamera makeDefault fov={20} position={[0, 0, 8]} />
+            {/* Render SceneBrackets separately on layer 1 */}
+            <group scale={isMobile ? viewport.width / 2.5 : viewport.width / 5} renderOrder={1}>
+                <Brackets />
+            </group>
+            {/* Rig */}
+            <Rig />
+            {/* Environment */}
+            <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={1} resolution={1024} />
+            {/* Apply post-processing ONLY to SceneBrackets */}
+            <EffectComposer>
+                <DepthOfField focusDistance={0} focalLength={0.0} bokehScale={7} height={700} />
+                <Vignette eskil={false} offset={0.1} darkness={1.1} />
+            </EffectComposer>
+        </>
     );
+}
+
+const Rig = () => {
+    useFrame((state, delta) => {
+        easing.damp3(
+            state.camera.position,
+            [Math.sin(-state.pointer.x) * 0.8, state.pointer.y * 0.3, 8],
+            0.2,
+            delta,
+        )
+        state.camera.lookAt(0, 0, 0)
+    })
 }
 
 const Bracket = ({ index, z, speed }) => {
@@ -55,23 +84,19 @@ const Bracket = ({ index, z, speed }) => {
                 <meshStandardMaterial
                     color="#0E0E10"
                     metalness={1} // Fully metallic
-                    roughness={0} // Slightly smooth for reflections
+                    roughness={0}
+                    toneMapped={false} // Slightly smooth for reflections
                 />
             </mesh>
         </group>
     )
 }
 
-
 const Brackets = ({ speed = 1, count = 40, depth = 40, easing = (x) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) => {
     return (
         <>
             <spotLight position={[0, 20, 10]} penumbra={5} decay={0} intensity={3} color={'#4552D9'} />
             {Array.from({ length: count }, (_, i) => <Bracket key={i} index={i} z={Math.round(easing(i / count) * depth)} speed={speed} /> /* prettier-ignore */)}
-            {/* <EffectComposer disableNormalPass multisampling={0}>
-                <DepthOfField target={[0, 0, 60]} focalLength={0.05} bokehScale={14} height={700} />
-                <ToneMapping />
-            </EffectComposer> */}
         </>
     )
 }
