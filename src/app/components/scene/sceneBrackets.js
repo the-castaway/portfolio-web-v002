@@ -27,7 +27,7 @@ export default function SceneBrackets() {
             {/* Apply post-processing ONLY to SceneBrackets */}
             <EffectComposer>
                 <DepthOfField focusDistance={0} focalLength={0.0} bokehScale={7} height={700} />
-                <Vignette eskil={false} offset={0.1} darkness={1.1} />
+                <Vignette eskil={false} offset={0.1} darkness={1.2} />
             </EffectComposer>
         </>
     );

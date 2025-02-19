@@ -20,50 +20,120 @@ export default function Home() {
   const homeFeaturedStatic = useRef<HTMLDivElement>(null!)
   const homeFeaturedPreviewsList = useRef<HTMLDivElement>(null!)
 
-
-
-  // Scroll timeline
-  const getFeaturedIntroTL = () => {
-    const scrollTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: homeFeaturedPreviewsList.current,
-        pin: false,
-        start: `top bottom`,
-        end: `bottom top`,
-        scrub: false,
-        markers: true,
-        toggleActions: 'play reverse play reverse'
-      }
+  // Featured intro / outro timeline
+  const getFeaturedIntroTL = (ctx: gsap.Context) => {
+    ctx.add(() => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: homeFeaturedPreviewsList.current,
+          pin: false,
+          start: `top bottom`,
+          end: `bottom top`,
+          scrub: false,
+          markers: false,
+          toggleActions: "play reverse play reverse",
+        },
+      }).to(
+        homeFeaturedStatic.current,
+        {
+          opacity: 1,
+          // y: 0,
+          duration: 0.3,
+          ease: "ease",
+        },
+        0
+      );
     });
+  };
 
-    scrollTL.to(homeFeaturedStatic.current, {
-      opacity: 1,
-      duration: 0.3,
-      ease: 'ease',
-    }, 0)
+  // Featured work timeline
+  const getFeaturedTimelines = (ctx: gsap.Context) => {
+    const previews = gsap.utils.toArray<HTMLElement>(
+      `.${styles.homeFeaturedPreviewMedia}`
+    );
+    const titles = gsap.utils.toArray<HTMLElement>(
+      `.${styles.homeFeaturedTitle}`
+    );
+    const involvements = gsap.utils.toArray<HTMLElement>(
+      `.${styles.homeFeaturedInvolvementList}`
+    );
+    const companyNames = gsap.utils.toArray<HTMLElement>(
+      `.${styles.homeFeaturedCompanyName}`
+    );
+    const activeNumbers = gsap.utils.toArray<HTMLElement>(
+      `.${styles.homeFeaturedActiveNumber}`
+    );
+    previews.forEach((preview, index) => {
+      ctx.add(() => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: preview,
+            pin: false,
+            start: `top bottom`,
+            end: `top bottom`,
+            scrub: false,
+            markers: false,
+            toggleActions: "play none none reverse",
+            invalidateOnRefresh: true,
+          },
+        }).to(
+          [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.2,
+            ease: "ease",
+          },
+          0
+        );
+      });
 
-    return scrollTL;
-  }
+      ctx.add(() => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: preview,
+            pin: false,
+            start: `bottom top`,
+            end: `bottom top`,
+            scrub: false,
+            markers: false,
+            toggleActions: "play none none reverse",
+            invalidateOnRefresh: true,
+          },
+        }).to(
+          [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
+          {
+            opacity: 0,
+            y: -10,
+            duration: 0.2,
+            ease: "ease",
+          },
+          0
+        );
+      });
 
-  // Initialize timelines
+
+
+
+
+    });
+  };
+
+  // Initialize GSAP timelines and plugins
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     ScrollSmoother.create({
       content: "#smooth-content",
       wrapper: "#smooth-wrapper",
-      smooth: 1,
-      effects: true
-    })
-
-
-    const ctx = gsap.context(() => {
-      //getIntroTL();
-      getFeaturedIntroTL();
-    })
-    return () => {
-      ctx.revert();
-    }
-  }, [])
+      smooth: 2,
+      effects: true,
+    });
+    const ctx = gsap.context((self) => {
+      getFeaturedIntroTL(self);
+      getFeaturedTimelines(self);
+    });
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div>
@@ -179,44 +249,207 @@ export default function Home() {
         {/* Featured Static Text */}
         <div ref={homeFeaturedStatic} className={styles.homeFeaturedStatic}>
           <div className={`${styles.homeFeaturedStaticContainer} grid`}>
+            {/* Number */}
             <div className={styles.homeFeaturedNumber}>
               <p className={`detail`}>
                 <span className={`textColorOffBlack`}>Featured Works</span>
               </p>
-              <p className={`detail`}>
-                <span className={`textColorOffWhite`}>001 / 006</span>
-              </p>
+              <div className={styles.homeFeaturedNumberContainer}>
+                <div className={styles.homeFeaturedActiveNumbers}>
+                  <div className={styles.homeFeaturedActiveNumber}>
+                    <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                      001
+                    </p>
+                  </div>
+                  <div className={styles.homeFeaturedActiveNumber}>
+                    <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                      002
+                    </p>
+                  </div>
+                  <div className={styles.homeFeaturedActiveNumber}>
+                    <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                      003
+                    </p>
+                  </div>
+                  <div className={styles.homeFeaturedActiveNumber}>
+                    <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                      004
+                    </p>
+                  </div>
+                  <div className={styles.homeFeaturedActiveNumber}>
+                    <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                      005
+                    </p>
+                  </div>
+                  <div className={styles.homeFeaturedActiveNumber}>
+                    <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                      006
+                    </p>
+                  </div>
+                </div>
+                <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                  / 006
+                </p>
+              </div>
             </div>
-            <div className={styles.homeFeaturedTitle}>
-              <h1>
-                Meta News Platform
-              </h1>
+            {/* Title */}
+            <div className={styles.homeFeaturedTitles}>
+              <div className={styles.homeFeaturedTitle}>
+                <h1>
+                  Interactive Product Tour
+                </h1>
+              </div>
+              <div className={styles.homeFeaturedTitle}>
+                <h1>
+                  Meta News Platform
+                </h1>
+              </div>
+              <div className={styles.homeFeaturedTitle}>
+                <h1>
+                  Scroll to Play
+                </h1>
+              </div>
+              <div className={styles.homeFeaturedTitle}>
+                <h1>
+                  Community Voices Hub
+                </h1>
+              </div>
+              <div className={styles.homeFeaturedTitle}>
+                <h1>
+                  Metaverse Explainer Page
+                </h1>
+              </div>
+              <div className={styles.homeFeaturedTitle}>
+                <h1>
+                  MTIA v2
+                </h1>
+              </div>
             </div>
+            {/* Company */}
             <div className={styles.homeFeaturedCompany}>
               <p className={`detail`}>
                 <span className={`textColorOffBlack`}>Company</span>
               </p>
-              <p className={`detail`}>
-                <span className={`textColorGrey`}>Meta Platforms</span>
-              </p>
+              <div className={styles.homeFeaturedCompanyNames}>
+                <div className={styles.homeFeaturedCompanyName}>
+                  <p className={`detail`}>
+                    <span className={`textColorGrey`}>Meta Platforms</span>
+                  </p>
+                </div>
+                <div className={styles.homeFeaturedCompanyName}>
+                  <p className={`detail`}>
+                    <span className={`textColorGrey`}>Roku</span>
+                  </p>
+                </div>
+                <div className={styles.homeFeaturedCompanyName}>
+                  <p className={`detail`}>
+                    <span className={`textColorGrey`}>Meta Platforms</span>
+                  </p>
+                </div>
+                <div className={styles.homeFeaturedCompanyName}>
+                  <p className={`detail`}>
+                    <span className={`textColorGrey`}>Meta Platforms</span>
+                  </p>
+                </div>
+                <div className={styles.homeFeaturedCompanyName}>
+                  <p className={`detail`}>
+                    <span className={`textColorGrey`}>Meta Platforms</span>
+                  </p>
+                </div>
+                <div className={styles.homeFeaturedCompanyName}>
+                  <p className={`detail`}>
+                    <span className={`textColorGrey`}>Meta Platforms</span>
+                  </p>
+                </div>
+              </div>
             </div>
+            {/* Involvement */}
             <div className={styles.homeFeaturedInvolvement}>
               <p className={`detail`}>
                 <span className={`textColorOffBlack`}>
                   Involvement
                 </span>
               </p>
-              <ul className={`${styles.homeIntroList} textFontHighlight textColorGrey`}>
-                <li>
-                  <i>Product Design</i>
-                </li>
-                <li>
-                  <i>Creative Direction</i>
-                </li>
-                <li>
-                  <i>UI/UX Design</i>
-                </li>
-              </ul>
+              <div className={styles.homeFeaturedInvolvementLists}>
+                <div className={styles.homeFeaturedInvolvementList}>
+                  <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                    <li>
+                      <i>Product Design</i>
+                    </li>
+                    <li>
+                      <i>Prototyping</i>
+                    </li>
+                    <li>
+                      <i>Front-end Eng</i>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.homeFeaturedInvolvementList}>
+                  <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                    <li>
+                      <i>Product Design</i>
+                    </li>
+                    <li>
+                      <i>Prototyping</i>
+                    </li>
+                    <li>
+                      <i>UI/UX Design</i>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.homeFeaturedInvolvementList}>
+                  <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                    <li>
+                      <i>Product Design</i>
+                    </li>
+                    <li>
+                      <i>Front-end Eng</i>
+                    </li>
+                    <li>
+                      <i>Motion</i>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.homeFeaturedInvolvementList}>
+                  <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                    <li>
+                      <i>Product Design</i>
+                    </li>
+                    <li>
+                      <i>Prototyping</i>
+                    </li>
+                    <li>
+                      <i>Front-end Eng</i>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.homeFeaturedInvolvementList}>
+                  <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                    <li>
+                      <i>Product Design</i>
+                    </li>
+                    <li>
+                      <i>Prototyping</i>
+                    </li>
+                    <li>
+                      <i>UI/UX Design</i>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.homeFeaturedInvolvementList}>
+                  <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                    <li>
+                      <i>Product Design</i>
+                    </li>
+                    <li>
+                      <i>Front-end Eng</i>
+                    </li>
+                    <li>
+                      <i>Motion</i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
