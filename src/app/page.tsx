@@ -129,8 +129,6 @@ export default function Home() {
       effects: true,
     });
 
-    console.log(Projects)
-
     const ctx = gsap.context((self) => {
       getFeaturedIntroTL(self);
       getFeaturedTimelines(self);
@@ -211,7 +209,7 @@ export default function Home() {
                     {
                       projects.map((project) =>
                         <div className={styles.homeFeaturedPreviewMedia} key={project.key}>
-                          <Image src={project.thumbnail} alt="thumbnail" fill={true} />
+                          <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
                         </div>)
                     }
                   </div>

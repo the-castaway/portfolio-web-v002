@@ -1,6 +1,6 @@
 "use client"
 import React, { Suspense } from 'react'
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Canvas } from '@react-three/fiber'
@@ -12,11 +12,8 @@ import SceneBrackets from "../../components/scene/sceneBrackets";
 
 export default function Scene() {
     // Refs
-    const scene = useRef<HTMLDivElement>(null!);
     const sceneLogo = useRef<HTMLDivElement>(null!);
     const sceneBrackets = useRef<HTMLDivElement>(null!);
-    // Plugins
-    gsap.registerPlugin(ScrollTrigger)
 
     // Scroll timeline
     const getScrollTL = (ctx: gsap.Context) => {
@@ -87,7 +84,10 @@ export default function Scene() {
     }
 
     // Initiate timelines
-    useEffect(() => {
+    useLayoutEffect(() => {
+        // Plugins
+        gsap.registerPlugin(ScrollTrigger)
+
         const ctx = gsap.context((self) => {
             getScrollTL(self);
         })
