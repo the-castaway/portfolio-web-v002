@@ -346,4 +346,27 @@
         grid-row: 1;
         grid-column: 1 / -1;
     }
+
+    .homeFeaturedMobile {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+
+    .homeFeaturedProject {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1 / -1;
+        gap: 10px;
+    }
+
+    .homeFeaturedPreviewMedia {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/5;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
 }

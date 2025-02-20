@@ -12,9 +12,8 @@ import Scene from "./components/scene/scene";
 import Banner from "./components/home/banner";
 // Context 
 import { useScreenSize } from "./context/screenSizeContext";
-// Projects
+// Data
 import { Projects } from '../app/projects/projects';
-
 
 export default function Home() {
   // Refs
@@ -42,7 +41,6 @@ export default function Home() {
         homeFeaturedStatic.current,
         {
           opacity: 1,
-          // y: 0,
           duration: 0.3,
           ease: "ease",
         },
@@ -129,20 +127,14 @@ export default function Home() {
       effects: true,
     });
 
-    const ctx = gsap.context((self) => {
-      getFeaturedIntroTL(self);
-      getFeaturedTimelines(self);
-    });
-    return () => ctx.revert();
-
-    // if (!isMobile) {
-    //   const ctx = gsap.context((self) => {
-    //     getFeaturedIntroTL(self);
-    //     getFeaturedTimelines(self);
-    //   });
-    //   return () => ctx.revert();
-    // }
-  }, []);
+    if (!isMobile) {
+      const ctx = gsap.context((self) => {
+        getFeaturedIntroTL(self);
+        getFeaturedTimelines(self);
+      });
+      return () => ctx.revert();
+    }
+  }, [isMobile]);
 
   return (
     <div>
@@ -204,16 +196,43 @@ export default function Home() {
               </section>
               {/* Featured */}
               <section className={styles.homeFeatured}>
-                <div className={`${styles.homeFeaturedPreviews} grid`}>
-                  <div ref={homeFeaturedPreviewsList} className={styles.homeFeaturedPreviewsList}>
+                {isMobile ?
+                  <div className={`${styles.homeFeaturedMobile} grid`}>
                     {
                       projects.map((project) =>
-                        <div className={styles.homeFeaturedPreviewMedia} key={project.key}>
-                          <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                        <div className={styles.homeFeaturedProject} key={project.key}>
+                          <p className={`detail`}>
+                            <span className={`textColorOffBlack`}>Featured Work</span>
+                          </p>
+                          <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                            {project.number}
+                          </p>
+                          <div className={styles.homeFeaturedPreviewMedia}>
+                            <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                          </div>
+                          <h1>
+                            {project.name}
+                          </h1>
+                          <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                            {project.involvement.map((involvement) =>
+                              <li key={involvement}><i>{involvement}</i></li>)
+                            }
+                          </ul>
                         </div>)
                     }
                   </div>
-                </div>
+                  :
+                  <div className={`${styles.homeFeaturedPreviews} grid`}>
+                    <div ref={homeFeaturedPreviewsList} className={styles.homeFeaturedPreviewsList}>
+                      {
+                        projects.map((project) =>
+                          <div className={styles.homeFeaturedPreviewMedia} key={project.key}>
+                            <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                          </div>)
+                      }
+                    </div>
+                  </div>
+                }
               </section>
               {/* CTA */}
               <section className={styles.homeCTA}>
@@ -244,78 +263,79 @@ export default function Home() {
           </div>
         </div >
         {/* Featured Static Text */}
-        <div ref={homeFeaturedStatic} className={styles.homeFeaturedStatic}>
-          <div className={`${styles.homeFeaturedStaticContainer} grid`}>
-            {/* Number */}
-            <div className={styles.homeFeaturedNumber}>
-              <p className={`detail`}>
-                <span className={`textColorOffBlack`}>Featured Works</span>
-              </p>
-              <div className={styles.homeFeaturedNumberContainer}>
-                <div className={styles.homeFeaturedActiveNumbers}>
+        {isMobile ? null :
+          <div ref={homeFeaturedStatic} className={styles.homeFeaturedStatic}>
+            <div className={`${styles.homeFeaturedStaticContainer} grid`}>
+              {/* Number */}
+              <div className={styles.homeFeaturedNumber}>
+                <p className={`detail`}>
+                  <span className={`textColorOffBlack`}>Featured Works</span>
+                </p>
+                <div className={styles.homeFeaturedNumberContainer}>
+                  <div className={styles.homeFeaturedActiveNumbers}>
+                    {
+                      projects.map((project) =>
+                        <div className={styles.homeFeaturedActiveNumber} key={project.key}>
+                          <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                            {project.number}
+                          </p>
+                        </div>)
+                    }
+                  </div>
+                  <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                    /006
+                  </p>
+                </div>
+              </div>
+              {/* Title */}
+              <div className={styles.homeFeaturedTitles}>
+                {
+                  projects.map((project) =>
+                    <div className={styles.homeFeaturedTitle} key={project.key}>
+                      <h1>
+                        {project.name}
+                      </h1>
+                    </div>)
+                }
+              </div>
+              {/* Company */}
+              <div className={styles.homeFeaturedCompany}>
+                <p className={`detail`}>
+                  <span className={`textColorOffBlack`}>Company</span>
+                </p>
+                <div className={styles.homeFeaturedCompanyNames}>
                   {
                     projects.map((project) =>
-                      <div className={styles.homeFeaturedActiveNumber} key={project.key}>
-                        <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
-                          {project.number}
+                      <div className={styles.homeFeaturedCompanyName} key={project.key}>
+                        <p className={`detail`}>
+                          <span className={`textColorGrey`}>{project.company}</span>
                         </p>
                       </div>)
                   }
                 </div>
-                <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
-                  /006
+              </div>
+              {/* Involvement */}
+              <div className={styles.homeFeaturedInvolvement}>
+                <p className={`detail`}>
+                  <span className={`textColorOffBlack`}>
+                    Involvement
+                  </span>
                 </p>
+                <div className={styles.homeFeaturedInvolvementLists}>
+                  {
+                    projects.map((project) =>
+                      <div className={styles.homeFeaturedInvolvementList} key={project.key}>
+                        <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                          {project.involvement.map((involvement) =>
+                            <li key={involvement}><i>{involvement}</i></li>)
+                          }
+                        </ul>
+                      </div>)
+                  }
+                </div>
               </div>
             </div>
-            {/* Title */}
-            <div className={styles.homeFeaturedTitles}>
-              {
-                projects.map((project) =>
-                  <div className={styles.homeFeaturedTitle} key={project.key}>
-                    <h1>
-                      {project.name}
-                    </h1>
-                  </div>)
-              }
-            </div>
-            {/* Company */}
-            <div className={styles.homeFeaturedCompany}>
-              <p className={`detail`}>
-                <span className={`textColorOffBlack`}>Company</span>
-              </p>
-              <div className={styles.homeFeaturedCompanyNames}>
-                {
-                  projects.map((project) =>
-                    <div className={styles.homeFeaturedCompanyName} key={project.key}>
-                      <p className={`detail`}>
-                        <span className={`textColorGrey`}>{project.company}</span>
-                      </p>
-                    </div>)
-                }
-              </div>
-            </div>
-            {/* Involvement */}
-            <div className={styles.homeFeaturedInvolvement}>
-              <p className={`detail`}>
-                <span className={`textColorOffBlack`}>
-                  Involvement
-                </span>
-              </p>
-              <div className={styles.homeFeaturedInvolvementLists}>
-                {
-                  projects.map((project) =>
-                    <div className={styles.homeFeaturedInvolvementList} key={project.key}>
-                      <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
-                        {project.involvement.map((involvement) =>
-                          <li key={involvement}><i>{involvement}</i></li>)
-                        }
-                      </ul>
-                    </div>)
-                }
-              </div>
-            </div>
-          </div>
-        </div>
+          </div>}
       </main >
     </div >
   );
