@@ -31,10 +31,12 @@ export default function Scene() {
                 }
             }).to(sceneLogo.current, {
                 opacity: 0,
+                zIndex: -2,
             }, 0
             ).to(sceneBrackets.current, {
                 opacity: 1,
                 y: 0,
+                zIndex: -1,
                 delay: 0.2,
                 ease: 'ease',
             },
