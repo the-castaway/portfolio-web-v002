@@ -19,32 +19,75 @@ export default function Scene() {
     gsap.registerPlugin(ScrollTrigger)
 
     // Scroll timeline
-    const getScrollTL = () => {
-        const scrollTL = gsap.timeline({
-            scrollTrigger: {
-                pin: false,
-                start: 0,
-                end: () => innerHeight / 2,
-                scrub: 1,
-                markers: false,
-            }
-        });
-        scrollTL.to(sceneLogo.current, {
-            opacity: 0,
-        }, 0)
-            .from(sceneBrackets.current, {
+    const getScrollTL = (ctx: gsap.Context) => {
+        ctx.add(() => {
+            gsap.timeline({
+                scrollTrigger: {
+                    pin: false,
+                    start: 0,
+                    end: () => innerHeight / 2,
+                    scrub: 1,
+                    markers: false,
+                }
+            }).to(sceneLogo.current, {
                 opacity: 0,
-                y: '20%',
+            }, 0
+            ).to(sceneBrackets.current, {
+                opacity: 1,
+                y: 0,
                 delay: 0.2,
                 ease: 'ease',
-            }, 0)
-        return scrollTL;
+            },
+                0
+            )
+        });
+        ctx.add(() => {
+            gsap.timeline({
+                scrollTrigger: {
+                    pin: false,
+                    start: innerHeight,
+                    end: () => innerHeight * 2.5,
+                    scrub: 1,
+                    markers: false,
+                }
+            }).to(sceneBrackets.current, {
+                opacity: 0,
+                delay: 0.2,
+                ease: 'ease',
+            },
+                0
+            ).set(sceneBrackets.current, {
+                opacity: 0,
+                y: '20%',
+            })
+        });
+        ctx.add(() => {
+            gsap.timeline({
+                scrollTrigger: {
+                    pin: false,
+                    start: () => ScrollTrigger.maxScroll(window) - 200,
+                    end: () => ScrollTrigger.maxScroll(window),
+                    scrub: 1,
+                    markers: false,
+                }
+            }).set(sceneBrackets.current, {
+                opacity: 0,
+                y: '20%',
+            }).to(sceneBrackets.current, {
+                opacity: 1,
+                y: 0,
+                delay: 0.2,
+                ease: 'ease',
+            },
+                0
+            )
+        });
     }
 
     // Initiate timelines
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            getScrollTL();
+        const ctx = gsap.context((self) => {
+            getScrollTL(self);
         })
         return () => {
             ctx.revert();

@@ -74,7 +74,7 @@ export default function Home() {
             scrub: false,
             markers: false,
             toggleActions: "play none none reverse",
-            invalidateOnRefresh: true,
+            invalidateOnRefresh: false,
           },
         }).to(
           [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
@@ -98,7 +98,7 @@ export default function Home() {
             scrub: false,
             markers: false,
             toggleActions: "play none none reverse",
-            invalidateOnRefresh: true,
+            invalidateOnRefresh: false,
           },
         }).to(
           [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
@@ -111,11 +111,6 @@ export default function Home() {
           0
         );
       });
-
-
-
-
-
     });
   };
 
@@ -288,7 +283,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
-                  / 006
+                  /006
                 </p>
               </div>
             </div>

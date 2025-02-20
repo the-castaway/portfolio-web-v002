@@ -63,8 +63,6 @@ a {
   text-decoration: none;
 }
 
-
-
 /* Text */
 
 h1 {
@@ -171,6 +169,17 @@ h2 {
   gap: 20px;
   box-sizing: border-box;
   padding: 0px 40px;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-family: var(--jc-default-font);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    color: var(--jc-off-white);
+    mix-blend-mode: difference;
+  }
 }
 
 @media (max-width: 768px) {

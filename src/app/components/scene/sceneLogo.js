@@ -141,7 +141,7 @@ export default function SceneLogo() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.5}
+                            chromaticAberration={0.2}
                             emissive='#ECECEC'
                             emissiveIntensity={0.01}
                             color='#ECECEC'
@@ -164,7 +164,7 @@ export default function SceneLogo() {
                             iridescence={2}
                             iridescenceIOR={1}
                             iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.5}
+                            chromaticAberration={0.2}
                             emissive='#ECECEC'
                             emissiveIntensity={0.01}
                             color='#ECECEC'
