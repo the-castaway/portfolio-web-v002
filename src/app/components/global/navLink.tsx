@@ -20,7 +20,7 @@ const NavLink = ({ href, label, number }: Props) => {
     }
 
     return (
-        <a className={styles.navLink} onClick={handleClick}>
+        <div className={styles.navLink} onClick={handleClick}>
             <div className={styles.navLinkText}>
                 <p className={`${styles.navLinkTextNumber} detail`}>
                     <span className={`textColorGrey`}>
@@ -43,7 +43,7 @@ const NavLink = ({ href, label, number }: Props) => {
                     </svg>
                 </div>
             </div>
-        </a>
+        </div>
     )
 }
 

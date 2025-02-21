@@ -90,6 +90,10 @@
     grid-column-end: 18;
 }
 
+.homeFeaturedPreviewsList a {
+    pointer-events: all;
+}
+
 .homeFeaturedPreviewMedia {
     position: relative;
     width: 100%;

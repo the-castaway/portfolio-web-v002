@@ -1,8 +1,6 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
 import { transitionPageOut } from "../../utils/transition/transition"
-//Styles
-import styles from "../../styles/global/link.module.css";
 
 interface Props {
     href: string
@@ -20,7 +18,7 @@ const Link = ({ href, children }: Props) => {
     };
 
     return (
-        <a className={styles.link} onClick={handleClick}>
+        <a onClick={handleClick}>
             {children}
         </a>
     )
