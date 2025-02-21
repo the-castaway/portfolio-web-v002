@@ -10,6 +10,7 @@ import styles from "./styles/pages/home.module.css"
 import Image from "next/image";
 import Scene from "./components/scene/scene";
 import Banner from "./components/home/banner";
+import Link from "./components/global/link";
 // Context 
 import { useScreenSize } from "./context/screenSizeContext";
 // Data
@@ -84,6 +85,7 @@ export default function Home() {
           {
             opacity: 1,
             y: 0,
+            zIndex: 1,
             duration: 0.2,
             ease: "ease",
           },
@@ -108,6 +110,7 @@ export default function Home() {
           {
             opacity: 0,
             y: -10,
+            zIndex: 0,
             duration: 0.2,
             ease: "ease",
           },
@@ -200,25 +203,27 @@ export default function Home() {
                   <div className={`${styles.homeFeaturedMobile} grid`}>
                     {
                       projects.map((project) =>
-                        <div className={styles.homeFeaturedProject} key={project.key}>
-                          <p className={`detail`}>
-                            <span className={`textColorOffBlack`}>Featured Work</span>
-                          </p>
-                          <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
-                            {project.number}
-                          </p>
-                          <div className={styles.homeFeaturedPreviewMedia}>
-                            <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                        <Link href={project.href} key={project.key}>
+                          <div className={styles.homeFeaturedProject}>
+                            <p className={`detail`}>
+                              <span className={`textColorOffBlack`}>Featured Work</span>
+                            </p>
+                            <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
+                              {project.number}
+                            </p>
+                            <div className={styles.homeFeaturedPreviewMedia}>
+                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                            </div>
+                            <h1>
+                              {project.name}
+                            </h1>
+                            <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
+                              {project.involvement.map((involvement) =>
+                                <li key={involvement}><i>{involvement}</i></li>)
+                              }
+                            </ul>
                           </div>
-                          <h1>
-                            {project.name}
-                          </h1>
-                          <ul className={`${styles.homeFeaturedInvolmentListItems} textFontHighlight textColorGrey`}>
-                            {project.involvement.map((involvement) =>
-                              <li key={involvement}><i>{involvement}</i></li>)
-                            }
-                          </ul>
-                        </div>)
+                        </Link>)
                     }
                   </div>
                   :
@@ -226,9 +231,11 @@ export default function Home() {
                     <div ref={homeFeaturedPreviewsList} className={styles.homeFeaturedPreviewsList}>
                       {
                         projects.map((project) =>
-                          <div className={styles.homeFeaturedPreviewMedia} key={project.key}>
-                            <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
-                          </div>)
+                          <Link href={project.href} key={project.key}>
+                            <div className={styles.homeFeaturedPreviewMedia}>
+                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                            </div>
+                          </Link>)
                       }
                     </div>
                   </div>
@@ -291,11 +298,13 @@ export default function Home() {
               <div className={styles.homeFeaturedTitles}>
                 {
                   projects.map((project) =>
-                    <div className={styles.homeFeaturedTitle} key={project.key}>
-                      <h1>
-                        {project.name}
-                      </h1>
-                    </div>)
+                    <Link href={project.href} key={project.key}>
+                      <div className={styles.homeFeaturedTitle}>
+                        <h1>
+                          {project.name}
+                        </h1>
+                      </div>
+                    </Link>)
                 }
               </div>
               {/* Company */}
