@@ -1,0 +1,100 @@
+.button {
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    color: var(--jc-off-white);
+    position: relative;
+    pointer-events: all;
+    font-size: 12px;
+    font-weight: 600;
+
+}
+
+.buttonCornerTopLeft {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-top: 1px solid var(--jc-off-white);
+    border-left: 1px solid var(--jc-off-white);
+    border-radius: 2px 0 0 0;
+    transition: 0.2s ease;
+}
+
+.buttonCornerTopRight {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-top: 1px solid var(--jc-off-white);
+    border-right: 1px solid var(--jc-off-white);
+    border-radius: 0 2px 0 0;
+    transition: 0.2s ease;
+}
+
+.buttonCornerBottomRight {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 1px solid var(--jc-off-white);
+    border-right: 1px solid var(--jc-off-white);
+    border-radius: 0 0 2px 0;
+    transition: 0.2s ease;
+}
+
+.buttonCornerBottomLeft {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-bottom: 1px solid var(--jc-off-white);
+    border-left: 1px solid var(--jc-off-white);
+    border-radius: 0 0 0 2px;
+    transition: 0.2s ease;
+}
+
+
+
+
+
+
+
+
+
+.button:hover {
+    color: var(--jc-blue);
+    transition: 0.2s ease;
+}
+
+.button:hover .buttonCornerTopLeft {
+    border-top: 1px solid var(--jc-blue);
+    border-left: 1px solid var(--jc-blue);
+    transform: translate(100%, 100%);
+}
+
+.button:hover .buttonCornerTopRight {
+    border-top: 1px solid var(--jc-blue);
+    border-right: 1px solid var(--jc-blue);
+    transform: translate(-100%, 100%);
+}
+
+.button:hover .buttonCornerBottomRight {
+    border-bottom: 1px solid var(--jc-blue);
+    border-right: 1px solid var(--jc-blue);
+    transform: translate(-100%, -100%);
+}
+
+.button:hover .buttonCornerBottomLeft {
+    border-bottom: 1px solid var(--jc-blue);
+    border-left: 1px solid var(--jc-blue);
+    transform: translate(100%, -100%);
+}

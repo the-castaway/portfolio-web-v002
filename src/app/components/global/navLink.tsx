@@ -13,14 +13,15 @@ interface Props {
 const NavLink = ({ href, label, number }: Props) => {
     const router = useRouter();
     const pathname = usePathname();
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault(); // Prevent default navigation
         if (pathname !== href) {
             transitionPageOut(href, router)
         }
     }
 
     return (
-        <div className={styles.navLink} onClick={handleClick}>
+        <a className={styles.navLink} onClick={handleClick} href={href}>
             <div className={styles.navLinkText}>
                 <p className={`${styles.navLinkTextNumber} detail`}>
                     <span className={`textColorGrey`}>
@@ -43,7 +44,7 @@ const NavLink = ({ href, label, number }: Props) => {
                     </svg>
                 </div>
             </div>
-        </div>
+        </a>
     )
 }
 

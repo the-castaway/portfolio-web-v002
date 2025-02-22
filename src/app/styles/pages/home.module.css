@@ -244,6 +244,7 @@
 .homeCTAHeader {
     grid-column-start: 5;
     grid-column-end: 21;
+    padding-top: 120px;
 }
 
 .homeCTAHeaderText {
@@ -254,16 +255,35 @@
     grid-column-start: 5;
     grid-column-end: 8;
     position: relative;
+    padding-top: 30px;
 }
 
 .homeCTALocale {
     grid-column-start: 9;
     grid-column-end: 15;
+    padding-top: 30px;
 }
 
 .homeCTASocials {
     grid-column-start: 15;
     grid-column-end: 18;
+    padding-top: 30px;
+}
+
+.homeCTASocial {
+    pointer-events: all;
+    transition: 0.2s all ease;
+    padding: 0 5px;
+}
+
+.homeCTASocial:hover {
+    color: var(--jc-blue)
+}
+
+.homeCTAButton {
+    grid-column-start: 5;
+    grid-column-end: 21;
+    padding-top: 100px;
 }
 
 /* Desktop */
@@ -372,6 +392,65 @@
         aspect-ratio: 4/5;
         border-radius: 5px;
         overflow: hidden;
+    }
+
+    /* CTA */
+
+    .homeCTA {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .homeCTAContent {
+        height: auto;
+        width: 100%;
+    }
+
+    .homeCTAHeader {
+        grid-column-start: 5;
+        grid-column-end: 21;
+        padding-top: 120px;
+        grid-column: 1 / -1;
+    }
+
+    .homeCTAHeaderText {
+        font-size: 48px;
+    }
+
+    .homeCTATitle {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        position: relative;
+    }
+
+    .homeCTALocale {
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+
+    .homeCTASocials {
+        grid-column-start: 15;
+        grid-column-end: 18;
+        grid-column: 1 / -1;
+    }
+
+    .homeCTASocial {
+        pointer-events: all;
+        transition: 0.2s all ease;
+        padding: 0 5px;
+    }
+
+    .homeCTASocial:hover {
+        color: var(--jc-blue)
+    }
+
+    .homeCTAButton {
+        grid-column-start: 5;
+        grid-column-end: 21;
+        padding-top: 100px;
+        grid-column: 1 / -1;
     }
 
 }

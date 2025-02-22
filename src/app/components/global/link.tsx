@@ -18,7 +18,7 @@ const Link = ({ href, children }: Props) => {
     };
 
     return (
-        <a onClick={handleClick}>
+        <a onClick={handleClick} href={href}>
             {children}
         </a>
     )

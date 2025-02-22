@@ -15,6 +15,7 @@ import Link from "./components/global/link";
 import { useScreenSize } from "./context/screenSizeContext";
 // Data
 import { Projects } from '../app/projects/projects';
+import Button from "./components/global/button";
 
 export default function Home() {
   // Refs
@@ -214,7 +215,7 @@ export default function Home() {
                               {project.number}
                             </p>
                             <div className={styles.homeFeaturedPreviewMedia}>
-                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" loading="lazy" />
                             </div>
                             <h1>
                               {project.name}
@@ -235,7 +236,7 @@ export default function Home() {
                         projects.map((project) =>
                           <Link href={project.href} key={project.key}>
                             <div className={styles.homeFeaturedPreviewMedia}>
-                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" />
+                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" loading="lazy" />
                             </div>
                           </Link>)
                       }
@@ -263,8 +264,23 @@ export default function Home() {
                   </div>
                   <div className={styles.homeCTASocials}>
                     <p className={`detail`}>
-                      <span className={`textColorGrey`}>X / IG / LI</span>
+                      <a className={styles.homeCTASocial} href="https://www.google.com">
+                        X
+                      </a>
+                      <span className={`textColorGrey`}>/</span>
+                      <a className={styles.homeCTASocial} href="https://www.google.com">
+                        IG
+                      </a>
+                      <span className={`textColorGrey`}>/</span>
+                      <a className={styles.homeCTASocial} href="https://www.google.com">
+                        LI
+                      </a>
                     </p>
+                  </div>
+                  <div className={styles.homeCTAButton}>
+                    <Button href={'https://www.google.com'}>
+                      Contact
+                    </Button>
                   </div>
                 </div>
               </section>
