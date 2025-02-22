@@ -28,6 +28,7 @@
     opacity: 0;
     pointer-events: none;
     transform: translate(0, 20%);
+    will-change: transform;
 }
 
 /* Scene */
