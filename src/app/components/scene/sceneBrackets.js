@@ -23,7 +23,7 @@ export default function SceneBrackets() {
             {/* Rig */}
             <Rig />
             {/* Environment */}
-            <Environment files="/media/3D/monotone_environment.exr" environmentIntensity={1} resolution={1024} />
+            <Environment files="/media/3D/environment.exr" environmentIntensity={1} resolution={1024} />
             {/* Apply post-processing ONLY to SceneBrackets */}
             <EffectComposer>
                 <DepthOfField focusDistance={0} focalLength={0.0} bokehScale={7} height={700} />
