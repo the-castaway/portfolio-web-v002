@@ -1,0 +1,45 @@
+.project {
+    position: relative;
+}
+
+.projectIntro {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.projectIntroContent {
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.projectIntroNumber {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column-start: 5;
+    grid-column-end: 10;
+    text-align: left;
+}
+
+.projectIntroInvolvement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column-start: 18;
+    grid-column-end: 21;
+
+}
+
+.projectIntroInvolvementList {
+    list-style-type: none;
+}
+
+
+.spacer {
+    height: 200vh;
+}

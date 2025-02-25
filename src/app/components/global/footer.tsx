@@ -15,7 +15,6 @@ const Footer = () => {
     const footerProgressBar = useRef<HTMLDivElement>(null);
     const footerProgressBarFill = useRef<HTMLDivElement>(null);
 
-
     // Initialize GSAP timeline
     useEffect(() => {
         const ctx = gsap.context(() => {

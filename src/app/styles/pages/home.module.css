@@ -402,11 +402,6 @@
         align-items: center;
     }
 
-    .homeFeaturedPreviewMedia img {
-        height: auto !important;
-        width: 100%;
-    }
-
     .homeFeaturedTitleText {
         font-size: 32px;
     }

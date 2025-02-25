@@ -25,7 +25,7 @@ export default function Scene() {
                     end: () => innerHeight / 2,
                     scrub: 1,
                     markers: false,
-                    invalidateOnRefresh: true,
+                    invalidateOnRefresh: false,
                 }
             }).to(sceneLogo.current, {
                 opacity: 0,
@@ -49,7 +49,7 @@ export default function Scene() {
                     end: () => innerHeight * 2.5,
                     scrub: 1,
                     markers: false,
-                    invalidateOnRefresh: true,
+                    invalidateOnRefresh: false,
                 }
             }).to(sceneBrackets.current, {
                 opacity: 0,
@@ -70,7 +70,7 @@ export default function Scene() {
                     end: () => ScrollTrigger.maxScroll(window),
                     scrub: 1,
                     markers: false,
-                    invalidateOnRefresh: true,
+                    invalidateOnRefresh: false,
                 }
             }).set(sceneBrackets.current, {
                 opacity: 0,
