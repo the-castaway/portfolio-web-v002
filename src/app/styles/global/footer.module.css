@@ -30,6 +30,10 @@
     gap: 10px;
 }
 
+.footerScrollTracker a {
+    cursor: pointer;
+}
+
 .footerScrollTrackerProgressBar {
     width: 100%;
     flex-grow: 1;

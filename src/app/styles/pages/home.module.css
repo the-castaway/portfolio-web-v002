@@ -173,6 +173,10 @@
     transform: translate(0, 30px);
 }
 
+.homeFeaturedTitleText {
+    font-size: 64px;
+}
+
 .homeFeaturedCompany {
     display: flex;
     flex-direction: column;
@@ -386,12 +390,25 @@
     }
 
     .homeFeaturedPreviewMedia {
-        position: relative;
+
+        height: auto;
         width: 100%;
         height: auto;
-        aspect-ratio: 4/5;
+        aspect-ratio: 5/4;
         border-radius: 5px;
         overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .homeFeaturedPreviewMedia img {
+        height: auto !important;
+        width: 100%;
+    }
+
+    .homeFeaturedTitleText {
+        font-size: 32px;
     }
 
     /* CTA */

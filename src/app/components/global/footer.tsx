@@ -72,7 +72,8 @@ const Footer = () => {
     }, [isAtBottom]);
 
     // Scroll to top function
-    const scrollToTop = () => {
+    const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault(); // Prevent default navigation
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
@@ -95,7 +96,7 @@ const Footer = () => {
             </div>
             <div className={styles.footerScrollTracker}>
                 {isAtBottom ?
-                    <a onClick={scrollToTop}>
+                    <a onClick={scrollToTop} href="">
                         <p className={`detail`}>
                             BACK&nbsp;TO&nbsp;TOP
                         </p>
