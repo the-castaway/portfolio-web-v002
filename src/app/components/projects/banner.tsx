@@ -21,7 +21,7 @@ const Banner = ({ media, title }: Props) => {
             scrollTrigger: {
                 pin: false,
                 start: 0,
-                end: () => innerHeight / 2,
+                end: () => innerHeight / 4,
                 scrub: 1,
                 markers: false,
             }
