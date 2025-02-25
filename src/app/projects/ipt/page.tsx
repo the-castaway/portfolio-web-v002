@@ -11,7 +11,6 @@ import Banner from "../../components/projects/banner";
 // Data
 import { Projects } from '../../projects/projects'
 
-
 export default function Page() {
 
     // Initialize GSAP timelines and plugins
@@ -32,7 +31,7 @@ export default function Page() {
                 {/* Smooth Scroller */}
                 <div id="smooth-wrapper" className={styles.homeScroll}>
                     <div id="smooth-content" className={styles.homeScrollContent}>
-                        <Banner media={Projects[0].thumbnail} title={'Interactive Product Tour'} />
+                        <Banner media={Projects[0].thumbnail_desktop} title={'Interactive Product Tour'} />
                         {/* Intro */}
                         <section className={styles.projectIntro}>
                             <div className={`${styles.projectIntroContent} grid`}>

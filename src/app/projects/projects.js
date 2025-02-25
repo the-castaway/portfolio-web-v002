@@ -6,7 +6,8 @@ export const Projects = [
         involvement: ["UI Design", "Front-end Eng", "3D Modeling"],
         company: "Meta Platforms",
         href: 'projects/ipt',
-        thumbnail: '/media/thumbnails/ipt_thumbnail.webp',
+        thumbnail_mobile: '/media/thumbnails/mobile/ipt.webp',
+        thumbnail_desktop: '/media/thumbnails/desktop/ipt.webp'
     },
     {
         key: 2,
@@ -15,7 +16,8 @@ export const Projects = [
         involvement: ["UI Design", "Product Design", "Prototyping"],
         company: "Meta Platforms",
         href: 'projects/meta-news',
-        thumbnail: '/media/thumbnails/news_thumbnail.webp',
+        thumbnail_mobile: '/media/thumbnails/mobile/news.webp',
+        thumbnail_desktop: '/media/thumbnails/desktop/news.webp'
     },
     {
         key: 3,
@@ -24,7 +26,8 @@ export const Projects = [
         involvement: ["UI Design", "Front-end Eng", "Asset Procurement"],
         company: "Meta Platforms",
         href: 'projects/stp',
-        thumbnail: '/media/thumbnails/stp_thumbnail.webp',
+        thumbnail_mobile: '/media/thumbnails/mobile/stp.webp',
+        thumbnail_desktop: '/media/thumbnails/desktop/stp.webp'
     },
     {
         key: 4,
@@ -33,7 +36,8 @@ export const Projects = [
         involvement: ["UI Design", "Front-end Eng", "Prototyping"],
         company: "Meta Platforms",
         href: 'projects/cv',
-        thumbnail: '/media/thumbnails/cv_thumbnail.webp',
+        thumbnail_mobile: '/media/thumbnails/mobile/cv.webp',
+        thumbnail_desktop: '/media/thumbnails/desktop/cv.webp'
     },
     {
         key: 5,
@@ -42,7 +46,8 @@ export const Projects = [
         involvement: ["UI Design", "Front-end Eng", "2D Animations"],
         company: "Meta Platforms",
         href: 'projects/metaverse',
-        thumbnail: '/media/thumbnails/metaverse_thumbnail.webp',
+        thumbnail_mobile: '/media/thumbnails/mobile/metaverse.webp',
+        thumbnail_desktop: '/media/thumbnails/desktop/metaverse.webp'
     },
     {
         key: 6,
@@ -51,7 +56,8 @@ export const Projects = [
         involvement: ["UI Design", "Front-end Eng", "3D Modeling"],
         company: "Meta Platforms",
         href: 'projects/mtia-v2',
-        thumbnail: '/media/thumbnails/mtia_thumbnail.webp',
+        thumbnail_mobile: '/media/thumbnails/mobile/mtia.webp',
+        thumbnail_desktop: '/media/thumbnails/desktop/mtia.webp'
     },
 
 ] 

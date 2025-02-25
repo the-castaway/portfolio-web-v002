@@ -1,6 +1,6 @@
 // `app/home.tsx` is the UI for the `/` URL
 "use client"
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
@@ -22,7 +22,7 @@ export default function Home() {
   const homeFeaturedStatic = useRef<HTMLDivElement>(null!)
   const homeFeaturedPreviewsList = useRef<HTMLDivElement>(null!)
   //variables
-  const projects = Projects.slice(0, 6);
+  const projects = useMemo(() => Projects.slice(0, 6), []);
   // Context
   const { isMobile } = useScreenSize();
 
@@ -56,6 +56,9 @@ export default function Home() {
     const previews = gsap.utils.toArray<HTMLElement>(
       `.${styles.homeFeaturedPreviewMedia}`
     );
+    const medias = gsap.utils.toArray<HTMLElement>(
+      `.${styles.homeFeaturedPreviewMediaContainer}`
+    );
     const titles = gsap.utils.toArray<HTMLElement>(
       `.${styles.homeFeaturedTitle}`
     );
@@ -69,6 +72,27 @@ export default function Home() {
       `.${styles.homeFeaturedActiveNumber}`
     );
     previews.forEach((preview, index) => {
+      ctx.add(() => {
+        gsap.timeline({
+          ease: "none",
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: preview,
+            pin: false,
+            start: `top bottom`,
+            end: `bottom top`,
+            scrub: true,
+            markers: false,
+            invalidateOnRefresh: false,
+          },
+        }).to(
+          medias[index],
+          {
+            y: "28%",
+          },
+          0
+        );
+      });
       ctx.add(() => {
         gsap.timeline({
           scrollTrigger: {
@@ -94,7 +118,6 @@ export default function Home() {
           0
         );
       });
-
       ctx.add(() => {
         gsap.timeline({
           scrollTrigger: {
@@ -129,7 +152,7 @@ export default function Home() {
     ScrollSmoother.create({
       content: "#smooth-content",
       wrapper: "#smooth-wrapper",
-      smooth: 2,
+      smooth: 1,
       effects: true,
     });
 
@@ -215,7 +238,7 @@ export default function Home() {
                               {project.number} / 006
                             </p>
                             <div className={styles.homeFeaturedPreviewMedia}>
-                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
+                              <Image src={project.thumbnail_mobile} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
                             </div>
                             <h1 className={styles.homeFeaturedTitleText}>
                               {project.name}
@@ -236,7 +259,10 @@ export default function Home() {
                         projects.map((project) =>
                           <Link href={project.href} key={project.key}>
                             <div className={styles.homeFeaturedPreviewMedia}>
-                              <Image src={project.thumbnail} alt="thumbnail" fill={true} sizes="100%" loading="lazy" />
+                              <div className={styles.homeFeaturedPreviewMediaOverlay} />
+                              <div className={styles.homeFeaturedPreviewMediaContainer}>
+                                <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
+                              </div>
                             </div>
                           </Link>)
                       }
