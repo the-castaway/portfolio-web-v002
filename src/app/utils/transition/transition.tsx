@@ -4,7 +4,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 const DURATION = 1;
 const DELAY = 0.3;
-const EASE = "power4.in";
+const EASE = "power1.in";
 
 export const transitionPageIn = () => {
     const mask = document.getElementById("mask");

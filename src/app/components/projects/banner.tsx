@@ -14,6 +14,7 @@ interface Props {
 const Banner = ({ media, title }: Props) => {
     // Refs
     const bannerOverlay = useRef<HTMLDivElement>(null!);
+    const bannerMedia = useRef<HTMLDivElement>(null!);
 
     // Banner intro timeline
     const getScrollTL = () => {
@@ -22,13 +23,16 @@ const Banner = ({ media, title }: Props) => {
                 pin: false,
                 start: 0,
                 end: () => innerHeight / 4,
-                scrub: 1,
+                scrub: true,
                 markers: false,
+                invalidateOnRefresh: true,
             }
         });
         scrollTL.to(bannerOverlay.current, {
             opacity: 1,
-            ease: 'ease',
+        }, 0)
+        scrollTL.to(bannerMedia.current, {
+            y: "5%",
         }, 0)
         return scrollTL;
     }
@@ -49,7 +53,10 @@ const Banner = ({ media, title }: Props) => {
                 </h1>
             </div>
             <div ref={bannerOverlay} className={styles.bannerOverlay} />
-            <Image src={media} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
+            <div className={styles.bannerGradient} />
+            <div ref={bannerMedia} className={styles.bannerMediaContainer}>
+                <Image src={media} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
+            </div>
         </div>
     )
 }
