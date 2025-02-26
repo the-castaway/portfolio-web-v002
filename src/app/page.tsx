@@ -109,7 +109,7 @@ export default function Home() {
             end: `bottom top`,
             scrub: true,
             markers: false,
-            invalidateOnRefresh: false,
+            invalidateOnRefresh: true,
             onEnter: () => previewIntroTL.play(),
             onEnterBack: () => previewOutroTL.reverse(),
             onLeave: () => previewOutroTL.play(),
@@ -119,8 +119,8 @@ export default function Home() {
           medias[index],
           {
             y: "28%",
-          },
-          0
+            ease: "none",
+          }
         );
       })
     });
