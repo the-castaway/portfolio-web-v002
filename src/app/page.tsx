@@ -73,32 +73,6 @@ export default function Home() {
     );
     previews.forEach((preview, index) => {
       ctx.add(() => {
-        const previewIntroTL = gsap.timeline({ paused: true })
-          .to(
-            [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
-            {
-              opacity: 1,
-              y: 0,
-              zIndex: 1,
-              pointerEvents: 'all',
-              duration: 0.2,
-              ease: "ease",
-            },
-            0
-          );
-        const previewOutroTL = gsap.timeline({ paused: true })
-          .to(
-            [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
-            {
-              opacity: 0,
-              y: -10,
-              zIndex: 0,
-              pointerEvents: 'none',
-              duration: 0.2,
-              ease: "ease",
-            },
-            0
-          );
         gsap.timeline({
           ease: "none",
           overwrite: "auto",
@@ -110,10 +84,6 @@ export default function Home() {
             scrub: true,
             markers: false,
             invalidateOnRefresh: false,
-            onEnter: () => previewIntroTL.play(),
-            onEnterBack: () => previewOutroTL.reverse(),
-            onLeave: () => previewOutroTL.play(),
-            onLeaveBack: () => previewIntroTL.reverse(),
           },
         }).to(
           medias[index],
@@ -122,7 +92,57 @@ export default function Home() {
           },
           0
         );
-      })
+      });
+      ctx.add(() => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: preview,
+            pin: false,
+            start: `top bottom`,
+            end: `top bottom`,
+            scrub: false,
+            markers: false,
+            toggleActions: "play none none reverse",
+            invalidateOnRefresh: false,
+          },
+        }).to(
+          [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
+          {
+            opacity: 1,
+            y: 0,
+            zIndex: 1,
+            pointerEvents: 'all',
+            duration: 0.2,
+            ease: "ease",
+          },
+          0
+        );
+      });
+      ctx.add(() => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: preview,
+            pin: false,
+            start: `bottom top`,
+            end: `bottom top`,
+            scrub: false,
+            markers: false,
+            toggleActions: "play none none reverse",
+            invalidateOnRefresh: false,
+          },
+        }).to(
+          [titles[index], involvements[index], companyNames[index], activeNumbers[index]],
+          {
+            opacity: 0,
+            y: -10,
+            zIndex: 0,
+            pointerEvents: 'none',
+            duration: 0.2,
+            ease: "ease",
+          },
+          0
+        );
+      });
     });
   };
 
