@@ -25,16 +25,36 @@ export default function Scene() {
                     end: () => innerHeight / 2,
                     scrub: 1,
                     markers: false,
-                    invalidateOnRefresh: false,
+                    invalidateOnRefresh: true,
                 }
             }).to(sceneLogo.current, {
                 opacity: 0,
                 zIndex: -2,
             }, 0
-            ).to(sceneBrackets.current, {
-                opacity: 1,
-                y: 0,
-                zIndex: -1,
+            )
+
+                .to(sceneBrackets.current, {
+                    opacity: 1,
+
+                    zIndex: -1,
+                    delay: 0.2,
+                    ease: 'ease',
+                },
+                    0
+                )
+        });
+        ctx.add(() => {
+            gsap.timeline({
+                scrollTrigger: {
+                    pin: false,
+                    start: innerHeight,
+                    end: () => innerHeight * 2.5,
+                    scrub: 1,
+                    markers: false,
+                    invalidateOnRefresh: true,
+                }
+            }).to(sceneBrackets.current, {
+                opacity: 0,
                 delay: 0.2,
                 ease: 'ease',
             },
@@ -45,36 +65,12 @@ export default function Scene() {
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,
-                    start: innerHeight,
-                    end: () => innerHeight * 2.5,
-                    scrub: 1,
-                    markers: false,
-                    invalidateOnRefresh: false,
-                }
-            }).to(sceneBrackets.current, {
-                opacity: 0,
-                delay: 0.2,
-                ease: 'ease',
-            },
-                0
-            ).set(sceneBrackets.current, {
-                opacity: 0,
-                y: '20%',
-            })
-        });
-        ctx.add(() => {
-            gsap.timeline({
-                scrollTrigger: {
-                    pin: false,
                     start: () => ScrollTrigger.maxScroll(window) - 200,
                     end: () => ScrollTrigger.maxScroll(window),
                     scrub: 1,
                     markers: false,
-                    invalidateOnRefresh: false,
+                    invalidateOnRefresh: true,
                 }
-            }).set(sceneBrackets.current, {
-                opacity: 0,
-                y: '20%',
             }).to(sceneBrackets.current, {
                 opacity: 1,
                 y: 0,

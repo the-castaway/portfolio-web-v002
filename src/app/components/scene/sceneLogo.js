@@ -12,6 +12,7 @@ import { useScreenSize } from "../../context/screenSizeContext";
 export default function SceneLogo() {
     // Refs
     const logo = useRef(null);
+    const logoModel = useRef(null);
     const logoLeft = useRef(null);
     const logoRight = useRef(null);
     const marquee = useRef(null);
@@ -39,26 +40,34 @@ export default function SceneLogo() {
                 end: () => innerHeight / 2,
                 scrub: 1,
                 markers: false,
+
             }
         });
-        scrollTL.to(marqueeText.current.position, {
-            z: 10,
-        }, 0)
-        scrollTL.to(marqueeText.current.material, {
-            opacity: 0,
-        }, 0)
-        scrollTL.to(logoRight.current.rotation, {
-            z: -4,
-        }, 0)
-        scrollTL.to(logoRight.current.position, {
-            x: 10,
-        }, 0)
-        scrollTL.to(logoLeft.current.rotation, {
-            z: -4,
-        }, 0)
-        scrollTL.to(logoLeft.current.position, {
-            x: -10,
-        }, 0)
+        scrollTL
+            .to(marqueeText.current.position, {
+                z: 10,
+            }, 0)
+            .to(marqueeText.current.material, {
+                opacity: 0,
+            }, 0)
+            .to(logoModel.current.rotation, {
+                z: -Math.PI,
+            }, 0)
+            .to(logo.current.position, {
+                z: 10,
+            }, 0)
+            .to(logoRight.current.rotation, {
+                z: -4,
+            }, 0)
+            .to(logoRight.current.position, {
+                x: 2,
+            }, 0)
+            .to(logoLeft.current.rotation, {
+                z: -4,
+            }, 0)
+            .to(logoLeft.current.position, {
+                x: -2,
+            }, 0)
         return scrollTL;
     }
 
@@ -127,52 +136,54 @@ export default function SceneLogo() {
                 </group>
                 {/* Logo */}
                 <group ref={logo} position={[0, 0, 1]} scale={[0.4, 0.4, 0.4]} rotation={[Math.PI / 2, 0, 0]}>
-                    <mesh ref={logoLeft} {...nodes.logo_left}>
-                        <MeshTransmissionMaterial
-                            thickness={1}
-                            samples={8}
-                            resolution={1024}
-                            transmission={1}
-                            anisotropicBlur={1}
-                            envMapIntensity={1}
-                            clearcoat={1}
-                            clearcoatRoughness={0}
-                            ior={1.1}
-                            iridescence={2}
-                            iridescenceIOR={1}
-                            iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.2}
-                            emissive='#ECECEC'
-                            emissiveIntensity={0.01}
-                            color='#ECECEC'
-                            metalness={0}
-                            roughness={0}
-                            backside={false}
-                        />
-                    </mesh>
-                    <mesh ref={logoRight} {...nodes.logo_right}>
-                        <MeshTransmissionMaterial
-                            thickness={1}
-                            samples={8}
-                            resolution={1024}
-                            transmission={1}
-                            anisotropicBlur={1}
-                            envMapIntensity={1}
-                            clearcoat={1}
-                            clearcoatRoughness={0}
-                            ior={1.1}
-                            iridescence={2}
-                            iridescenceIOR={1}
-                            iridescenceThicknessRange={[100, 400]}
-                            chromaticAberration={0.2}
-                            emissive='#ECECEC'
-                            emissiveIntensity={0.01}
-                            color='#ECECEC'
-                            metalness={0}
-                            roughness={0}
-                            backside={false}
-                        />
-                    </mesh>
+                    <group ref={logoModel}>
+                        <mesh ref={logoLeft} {...nodes.logo_left}>
+                            <MeshTransmissionMaterial
+                                thickness={1}
+                                samples={8}
+                                resolution={1024}
+                                transmission={1}
+                                anisotropicBlur={1}
+                                envMapIntensity={1}
+                                clearcoat={1}
+                                clearcoatRoughness={0}
+                                ior={1.1}
+                                iridescence={2}
+                                iridescenceIOR={1}
+                                iridescenceThicknessRange={[100, 400]}
+                                chromaticAberration={0.2}
+                                emissive='#ECECEC'
+                                emissiveIntensity={0.01}
+                                color='#ECECEC'
+                                metalness={0}
+                                roughness={0}
+                                backside={false}
+                            />
+                        </mesh>
+                        <mesh ref={logoRight} {...nodes.logo_right}>
+                            <MeshTransmissionMaterial
+                                thickness={1}
+                                samples={8}
+                                resolution={1024}
+                                transmission={1}
+                                anisotropicBlur={1}
+                                envMapIntensity={1}
+                                clearcoat={1}
+                                clearcoatRoughness={0}
+                                ior={1.1}
+                                iridescence={2}
+                                iridescenceIOR={1}
+                                iridescenceThicknessRange={[100, 400]}
+                                chromaticAberration={0.2}
+                                emissive='#ECECEC'
+                                emissiveIntensity={0.01}
+                                color='#ECECEC'
+                                metalness={0}
+                                roughness={0}
+                                backside={false}
+                            />
+                        </mesh>
+                    </group>
                 </group>
             </group >
             {/* Rig */}

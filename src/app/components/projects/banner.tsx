@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "../../styles/projects/banner.module.css"
 // Components
@@ -39,6 +40,7 @@ const Banner = ({ media, title }: Props) => {
 
     // Initialize GSAP timelines and plugins
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
         const ctx = gsap.context(() => {
             getScrollTL();
         });
