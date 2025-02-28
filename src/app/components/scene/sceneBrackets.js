@@ -17,12 +17,11 @@ export default function SceneBrackets() {
     const { viewport } = useThree();
     // Context
     const { isMobile } = useScreenSize();
-
     // Scroll timeline
     const getScrollTL = (ctx) => {
         ctx.add(() => {
             gsap.timeline({
-                ease: "power3.in",
+
                 scrollTrigger: {
                     pin: false,
                     start: 0,
@@ -30,18 +29,35 @@ export default function SceneBrackets() {
                     scrub: 1,
                     markers: false,
                     invalidateOnRefresh: true,
-                    snap: {
-                        snapTo: [0, 0.5, 1],
-                        duration: { min: 0.2, max: 1 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-                        ease: 'power1.inOut' // the ease of the snap animation ("power3" by default)
-                    }
+                    // snap: {
+                    //     snapTo: 0.5,
+                    //     duration: { min: 0.2, max: 1 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+                    //     ease: 'power1.inOut' // the ease of the snap animation ("power3" by default)
+                    // }
                 }
-            }).fromTo(brackets.current.position, {
-                z: -65,
-            }, { z: 0 },
-            ).to(brackets.current.position, {
-                z: 65,
-            }, ">")
+            })
+                // .fromTo(brackets.current.position, {
+                //     z: -65,
+                // }, { z: 65 }, 0
+                // )
+
+                .to(brackets.current.position, {
+                    keyframes: [
+                        { z: 0, ease: "sine.out" },
+                        { z: 65, ease: "sine.in" }
+                    ],
+                    duration: 2
+                })
+
+
+            // .fromTo(brackets.current.position, {
+            //     ease: "power4.in",
+            //     z: -65,
+            // }, { z: 0 }, 0
+            // ).to(brackets.current.position, {
+            //     ease: "power4.out",
+            //     z: 65,
+            // }, ">")
         });
         ctx.add(() => {
             gsap.timeline({
@@ -82,7 +98,7 @@ export default function SceneBrackets() {
             <PerspectiveCamera makeDefault fov={20} position={[0, 0, 8]} />
             {/* Brackets */}
             <group scale={isMobile ? viewport.width / 2.5 : viewport.width / 5} renderOrder={1}>
-                <group ref={brackets}>
+                <group ref={brackets} position={[0, 0, -65]} >
                     <Brackets />
                 </group>
             </group>

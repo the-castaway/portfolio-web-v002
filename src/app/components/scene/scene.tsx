@@ -31,17 +31,14 @@ export default function Scene() {
                 opacity: 0,
                 zIndex: -2,
             }, 0
+            ).to(sceneBrackets.current, {
+                opacity: 1,
+                zIndex: -1,
+                delay: 0.2,
+                ease: 'ease',
+            },
+                0
             )
-
-                .to(sceneBrackets.current, {
-                    opacity: 1,
-
-                    zIndex: -1,
-                    delay: 0.2,
-                    ease: 'ease',
-                },
-                    0
-                )
         });
         ctx.add(() => {
             gsap.timeline({
