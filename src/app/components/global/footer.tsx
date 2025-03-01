@@ -78,7 +78,7 @@ const Footer = () => {
 
 
     return (
-        <footer className={`${styles.footer} grid`}>
+        <footer id='footer' className={`${styles.footer} grid`}>
             <div className={styles.footerSignature}>
                 <p className={`detail`}>
                     <span ref={footerSignatureText} className={`textColorDarkGrey`}>

@@ -141,7 +141,7 @@ const Nav = () => {
     }
 
     return (
-        <nav className={styles.nav}>
+        <nav id='nav' className={styles.nav}>
             <NavLogo />
             <div className={`${styles.navDetails} grid`}>
                 <div className={styles.navTitleContainer}>
