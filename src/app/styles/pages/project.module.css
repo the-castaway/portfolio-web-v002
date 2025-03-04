@@ -4,7 +4,7 @@
 
 .projectIntro {
     width: 100%;
-    height: 30vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -13,33 +13,134 @@
 .projectIntroContent {
     width: 100%;
     height: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 180px;
+    padding-bottom: 100px;
 }
 
-.projectIntroNumber {
+.projectIntroTitle {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    grid-column-start: 9;
+    grid-column-end: 17;
+}
+
+/* Project Preview */
+
+.projectPreview {
+    width: 100%;
+    height: auto;
+}
+
+.projectPreviewMedia {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    border-radius: 5px;
+    overflow: hidden;
+    grid-column-start: 8;
+    grid-column-end: 18;
+}
+
+.projectPreviewMediaOverlay {
+    height: 110%;
+    width: 100%;
+    position: absolute;
+    opacity: 1;
+    top: -5%;
+    left: 0;
+    right: 0;
+    bottom: -5%;
+    background: linear-gradient(#0E0E10, #0E0E1000);
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.projectPreviewMediaContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9/16;
+}
+
+/* Project Preview */
+
+.projectOverview {
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+}
+
+.projectPreviewText {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    grid-column-start: 8;
+    grid-column-end: 18;
+}
+
+/* Project Sticky */
+
+.projectStatic {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 200px;
+    left: 0;
+}
+
+.projectStaticContent {
+    width: 100%;
+    height: auto;
     grid-column-start: 5;
-    grid-column-end: 10;
-    text-align: left;
+    grid-column-end: 9;
+    position: relative;
 }
 
-.projectIntroInvolvement {
+.projectStaticDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+
+.projectStaticDetailsNumber {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    grid-column-start: 18;
-    grid-column-end: 21;
-
 }
 
-.projectIntroInvolvementList {
+.projectStaticDetailsCompany {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.projectStaticDetailsInvolvement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.projectStaticDetailsInvolvementList {
     list-style-type: none;
 }
 
-
-.spacer {
-    height: 200vh;
+.projectStaticAnchors {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transform: translate(0, 10px);
 }
