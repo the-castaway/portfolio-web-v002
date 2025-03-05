@@ -72,7 +72,7 @@ export default function Project() {
                         <section className={styles.projectIntro}>
                             <div className={`${styles.projectIntroContent} grid`}>
                                 <div className={styles.projectIntroTitle}>
-                                    <h1>Interactive Product Tour</h1>
+                                    <h1>{Projects[0].name}</h1>
                                     <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                 </div>
                             </div>
@@ -255,32 +255,10 @@ export default function Project() {
                             </div>
                         </div>
                         <div ref={projectStaticAnchors} className={styles.projectStaticAnchors}>
+                            <p className={`detail`}>
+                                <span className={`textColorOffBlack`}>Project Info</span>
+                            </p>
                             <Anchors />
-                            {/* <div className={styles.projectStaticAnchor}>
-                                <a href={"#Overview"} className={`detail`}>
-                                    <span className={`textColorOffWhite`}>Overview</span>
-                                </a>
-                            </div>
-                            <div className={styles.projectStaticAnchor}>
-                                <a href={"#Background"} className={`detail`}>
-                                    <span className={`textColorDarkGrey`}>Background</span>
-                                </a>
-                            </div>
-                            <div className={styles.projectStaticAnchor}>
-                                <a href={"#Concept"} className={`detail`}>
-                                    <span className={`textColorDarkGrey`}>Concept</span>
-                                </a>
-                            </div>
-                            <div className={styles.projectStaticAnchor}>
-                                <a href={"#Results"} className={`detail`}>
-                                    <span className={`textColorDarkGrey`}>Results</span>
-                                </a>
-                            </div>
-                            <div className={styles.projectStaticAnchor}>
-                                <a className={`detail`}>
-                                    <span className={`textColorDarkGrey`}>Back to work</span>
-                                </a>
-                            </div> */}
                         </div>
                     </div>
                 </section>

@@ -86,13 +86,14 @@
 
 .projectStatic {
     width: 100%;
-    height: auto;
+    height: 200px;
     position: fixed;
     top: 200px;
     left: 0;
 }
 
 .projectStaticContent {
+    display: flex;
     width: 100%;
     height: auto;
     grid-column-start: 5;
