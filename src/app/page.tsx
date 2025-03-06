@@ -8,7 +8,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import styles from "./styles/pages/home.module.css"
 // Components
 import Image from "next/image";
-import Scene from "./components/scene/scene";
+import Scene from "./components/home/scene/scene";
 import Banner from "./components/home/banner";
 import Link from "./components/global/link";
 // Context 

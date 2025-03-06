@@ -10,7 +10,7 @@ import styles from "../../styles/pages/project.module.css"
 import Image from "next/image";
 import Section from "../../components/projects/section";
 import Anchors from "../../components/projects/anchors";
-import Scene from "../../components/scene/scene";
+import Scene from "../../components/global/scene/scene";
 // Data
 import { Projects } from '../../projects/projects'
 

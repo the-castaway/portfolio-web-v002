@@ -11,25 +11,8 @@ export default function Anchors() {
     const [sections, setSections] = useState<string[]>([]);
     const [activeSection, setActiveSection] = useState<string | null>(null);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-
-
-
         const ctx = gsap.context(() => {
             // Select all sections with `data-anchor`
             const sectionElements = gsap.utils.toArray<HTMLElement>("section[data-anchor]");
@@ -46,11 +29,9 @@ export default function Anchors() {
                 });
             });
         })
-
         return () => {
             ctx.revert();
         }
-
     }, []);
 
     const scrollToSection = (id: string, event: React.MouseEvent) => {

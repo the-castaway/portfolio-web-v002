@@ -8,7 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { easing } from 'maath'
 // Context
-import { useScreenSize } from "../../context/screenSizeContext";
+import { useScreenSize } from "../../../context/screenSizeContext";
 
 export default function SceneBrackets() {
     // Refs
