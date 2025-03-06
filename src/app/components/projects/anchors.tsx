@@ -11,24 +11,46 @@ export default function Anchors() {
     const [sections, setSections] = useState<string[]>([]);
     const [activeSection, setActiveSection] = useState<string | null>(null);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-        // Select all sections with `data-anchor`
-        const sectionElements = gsap.utils.toArray<HTMLElement>("section[data-anchor]");
-        //const scrollWrapper = document.getElementById(`smooth-wrapper`)
-        const sectionIds = sectionElements.map((el) => el.getAttribute("id")!);
-        setSections(sectionIds);
-        sectionElements.forEach((section) => {
-            ScrollTrigger.create({
-                trigger: section,
-                start: "top center",
-                end: "bottom center",
-                onEnter: () => setActiveSection(section.id),
-                onEnterBack: () => setActiveSection(section.id),
-            });
-        });
 
-        return () => ScrollTrigger.getAll().forEach((st) => st.kill());
+
+
+
+        const ctx = gsap.context(() => {
+            // Select all sections with `data-anchor`
+            const sectionElements = gsap.utils.toArray<HTMLElement>("section[data-anchor]");
+            //const scrollWrapper = document.getElementById(`smooth-wrapper`)
+            const sectionIds = sectionElements.map((el) => el.getAttribute("id")!);
+            setSections(sectionIds);
+            sectionElements.forEach((section) => {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top center",
+                    end: "bottom center",
+                    onEnter: () => setActiveSection(section.id),
+                    onEnterBack: () => setActiveSection(section.id),
+                });
+            });
+        })
+
+        return () => {
+            ctx.revert();
+        }
+
     }, []);
 
     const scrollToSection = (id: string, event: React.MouseEvent) => {

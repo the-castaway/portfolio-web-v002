@@ -7,39 +7,58 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
 import styles from "../../styles/pages/project.module.css"
 // Components
-import Banner from "../../components/projects/banner";
 import Image from "next/image";
 import Section from "../../components/projects/section";
 import Anchors from "../../components/projects/anchors";
+import Scene from "../../components/scene/scene";
 // Data
 import { Projects } from '../../projects/projects'
 
 export default function Project() {
     // Refs
+    const projectAnchored = useRef<HTMLDivElement>(null!);
     const projectStaticDetails = useRef<HTMLDivElement>(null!);
     const projectStaticAnchors = useRef<HTMLDivElement>(null!);
 
-    const getScrollTL = () => {
-        const scrollTL = gsap.timeline({
-            scrollTrigger: {
-                pin: false,
-                start: innerHeight / 2,
-                end: () => innerHeight / 2,
-                scrub: false,
-                markers: false,
-                toggleActions: "play none reverse none",
-            },
-        }).to(projectStaticDetails.current, {
-            y: -10,
-            opacity: 0,
-            duration: 0.2,
-            ease: 'ease',
-        }, 0).to(projectStaticAnchors.current, {
-            y: 0,
-            opacity: 1,
-            duration: 0.2,
-            ease: `ease`,
-        }, ">")
+    const getScrollTL = (ctx: gsap.Context) => {
+        ctx.add(() => {
+            const anchorIntroTL = gsap.timeline({ paused: true })
+                .to(projectStaticDetails.current, {
+                    y: -10,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'ease',
+                }, 0).to(projectStaticAnchors.current, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.2,
+                    ease: `ease`,
+                }, ">")
+
+            const anchorOutroTL = gsap.timeline({ paused: true })
+                .to(projectStaticAnchors.current, {
+                    y: -10,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: `ease`,
+                }, 0)
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: projectAnchored.current,
+                    pin: false,
+                    start: `top center`,
+                    end: `bottom center`,
+                    scrub: false,
+                    markers: false,
+                    invalidateOnRefresh: true,
+                    onEnter: () => anchorIntroTL.play(),
+                    onEnterBack: () => anchorOutroTL.reverse(),
+                    onLeave: () => anchorOutroTL.play(),
+                    onLeaveBack: () => anchorIntroTL.reverse(),
+                },
+            })
+        })
     }
 
     // Initialize GSAP timelines and plugins
@@ -52,175 +71,165 @@ export default function Project() {
             effects: true,
         });
 
-        const ctx = gsap.context(() => {
-            getScrollTL();
+        const ctx = gsap.context((self) => {
+            getScrollTL(self);
         })
         return () => {
             ctx.revert();
         }
-
     }, []);
 
     return (
         <div>
             <main className={styles.project}>
                 {/* Smooth Scroller */}
-                <div id="smooth-wrapper" className={styles.homeScroll}>
-                    <div id="smooth-content" className={styles.homeScrollContent}>
-                        {/* <Banner media={Projects[0].thumbnail_desktop} title={'Interactive Product Tour'} /> */}
-                        {/* Intro */}
-                        <section className={styles.projectIntro}>
-                            <div className={`${styles.projectIntroContent} grid`}>
-                                <div className={styles.projectIntroTitle}>
-                                    <h1>{Projects[0].name}</h1>
-                                    <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                </div>
-                            </div>
-                        </section>
-                        <section className={styles.projectPreview}>
-                            <div className={`${styles.projectPreviewContent} grid`}>
-                                <div className={styles.projectPreviewMedia}>
-                                    {/* <div className={styles.projectPreviewMediaOverlay} /> */}
-                                    <div className={styles.projectPreviewMediaContainer}>
-                                        <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                <div id="smooth-wrapper" className={styles.projectScroll}>
+                    <div id="smooth-content" className={styles.projectScrollContent}>
+                        <div className={styles.projectContent}>
+                            {/* <Banner media={Projects[0].thumbnail_desktop} title={'Interactive Product Tour'} /> */}
+                            {/* Intro */}
+                            <section className={styles.projectIntro}>
+                                <div className={`${styles.projectIntroContent} grid`}>
+                                    <div className={styles.projectIntroTitle}>
+                                        <h1>{Projects[0].name}</h1>
+                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        <section id={"AnchorLinked"}>
+                            </section>
+                            <section className={styles.projectPreview}>
+                                <div className={`${styles.projectPreviewContent} grid`}>
+                                    <div className={styles.projectPreviewMedia}>
+                                        {/* <div className={styles.projectPreviewMediaOverlay} /> */}
+                                        <div className={styles.projectPreviewMediaContainer}>
+                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section ref={projectAnchored}>
+                                <Section id={'Overview'}>
+                                    <div className={`${styles.projectOverviewContent} grid`}>
+                                        <div className={styles.projectPreviewText}>
+                                            <h2 className={`highlight`}>
+                                                <i>Parallax, GSAP, Web, Motion</i>
+                                            </h2>
+                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                        </div>
+                                        <div className={styles.projectPreviewMedia}>
 
-                            <Section id={'Overview'}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                            <div className={styles.projectPreviewMediaContainer}>
+                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className={styles.projectPreviewMedia}>
+                                </Section>
+                                <Section id={'Background'}>
+                                    <div className={`${styles.projectOverviewContent} grid`}>
+                                        <div className={styles.projectPreviewText}>
+                                            <h2 className={`highlight`}>
+                                                <i>Background</i>
+                                            </h2>
+                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                        </div>
+                                        <div className={styles.projectPreviewMedia}>
 
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            <div className={styles.projectPreviewMediaContainer}>
+                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Section>
-                            <Section id={'Background'}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                    </div>
-                                    <div className={styles.projectPreviewMedia}>
+                                </Section>
+                                <Section id={'Concept'}>
+                                    <div className={`${styles.projectOverviewContent} grid`}>
+                                        <div className={styles.projectPreviewText}>
+                                            <h2 className={`highlight`}>
+                                                <i>Concept</i>
+                                            </h2>
+                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                        </div>
+                                        <div className={styles.projectPreviewMedia}>
 
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            <div className={styles.projectPreviewMediaContainer}>
+                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Section>
-                            <Section id={'Concept'}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                    </div>
-                                    <div className={styles.projectPreviewMedia}>
+                                </Section>
+                                <Section id={'Results'}>
+                                    <div className={`${styles.projectOverviewContent} grid`}>
+                                        <div className={styles.projectPreviewText}>
+                                            <h2 className={`highlight`}>
+                                                <i>Results</i>
+                                            </h2>
+                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                        </div>
+                                        <div className={styles.projectPreviewMedia}>
 
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            <div className={styles.projectPreviewMediaContainer}>
+                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Section>
-                            <Section id={'Results'}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                    </div>
-                                    <div className={styles.projectPreviewMedia}>
+                                </Section>
+                            </section>
+                            <section className={styles.projectCTA}>
+                                <div className={`${styles.projectCTAContent} grid`}>
+                                    <div className={styles.projectCTABack}>
+                                        <div className={styles.projectCTABackButton}>
+                                            <div className={`detail textColorGrey`}>
+                                                Back to projects
+                                            </div>
+                                            <div>
+                                                Back
+                                            </div>
 
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
                                         </div>
                                     </div>
-                                </div>
-                            </Section>
-                            {/* <div id={'Overview'} className={styles.projectOverview}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                    </div>
-                                    <div className={styles.projectPreviewMedia}>
-                                
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                    <div className={styles.projectCTANext}>
+                                        <div className={styles.projectCTANextButton}>
+                                            <div className={`detail textColorGrey`}>
+                                                Back to projects
+                                            </div>
+                                            <div>
+                                                <div className={`detail textColorGrey`}>
+                                                    PR. 002 / 006
+                                                </div>
+                                                Community Voices Hub
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id={'Background'} className={styles.projectOverview}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                    <div className={styles.projectCTATitle}>
+                                        <p className={`detail`}>
+                                            <span className={`textColorGrey`}>Design and Engineering Lead for Web @Meta</span>
+                                        </p>
                                     </div>
-                                    <div className={styles.projectPreviewMedia}>
-                                 
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                        </div>
+                                    <div className={styles.projectCTALocale}>
+                                        <p className={`detail`}>
+                                            <span className={`textColorGrey`}>Bay Area California</span>
+                                        </p>
                                     </div>
-                                </div>
-                            </div>
-                            <div id={'Concept'} className={styles.projectOverview}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                    </div>
-                                    <div className={styles.projectPreviewMedia}>
-                                   
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                        </div>
+                                    <div className={styles.projectCTASocials}>
+                                        <p className={`detail`}>
+                                            <a className={styles.projectCTASocial} href="https://www.google.com">
+                                                X
+                                            </a>
+                                            <span className={`textColorGrey`}>/</span>
+                                            <a className={styles.projectCTASocial} href="https://www.google.com">
+                                                IG
+                                            </a>
+                                            <span className={`textColorGrey`}>/</span>
+                                            <a className={styles.projectCTASocial} href="https://www.google.com">
+                                                LI
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div id={'Results'} className={styles.projectOverview}>
-                                <div className={`${styles.projectOverviewContent} grid`}>
-                                    <div className={styles.projectPreviewText}>
-                                        <h2 className={`highlight`}>
-                                            <i>Parallax, GSAP, Web, Motion</i>
-                                        </h2>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                    </div>
-                                    <div className={styles.projectPreviewMedia}>
-                                
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
-                        </section>
-
+                            </section>
+                        </div>
                     </div>
                 </div>
+                {/* Scene */}
+                <Scene />
                 {/* Project Static Text */}
                 <section className={`${styles.projectStatic} grid`}>
                     <div className={styles.projectStaticContent}>

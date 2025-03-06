@@ -8,7 +8,7 @@ interface AnchorLinkedSectionProps {
 
 export default function Section({ id, children }: AnchorLinkedSectionProps) {
     return (
-        <section id={id} data-anchor={id} className="relative scroll-mt-16">
+        <section id={id} data-anchor={id}>
             {children}
         </section>
     );

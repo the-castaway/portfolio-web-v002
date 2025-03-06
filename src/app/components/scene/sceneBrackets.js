@@ -36,11 +36,6 @@ export default function SceneBrackets() {
                     // }
                 }
             })
-                // .fromTo(brackets.current.position, {
-                //     z: -65,
-                // }, { z: 65 }, 0
-                // )
-
                 .to(brackets.current.position, {
                     keyframes: [
                         { z: 0, ease: "sine.out" },
@@ -49,15 +44,6 @@ export default function SceneBrackets() {
                     duration: 2
                 })
 
-
-            // .fromTo(brackets.current.position, {
-            //     ease: "power4.in",
-            //     z: -65,
-            // }, { z: 0 }, 0
-            // ).to(brackets.current.position, {
-            //     ease: "power4.out",
-            //     z: 65,
-            // }, ">")
         });
         ctx.add(() => {
             gsap.timeline({
