@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 // Styles
-import styles from "../../styles/projects/anchors.module.css"
+import styles from "@/app/styles/projects/anchors.module.css"
 
 export default function Anchors() {
     const [sections, setSections] = useState<string[]>([]);

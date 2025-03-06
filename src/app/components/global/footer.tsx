@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
 // Styles
-import styles from "../../styles/global/footer.module.css"
+import styles from "@/app/styles/global/footer.module.css"
 
 const Footer = () => {
     // State 

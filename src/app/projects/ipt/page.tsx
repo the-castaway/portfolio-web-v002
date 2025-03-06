@@ -5,14 +5,15 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
-import styles from "../../styles/pages/project.module.css"
+import styles from "@/app/styles/pages/project.module.css"
 // Components
 import Image from "next/image";
-import Section from "../../components/projects/section";
-import Anchors from "../../components/projects/anchors";
-import Scene from "../../components/global/scene/scene";
+import Section from "@/app/components/projects/section";
+import Anchors from "@/app/components/projects/anchors";
+import Scene from "@/app/components/global/scene/scene";
+import CTA from "@/app/components/projects/cta";
 // Data
-import { Projects } from '../../projects/projects'
+import { Projects } from '@/app/projects/projects'
 
 export default function Project() {
     // Refs
@@ -67,7 +68,7 @@ export default function Project() {
         ScrollSmoother.create({
             content: "#smooth-content",
             wrapper: "#smooth-wrapper",
-            smooth: 2,
+            smooth: 1,
             effects: true,
         });
 
@@ -172,59 +173,8 @@ export default function Project() {
                                     </div>
                                 </Section>
                             </section>
-                            <section className={styles.projectCTA}>
-                                <div className={`${styles.projectCTAContent} grid`}>
-                                    <div className={styles.projectCTABack}>
-                                        <div className={styles.projectCTABackButton}>
-                                            <div className={`detail textColorGrey`}>
-                                                Back to projects
-                                            </div>
-                                            <div>
-                                                Back
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div className={styles.projectCTANext}>
-                                        <div className={styles.projectCTANextButton}>
-                                            <div className={`detail textColorGrey`}>
-                                                Back to projects
-                                            </div>
-                                            <div>
-                                                <div className={`detail textColorGrey`}>
-                                                    PR. 002 / 006
-                                                </div>
-                                                Community Voices Hub
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className={styles.projectCTATitle}>
-                                        <p className={`detail`}>
-                                            <span className={`textColorGrey`}>Design and Engineering Lead for Web @Meta</span>
-                                        </p>
-                                    </div>
-                                    <div className={styles.projectCTALocale}>
-                                        <p className={`detail`}>
-                                            <span className={`textColorGrey`}>Bay Area California</span>
-                                        </p>
-                                    </div>
-                                    <div className={styles.projectCTASocials}>
-                                        <p className={`detail`}>
-                                            <a className={styles.projectCTASocial} href="https://www.google.com">
-                                                X
-                                            </a>
-                                            <span className={`textColorGrey`}>/</span>
-                                            <a className={styles.projectCTASocial} href="https://www.google.com">
-                                                IG
-                                            </a>
-                                            <span className={`textColorGrey`}>/</span>
-                                            <a className={styles.projectCTASocial} href="https://www.google.com">
-                                                LI
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </section>
+                            {/* CTA */}
+                            <CTA id={""} children={undefined} />
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
-import styles from "../../styles/projects/banner.module.css"
+import styles from "@/app/styles/projects/banner.module.css"
 // Components
 import Image from "next/image";
 

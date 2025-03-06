@@ -1,11 +1,11 @@
 "use client"
 import { useEffect } from "react"
-import { transitionPageIn } from "./utils/transition/transition"
+import { transitionPageIn } from "@/app/utils/transition/transition"
 import { usePathname } from "next/navigation"
 // Styles
-import styles from "./styles/global/transition.module.css";
+import styles from "@/app/styles/global/transition.module.css";
 // Components
-import Footer from "./components/global/footer";
+import Footer from "@/app/components/global/footer";
 
 export default function Template({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();

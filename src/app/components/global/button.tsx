@@ -1,6 +1,6 @@
 "use client"
 // Styles 
-import styles from "../../styles/global/button.module.css"
+import styles from "@/app/styles/global/button.module.css"
 
 interface Props {
     href: string

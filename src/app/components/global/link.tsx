@@ -1,6 +1,6 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
-import { transitionPageOut } from "../../utils/transition/transition"
+import { transitionPageOut } from "@/app/utils/transition/transition"
 
 interface Props {
     href: string

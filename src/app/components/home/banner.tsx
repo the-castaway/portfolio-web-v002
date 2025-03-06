@@ -3,9 +3,9 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
-import styles from "../../styles/home/banner.module.css"
+import styles from "@/app/styles/home/banner.module.css"
 // Context 
-import { useScreenSize } from "../../context/screenSizeContext";
+import { useScreenSize } from "@/app/context/screenSizeContext";
 
 export default function Banner() {
     // Refs

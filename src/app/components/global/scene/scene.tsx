@@ -6,9 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Canvas } from '@react-three/fiber'
 import dynamic from 'next/dynamic';
 // Styles
-import styles from "../../../styles/global/scene.module.css"
+import styles from "@/app/styles/global/scene.module.css"
 // Components
-const SceneBrackets = dynamic(() => import('./sceneBrackets'), { ssr: true });
+const SceneBrackets = dynamic(() => import('@/app/components/global/scene/sceneBrackets'), { ssr: true });
 
 export default function Scene() {
     // Refs

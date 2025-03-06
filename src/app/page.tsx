@@ -5,17 +5,17 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
-import styles from "./styles/pages/home.module.css"
+import styles from "@/app/styles/pages/home.module.css"
 // Components
 import Image from "next/image";
-import Scene from "./components/home/scene/scene";
-import Banner from "./components/home/banner";
-import Link from "./components/global/link";
+import Scene from "@/app/components/home/scene/scene";
+import Banner from "@/app/components/home/banner";
+import Link from "@/app/components/global/link";
 // Context 
-import { useScreenSize } from "./context/screenSizeContext";
+import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
-import { Projects } from '../app/projects/projects';
-import Button from "./components/global/button";
+import { Projects } from '@/app//projects/projects';
+import Button from "@/app/components/global/button";
 
 export default function Home() {
   // Refs

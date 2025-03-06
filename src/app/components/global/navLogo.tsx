@@ -1,8 +1,8 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
-import { transitionPageOut } from "../../utils/transition/transition"
+import { transitionPageOut } from "@/app/utils/transition/transition"
 // Styles
-import styles from "../../styles/global/navLogo.module.css"
+import styles from "@/app/styles/global/navLogo.module.css"
 
 const NavLogo = () => {
     const router = useRouter();
