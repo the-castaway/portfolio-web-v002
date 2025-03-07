@@ -8,6 +8,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import styles from "@/app/styles/pages/home.module.css"
 // Components
 import Image from "next/image";
+import Scene from "@/app/components/home/scene/scene";
 import Banner from "@/app/components/home/banner";
 import Link from "@/app/components/global/link";
 // Context 
@@ -164,6 +165,8 @@ export default function Home() {
       <main className={styles.home}>
         {/* Banner */}
         <Banner />
+        {/* Canvas Scene */}
+        <Scene />
         {/* Smooth Scroller */}
         <div id="smooth-wrapper" className={styles.homeScroll}>
           <div id="smooth-content" className={styles.homeScrollContent}>

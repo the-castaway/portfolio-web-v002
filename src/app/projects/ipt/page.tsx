@@ -10,6 +10,7 @@ import styles from "@/app/styles/pages/project.module.css"
 import Image from "next/image";
 import Section from "@/app/components/projects/section";
 import Anchors from "@/app/components/projects/anchors";
+import Scene from "@/app/components/global/scene/scene";
 import CTA from "@/app/components/projects/cta";
 // Data
 import { Projects } from '@/app/projects/projects'
@@ -177,6 +178,8 @@ export default function Project() {
                         </div>
                     </div>
                 </div>
+                {/* Scene */}
+                <Scene />
                 {/* Project Static Text */}
                 <section className={`${styles.projectStatic} grid`}>
                     <div className={styles.projectStaticContent}>

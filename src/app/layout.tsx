@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import { ScreenSizeProvider } from "./context/screenSizeContext";
 // Components
 import Nav from "./components/global/nav";
-import Scene from "./components/global/3D/scene";
 // Styles
 import "./styles/global.css";
 
@@ -50,8 +49,6 @@ export default function RootLayout({
           <Nav />
 
           {children}
-          {/* Canvas Scene */}
-          <Scene />
 
         </ScreenSizeProvider>
       </body>
