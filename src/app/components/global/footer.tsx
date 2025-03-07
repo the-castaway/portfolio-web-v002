@@ -39,7 +39,6 @@ const Footer = () => {
                     0
                 );
         })
-
         return () => {
             ctx.revert();
         };

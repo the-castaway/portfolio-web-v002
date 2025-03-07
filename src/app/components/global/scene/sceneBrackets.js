@@ -21,7 +21,6 @@ export default function SceneBrackets() {
     const getScrollTL = (ctx) => {
         ctx.add(() => {
             gsap.timeline({
-
                 scrollTrigger: {
                     pin: false,
                     start: 0,
@@ -29,11 +28,6 @@ export default function SceneBrackets() {
                     scrub: 1,
                     markers: false,
                     invalidateOnRefresh: true,
-                    // snap: {
-                    //     snapTo: 0.5,
-                    //     duration: { min: 0.2, max: 1 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-                    //     ease: 'power1.inOut' // the ease of the snap animation ("power3" by default)
-                    // }
                 }
             })
                 .to(brackets.current.position, {
@@ -43,7 +37,6 @@ export default function SceneBrackets() {
                     ],
                     duration: 2
                 })
-
         });
         ctx.add(() => {
             gsap.timeline({
@@ -54,11 +47,6 @@ export default function SceneBrackets() {
                     scrub: 1,
                     markers: false,
                     invalidateOnRefresh: true,
-                    snap: {
-                        snapTo: 1,
-                        duration: { min: 0.2, max: 1 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-                        ease: 'power1.inOut' // the ease of the snap animation ("power3" by default)
-                    }
                 }
             }).to(brackets.current.position, {
                 z: 0,
