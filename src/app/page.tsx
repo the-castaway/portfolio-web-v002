@@ -233,6 +233,7 @@ export default function Home() {
                               {project.number} / 006
                             </p>
                             <div className={styles.homeFeaturedPreviewMedia}>
+                              <div className={styles.homeFeaturedPreviewMediaOverlay} />
                               <Image src={project.thumbnail_mobile} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
                             </div>
                             <h1 className={styles.homeFeaturedTitleText}>
