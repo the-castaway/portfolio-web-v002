@@ -135,7 +135,7 @@ export default function SceneLogo() {
                     </mesh>
                 </group>
                 {/* Logo */}
-                <group ref={logo} position={[0, 0, 1]} scale={[0.4, 0.4, 0.4]} rotation={[Math.PI / 2, 0, 0]}>
+                <group ref={logo} position={[0, 0, 1]} scale={[0.45, 0.45, 0.45]} rotation={[Math.PI / 2, 0, 0]}>
                     <group ref={logoModel}>
                         <mesh ref={logoLeft} {...nodes.logo_left}>
                             <MeshTransmissionMaterial

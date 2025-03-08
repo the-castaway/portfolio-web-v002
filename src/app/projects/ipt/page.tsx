@@ -157,19 +157,90 @@ export default function Project() {
                                     </div>
                                 </Section>
                                 <Section id={'Results'}>
-                                    <div className={`${styles.projectOverviewContent} grid`}>
-                                        <div className={styles.projectPreviewText}>
-                                            <h2 className={`highlight`}>
-                                                <i>Results</i>
-                                            </h2>
-                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
-                                        </div>
-                                        <div className={styles.projectPreviewMedia}>
-
-                                            <div className={styles.projectPreviewMediaContainer}>
-                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                    <div className={`${styles.projectSection} grid`}>
+                                        <div className={styles.projectSectionNarrow}>
+                                            <div className={styles.projectSectionText}>
+                                                <h2 className={`detail textColorGrey`}>
+                                                    Results
+                                                </h2>
+                                                <p className={`textColorGrey`}>
+                                                    The results of this module were significant. We contributed to the goal of creating more interactive and immersive experiences while also substantially improving key metrics. The average time spent on the page increased by over 30 seconds, the learning engagement metric improved by over 8%, and the add-to-cart rate increased by 1%.
+                                                </p>
                                             </div>
+                                            <div className={styles.projectResults}>
+                                                <div className={styles.projectResultsStats}>
+                                                    <div className={styles.projectResultsStat}>
+                                                        <p className={`detail textColorDarkGrey`}>
+                                                            Bounce Rate
+                                                        </p>
+                                                        <p className={styles.projectResultsStatNumber}>
+                                                            +8%
+                                                        </p>
+
+                                                    </div>
+                                                    <div className={styles.projectResultsStat}>
+                                                        <p className={`detail textColorDarkGrey`}>
+                                                            Bounce Rate
+                                                        </p>
+                                                        <p className={styles.projectResultsStatNumber}>
+                                                            +8%
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className={styles.projectResultsStats}>
+                                                    <div className={styles.projectResultsStat}>
+                                                        <p className={`detail textColorDarkGrey`}>
+                                                            Bounce Rate
+                                                        </p>
+                                                        <p className={styles.projectResultsStatNumber}>
+                                                            +8%
+                                                        </p>
+
+                                                    </div>
+                                                    <div className={styles.projectResultsStat}>
+                                                        <p className={`detail textColorDarkGrey`}>
+                                                            Bounce Rate
+                                                        </p>
+                                                        <p className={styles.projectResultsStatNumber}>
+                                                            +8%
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className={styles.projectResultsCollabs}>
+                                                <div className={styles.projectSectionText}>
+                                                    <p className={`detail textColorGrey`}>
+                                                        Collaborators
+                                                    </p>
+                                                </div>
+                                                <a href={'https://www.google.com'} className={styles.projectResultsCollab}>
+                                                    <p className={`detail textColorGrey`}>
+                                                        [ ENG ]
+                                                    </p>
+                                                    <p className={styles.projectResultsCollabName}>
+                                                        <b>Dan Kupsco</b>
+                                                    </p>
+                                                </a>
+                                                <a href={'https://www.google.com'} className={styles.projectResultsCollab}>
+                                                    <p className={`detail textColorGrey`}>
+                                                        [ ENG ]
+                                                    </p>
+                                                    <p className={styles.projectResultsCollabName}>
+                                                        <b>Dan Kupsco</b>
+                                                    </p>
+                                                </a>
+                                                <a href={'https://www.google.com'} className={styles.projectResultsCollab}>
+                                                    <p className={`detail textColorGrey`}>
+                                                        [ ENG ]
+                                                    </p>
+                                                    <p className={styles.projectResultsCollabName}>
+                                                        <b>Dan Kupsco</b>
+                                                    </p>
+                                                </a>
+                                            </div>
+
                                         </div>
+
                                     </div>
                                 </Section>
                             </section>
