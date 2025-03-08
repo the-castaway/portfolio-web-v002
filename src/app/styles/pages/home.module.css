@@ -321,6 +321,37 @@
 
 @media (max-width: 1024px) {
 
+    .homeIntroHeaderText {
+        text-align: left;
+        grid-column-start: 5;
+        grid-column-end: 21;
+    }
+
+    .homeIntroDetail {
+        text-align: left;
+        grid-column-start: 5;
+        grid-column-end: 21;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        align-self: flex-start;
+    }
+
+    .homeFeaturedPreviewsList {
+        display: flex;
+        flex-direction: column;
+        gap: 100vh;
+        grid-column-start: 6;
+        grid-column-end: 18;
+    }
+
+    .homeFeaturedTitles {
+        grid-column-start: 6;
+        grid-column-end: 18;
+        position: relative;
+    }
+
     .homeFeaturedNumber {
         display: flex;
         flex-direction: column;
