@@ -46,10 +46,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
         <ScreenSizeProvider>
-
-
           {children}
-
         </ScreenSizeProvider>
       </body>
     </html>
