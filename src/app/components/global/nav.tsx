@@ -179,7 +179,7 @@ const Nav = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className={styles.navModalContentDirectoryList} onClick={() => { collapseNav(); }} >
+                            <div className={styles.navModalContentDirectoryList} >
                                 <NavLink href="/" label="Work" number="[ 01 ]" active={true} />
                                 <NavLink href="/archive" label="About" number="[ 02 ]" active={false} />
                                 <NavLink href="/about" label="Lab" number="[ 03 ]" active={false} />

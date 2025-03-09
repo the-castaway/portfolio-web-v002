@@ -1,6 +1,6 @@
 "use client"
 import { useEffect } from "react"
-import { transitionPageIn } from "@/app/utils/transition/transition"
+import { transitionPageIn, transitionHomeIn } from "@/app/utils/transition/transition"
 import { usePathname } from "next/navigation"
 // Styles
 import styles from "@/app/styles/global/transition.module.css";
@@ -16,16 +16,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
         if (pathname !== "/") {
             transitionPageIn()
         }
+        else if (pathname === "/") {
+            transitionHomeIn()
+        }
         window.scrollTo(0, 0);
     }, [])
 
     return (
         <>
             <div id="mask" className={styles.mask}>
-                <div id="mask-bottom" className={styles.maskBottom} />
-                <div id="mask-top" className={styles.maskTop} />
-                <div id="mask-left" className={styles.maskLeft} />
-                <div id="mask-right" className={styles.maskRight} />
                 <div id="mask-border" className={styles.maskBorder}>
                     <div id="mask-corner-top-left" className={styles.maskCornerTopLeft} />
                     <div id="mask-corner-top-right" className={styles.maskCornerTopRight} />

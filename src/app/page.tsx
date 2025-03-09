@@ -320,7 +320,7 @@ export default function Home() {
               <div className={styles.homeFeaturedTitles}>
                 {
                   projects.map((project) =>
-                    <Link href={project.href} key={project.key}>
+                    <Link href={`/projects/${project.href}`} key={project.key}>
                       <div className={styles.homeFeaturedTitle}>
                         <h1 className={styles.homeFeaturedTitleText}>
                           {project.name}
