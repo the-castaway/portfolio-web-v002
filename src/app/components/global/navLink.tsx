@@ -5,12 +5,13 @@ import { transitionPageOut } from "@/app/utils/transition/transition"
 import styles from "@/app/styles/global/navLink.module.css"
 
 interface Props {
-    href: string
-    label: string
-    number: string
+    href: string,
+    label: string,
+    number: string,
+    active?: boolean,
 }
 
-const NavLink = ({ href, label, number }: Props) => {
+const NavLink = ({ href, label, number, active }: Props) => {
     const router = useRouter();
     const pathname = usePathname();
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -18,6 +19,24 @@ const NavLink = ({ href, label, number }: Props) => {
         if (pathname !== href) {
             transitionPageOut(href, router)
         }
+    }
+
+    // Not active state
+    if (!active) {
+        return (
+            <div className={styles.navLink}>
+                <div className={styles.navLinkText}>
+                    <p className={`${styles.navLinkTextNumber} detail`}>
+                        <span className={`textColorOffBlack`}>
+                            [ SOON ]
+                        </span>
+                    </p>
+                    <p className={`${styles.navLinkTextLabel} labelLarge textColorOffBlack`}>
+                        {label}
+                    </p>
+                </div>
+            </div>
+        );
     }
 
     return (

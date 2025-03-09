@@ -180,10 +180,10 @@ const Nav = () => {
                                 </p>
                             </div>
                             <div className={styles.navModalContentDirectoryList} onClick={() => { collapseNav(); }} >
-                                <NavLink href="/" label="Work" number="[ 01 ]" />
-                                <NavLink href="/archive" label="About" number="[ 02 ]" />
-                                <NavLink href="/about" label="Lab" number="[ 03 ]" />
-                                <NavLink href="/about" label="Archive" number="[ 04 ]" />
+                                <NavLink href="/" label="Work" number="[ 01 ]" active={true} />
+                                <NavLink href="/archive" label="About" number="[ 02 ]" active={false} />
+                                <NavLink href="/about" label="Lab" number="[ 03 ]" active={false} />
+                                <NavLink href="/about" label="Archive" number="[ 04 ]" active={false} />
                             </div>
                         </div>
                         <div className={styles.navModalContentContact}>
