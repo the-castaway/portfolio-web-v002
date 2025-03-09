@@ -26,20 +26,6 @@ export default function Home() {
   // Context
   const { isMobile } = useScreenSize();
 
-  const getUIIntroTL = () => {
-    const nav = document.getElementById(`nav`);
-    const footer = document.getElementById(`footer`);
-    const UIIntroTL = gsap.timeline();
-    UIIntroTL.from([nav, footer], {
-      opacity: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: 'ease'
-    }, 0)
-
-    return UIIntroTL;
-  }
-
   // Featured intro / outro timeline
   const getFeaturedIntroTL = (ctx: gsap.Context) => {
     ctx.add(() => {
@@ -152,7 +138,6 @@ export default function Home() {
 
     if (!isMobile) {
       const ctx = gsap.context((self) => {
-        getUIIntroTL();
         getFeaturedIntroTL(self);
         getFeaturedTimelines(self);
       });

@@ -5,6 +5,7 @@
     bottom: 0;
     box-sizing: border-box;
     padding: 20px 40px;
+    opacity: 1;
 }
 
 .footerSignature {

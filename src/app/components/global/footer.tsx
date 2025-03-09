@@ -4,16 +4,37 @@ import gsap from "gsap"
 // Styles
 import styles from "@/app/styles/global/footer.module.css"
 
-const Footer = () => {
+export default function Footer() {
     // State 
     const [scrollPercent, setScrollPercent] = useState(0);
     const [isAtBottom, setIsAtBottom] = useState(false);
     // Refs
-    const footerTL = useRef<gsap.core.Timeline | null>(null);
-    const footerSignatureText = useRef<HTMLDivElement>(null);
-    const footerVersionText = useRef<HTMLDivElement>(null);
-    const footerProgressBar = useRef<HTMLDivElement>(null);
-    const footerProgressBarFill = useRef<HTMLDivElement>(null);
+    const footerTL = useRef<gsap.core.Timeline | null>(null!);
+    const footerSignatureText = useRef<HTMLDivElement>(null!);
+    const footerVersionText = useRef<HTMLDivElement>(null!);
+    const footerProgressBar = useRef<HTMLDivElement>(null!);
+    const footerProgressBarFill = useRef<HTMLDivElement>(null!);
+
+    // Scroll timeline
+    const getScrollTL = (ctx: gsap.Context) => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (scrollTop / docHeight) * 100;
+        setScrollPercent(Math.min(Math.max(scrolled, 0), 100)); // Clamp to 0-100
+
+        ctx.add(() => { // Animate progress bar width
+            gsap.to(footerProgressBarFill.current, { width: `${scrolled}%`, duration: 0.3, ease: "power2.out" });
+        });
+
+        if (scrolled === 100 && !isAtBottom) {
+            footerTL.current?.play();
+            setIsAtBottom(true);
+        }
+        else if (scrolled < 100 && isAtBottom) {
+            footerTL.current?.reverse();
+            setIsAtBottom(false);
+        }
+    }
 
     // Initialize GSAP timeline
     useEffect(() => {
@@ -27,17 +48,13 @@ const Footer = () => {
                         width: 0,
                         flexGrow: 0,
                         duration: 0.3,
-                    },
-                    0
-                )
+                    }, 0)
                 .to(
                     [footerVersionText.current, footerSignatureText.current],
                     {
                         color: "#ececec",
                         duration: 0.3,
-                    },
-                    0
-                );
+                    }, 0);
         })
         return () => {
             ctx.revert();
@@ -46,27 +63,20 @@ const Footer = () => {
 
     // Update scroll percentage
     useEffect(() => {
+        const ctx = gsap.context((self) => {
+            self.add('scrollAnim', () => {
+                getScrollTL(self);
+            })
+        })
         const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrolled = (scrollTop / docHeight) * 100;
-            setScrollPercent(Math.min(Math.max(scrolled, 0), 100)); // Clamp to 0-100
-
-            // Animate progress bar width
-            gsap.to(footerProgressBarFill.current, { width: `${scrolled}%`, duration: 0.3, ease: "power2.out" });
-
-            if (scrolled === 100 && !isAtBottom) {
-                footerTL.current?.play();
-                setIsAtBottom(true);
-            }
-            else if (scrolled < 100 && isAtBottom) {
-                footerTL.current?.reverse();
-                setIsAtBottom(false);
-            }
+            ctx.scrollAnim()
         };
 
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            ctx.revert();
+            window.removeEventListener("scroll", handleScroll);
+        }
     }, [isAtBottom]);
 
     // Scroll to top function
@@ -74,7 +84,6 @@ const Footer = () => {
         e.preventDefault(); // Prevent default navigation
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
-
 
     return (
         <footer id='footer' className={`${styles.footer} grid`}>
@@ -121,5 +130,3 @@ const Footer = () => {
         </footer>
     )
 }
-
-export default Footer

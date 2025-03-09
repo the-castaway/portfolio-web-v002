@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation"
 // Styles
 import styles from "@/app/styles/global/transition.module.css";
 // Components
+import Nav from "./components/global/nav";
 import Footer from "@/app/components/global/footer";
+
 
 export default function Template({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -32,6 +34,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 </div>
             </div>
             <div id="mask-content" className={styles.maskContent}>
+                <Nav />
                 {children}
                 <Footer />
             </div>

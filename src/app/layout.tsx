@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 // Context
 import { ScreenSizeProvider } from "./context/screenSizeContext";
-// Components
-import Nav from "./components/global/nav";
+// // Components
+// import Nav from "./components/global/nav";
 // Styles
 import "./styles/global.css";
 
@@ -46,7 +46,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
         <ScreenSizeProvider>
-          <Nav />
+
 
           {children}
 
