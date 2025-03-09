@@ -6,11 +6,12 @@ import Link from "@/app/components/global/link";
 import styles from "@/app/styles/projects/cta.module.css"
 
 interface AnchorLinkedSectionProps {
-    id: string;
-    children: ReactNode;
+    nextProjectLink: string,
+    nextProjectName: string,
+    nextProjectNumber: string,
 }
 
-export default function CTA({ id, children }: AnchorLinkedSectionProps) {
+export default function CTA({ nextProjectLink, nextProjectName, nextProjectNumber }: AnchorLinkedSectionProps) {
     return (
         <section className={styles.cta}>
             <div className={`${styles.ctaContent} grid`}>
@@ -36,18 +37,18 @@ export default function CTA({ id, children }: AnchorLinkedSectionProps) {
                     </Link>
                 </div>
                 <div className={styles.ctaNext}>
-                    <Link href="/">
+                    <Link href={nextProjectLink}>
                         <div className={styles.ctaNextCard}>
                             <div className={`detail textColorGrey`}>
                                 Next Project
                             </div>
                             <div className={styles.ctaNextCardInfo}>
                                 <div className={`detail textColorGrey`}>
-                                    PR. 002 / 006
+                                    PR. {nextProjectNumber} / 006
                                 </div>
                                 <div className={styles.ctaNextCardTitle}>
                                     <p className={`labelLarge`}>
-                                        Community Voices Hub
+                                        {nextProjectName}
                                     </p>
                                     <div className={styles.ctaNextCardButton}>
                                         <div className={styles.ctaNextCardButtonCornerTopLeft} />

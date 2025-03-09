@@ -224,7 +224,7 @@ export default function Home() {
                   <div className={`${styles.homeFeaturedMobile} grid`}>
                     {
                       projects.map((project) =>
-                        <Link href={project.href} key={project.key}>
+                        <Link href={`/projects/${project.href}`} key={project.key}>
                           <div className={styles.homeFeaturedProject}>
                             <p className={`detail`}>
                               <span className={`textColorOffBlack`}>Featured Work</span>
@@ -253,7 +253,7 @@ export default function Home() {
                     <div ref={homeFeaturedPreviewsList} className={styles.homeFeaturedPreviewsList}>
                       {
                         projects.map((project) =>
-                          <Link href={project.href} key={project.key}>
+                          <Link href={`/projects/${project.href}`} key={project.key}>
                             <div className={styles.homeFeaturedPreviewMedia}>
                               <div className={styles.homeFeaturedPreviewMediaOverlay} />
                               <div className={styles.homeFeaturedPreviewMediaContainer}>

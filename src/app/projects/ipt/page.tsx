@@ -16,8 +16,14 @@ import CTA from "@/app/components/projects/cta";
 import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
 import { Projects } from '@/app//projects/projects';
+const PROJECT_NUMBER = 0;
 
 export default function Project() {
+    // Project
+    const project = Projects[PROJECT_NUMBER];
+    const isLastProject = project.key === Projects.length - 1;
+    const nextProject = isLastProject ? Projects[0] : Projects[project.key + 1];
+
     // Refs
     const projectAnchored = useRef<HTMLDivElement>(null!);
     const projectStaticDetails = useRef<HTMLDivElement>(null!);
@@ -93,7 +99,7 @@ export default function Project() {
                     <span className={`textColorOffBlack`}>Featured Work</span>
                 </p>
                 <p className={`detail textColorGrey`}>
-                    {Projects[0].number} / 006
+                    {project.number} / 006
                 </p>
             </div>
             <div className={styles.projectStaticDetailsCompany}>
@@ -101,7 +107,7 @@ export default function Project() {
                     <span className={`textColorOffBlack`}>Company</span>
                 </p>
                 <p className={`detail textColorGrey`}>
-                    {Projects[0].company}
+                    {project.company}
                 </p>
             </div>
             <div className={styles.projectStaticDetailsInvolvement}>
@@ -111,7 +117,7 @@ export default function Project() {
                     </span>
                 </p>
                 <ul className={`${styles.projectStaticDetailsInvolvementList} textFontHighlight textColorGrey`}>
-                    {Projects[0].involvement.map((involvement) =>
+                    {project.involvement.map((involvement) =>
                         <li key={involvement}><i>{involvement}</i></li>)
                     }
                 </ul>
@@ -129,7 +135,7 @@ export default function Project() {
                             <section className={styles.projectIntro}>
                                 <div className={`${styles.projectIntroContent} grid`}>
                                     <div className={styles.projectIntroTitle}>
-                                        <h1>{Projects[0].name}</h1>
+                                        <h1>{project.name}</h1>
                                         <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         {isMobile ? <>{projectDetails}</> : null}
                                     </div>
@@ -141,7 +147,7 @@ export default function Project() {
                                     <div className={styles.projectPreviewMedia}>
                                         {/* <div className={styles.projectPreviewMediaOverlay} /> */}
                                         <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                            <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +164,7 @@ export default function Project() {
                                         <div className={styles.projectSectionContentNarrow}>
                                             <div className={styles.projectPreviewMedia}>
                                                 <div className={styles.projectPreviewMediaContainer}>
-                                                    <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                                    <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
                                                 </div>
                                             </div>
                                         </div>
@@ -175,7 +181,7 @@ export default function Project() {
                                         <div className={styles.projectSectionContentNarrow}>
                                             <div className={styles.projectPreviewMedia}>
                                                 <div className={styles.projectPreviewMediaContainer}>
-                                                    <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                                    <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +198,7 @@ export default function Project() {
                                         <div className={styles.projectSectionContentWide}>
                                             <div className={styles.projectPreviewMedia}>
                                                 <div className={styles.projectPreviewMediaContainer}>
-                                                    <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                                    <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
                                                 </div>
                                             </div>
                                         </div>
@@ -288,7 +294,7 @@ export default function Project() {
                                 </Section>
                             </section>
                             {/* CTA */}
-                            <CTA id={""} children={undefined} />
+                            <CTA nextProjectLink={nextProject.href} nextProjectName={nextProject.name} nextProjectNumber={nextProject.number} />
                         </div>
                     </div>
                 </div>
