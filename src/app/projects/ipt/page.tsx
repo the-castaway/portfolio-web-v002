@@ -12,14 +12,18 @@ import Section from "@/app/components/projects/section";
 import Anchors from "@/app/components/projects/anchors";
 import Scene from "@/app/components/global/scene/scene";
 import CTA from "@/app/components/projects/cta";
+// Context 
+import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
-import { Projects } from '@/app/projects/projects'
+import { Projects } from '@/app//projects/projects';
 
 export default function Project() {
     // Refs
     const projectAnchored = useRef<HTMLDivElement>(null!);
     const projectStaticDetails = useRef<HTMLDivElement>(null!);
     const projectStaticAnchors = useRef<HTMLDivElement>(null!);
+    // Context
+    const { isMobile } = useScreenSize();
 
     const getScrollTL = (ctx: gsap.Context) => {
         ctx.add(() => {
@@ -73,12 +77,46 @@ export default function Project() {
         });
 
         const ctx = gsap.context((self) => {
-            getScrollTL(self);
+            if (!isMobile) {
+                getScrollTL(self);
+            }
         })
         return () => {
             ctx.revert();
         }
-    }, []);
+    }, [isMobile]);
+
+    const projectDetails =
+        <div className={styles.projectDetails}>
+            <div className={styles.projectStaticDetailsNumber}>
+                <p className={`detail`}>
+                    <span className={`textColorOffBlack`}>Featured Work</span>
+                </p>
+                <p className={`detail textColorGrey`}>
+                    {Projects[0].number} / 006
+                </p>
+            </div>
+            <div className={styles.projectStaticDetailsCompany}>
+                <p className={`detail`}>
+                    <span className={`textColorOffBlack`}>Company</span>
+                </p>
+                <p className={`detail textColorGrey`}>
+                    {Projects[0].company}
+                </p>
+            </div>
+            <div className={styles.projectStaticDetailsInvolvement}>
+                <p className={`detail`}>
+                    <span className={`textColorOffBlack`}>
+                        Involvement
+                    </span>
+                </p>
+                <ul className={`${styles.projectStaticDetailsInvolvementList} textFontHighlight textColorGrey`}>
+                    {Projects[0].involvement.map((involvement) =>
+                        <li key={involvement}><i>{involvement}</i></li>)
+                    }
+                </ul>
+            </div>
+        </div>;
 
     return (
         <div>
@@ -87,18 +125,19 @@ export default function Project() {
                 <div id="smooth-wrapper" className={styles.projectScroll}>
                     <div id="smooth-content" className={styles.projectScrollContent}>
                         <div className={styles.projectContent}>
-                            {/* <Banner media={Projects[0].thumbnail_desktop} title={'Interactive Product Tour'} /> */}
                             {/* Intro */}
                             <section className={styles.projectIntro}>
                                 <div className={`${styles.projectIntroContent} grid`}>
                                     <div className={styles.projectIntroTitle}>
                                         <h1>{Projects[0].name}</h1>
                                         <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                        {isMobile ? <>{projectDetails}</> : null}
                                     </div>
+
                                 </div>
                             </section>
-                            <section className={styles.projectPreview}>
-                                <div className={`${styles.projectPreviewContent} grid`}>
+                            <div className={`${styles.projectSection} grid`}>
+                                <div className={styles.projectSectionContentNarrow}>
                                     <div className={styles.projectPreviewMedia}>
                                         {/* <div className={styles.projectPreviewMediaOverlay} /> */}
                                         <div className={styles.projectPreviewMediaContainer}>
@@ -106,59 +145,63 @@ export default function Project() {
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
                             <section ref={projectAnchored}>
                                 <Section id={'Overview'}>
-                                    <div className={`${styles.projectOverviewContent} grid`}>
-                                        <div className={styles.projectPreviewText}>
+                                    <div className={`${styles.projectSection} grid`}>
+                                        <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
                                                 <i>Parallax, GSAP, Web, Motion</i>
                                             </h2>
                                             <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
-                                        <div className={styles.projectPreviewMedia}>
-
-                                            <div className={styles.projectPreviewMediaContainer}>
-                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectPreviewMedia}>
+                                                <div className={styles.projectPreviewMediaContainer}>
+                                                    <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </Section>
                                 <Section id={'Background'}>
-                                    <div className={`${styles.projectOverviewContent} grid`}>
-                                        <div className={styles.projectPreviewText}>
+                                    <div className={`${styles.projectSection} grid`}>
+                                        <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
                                                 <i>Background</i>
                                             </h2>
                                             <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
-                                        <div className={styles.projectPreviewMedia}>
-
-                                            <div className={styles.projectPreviewMediaContainer}>
-                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectPreviewMedia}>
+                                                <div className={styles.projectPreviewMediaContainer}>
+                                                    <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </Section>
                                 <Section id={'Concept'}>
-                                    <div className={`${styles.projectOverviewContent} grid`}>
-                                        <div className={styles.projectPreviewText}>
+                                    <div className={`${styles.projectSection} grid`}>
+                                        <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
                                                 <i>Concept</i>
                                             </h2>
                                             <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
-                                        <div className={styles.projectPreviewMedia}>
-
-                                            <div className={styles.projectPreviewMediaContainer}>
-                                                <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                        <div className={styles.projectSectionContentWide}>
+                                            <div className={styles.projectPreviewMedia}>
+                                                <div className={styles.projectPreviewMediaContainer}>
+                                                    <Image src={Projects[0].thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </Section>
                                 <Section id={'Results'}>
                                     <div className={`${styles.projectSection} grid`}>
-                                        <div className={styles.projectSectionNarrow}>
+                                        <div className={styles.projectSectionContentNarrow}>
                                             <div className={styles.projectSectionText}>
                                                 <h2 className={`detail textColorGrey`}>
                                                     Results
@@ -252,37 +295,10 @@ export default function Project() {
                 {/* Scene */}
                 <Scene />
                 {/* Project Static Text */}
-                <section className={`${styles.projectStatic} grid`}>
+                {isMobile ? null : <section className={`${styles.projectStatic} grid`}>
                     <div className={styles.projectStaticContent}>
                         <div ref={projectStaticDetails} className={styles.projectStaticDetails}>
-                            <div className={styles.projectStaticDetailsNumber}>
-                                <p className={`detail`}>
-                                    <span className={`textColorOffBlack`}>Featured Work</span>
-                                </p>
-                                <p className={`detail textColorGrey`}>
-                                    {Projects[0].number} / 006
-                                </p>
-                            </div>
-                            <div className={styles.projectStaticDetailsCompany}>
-                                <p className={`detail`}>
-                                    <span className={`textColorOffBlack`}>Company</span>
-                                </p>
-                                <p className={`detail textColorGrey`}>
-                                    {Projects[0].company}
-                                </p>
-                            </div>
-                            <div className={styles.projectStaticDetailsInvolvement}>
-                                <p className={`detail`}>
-                                    <span className={`textColorOffBlack`}>
-                                        Involvement
-                                    </span>
-                                </p>
-                                <ul className={`${styles.projectStaticDetailsInvolvementList} textFontHighlight textColorGrey`}>
-                                    {Projects[0].involvement.map((involvement) =>
-                                        <li key={involvement}><i>{involvement}</i></li>)
-                                    }
-                                </ul>
-                            </div>
+                            {projectDetails}
                         </div>
                         <div ref={projectStaticAnchors} className={styles.projectStaticAnchors}>
                             <p className={`detail`}>
@@ -291,7 +307,7 @@ export default function Project() {
                             <Anchors />
                         </div>
                     </div>
-                </section>
+                </section>}
             </main>
         </div>
     );

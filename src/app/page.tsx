@@ -11,11 +11,11 @@ import Image from "next/image";
 import Scene from "@/app/components/home/scene/scene";
 import Banner from "@/app/components/home/banner";
 import Link from "@/app/components/global/link";
+import Button from "@/app/components/global/button";
 // Context 
 import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
 import { Projects } from '@/app//projects/projects';
-import Button from "@/app/components/global/button";
 
 export default function Home() {
   // Refs
