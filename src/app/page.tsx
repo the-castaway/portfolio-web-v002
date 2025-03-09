@@ -178,12 +178,9 @@ export default function Home() {
                 <div className={`${styles.homeIntroDetails} grid`}>
                   <div className={styles.homeIntroDetail}>
                     <p className={`${styles.homeIntroDetailHeader} detail`}>
-                      <span className={`textColorOffBlack`}>
-                        FOLIO FEATURES
+                      <span className={`textColorOffWhite`}>
+                        ABOUT
                       </span>
-                    </p>
-                    <p className={`${styles.homeIntroDetailText} textFontDetail`}>
-                      006
                     </p>
                   </div>
                 </div>
