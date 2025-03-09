@@ -32,7 +32,7 @@ const jetBrainsMonoItalic = localFont({
 // Metadata
 export const metadata: Metadata = {
   title: "Jaime Castaneda | 2025 Folio",
-  description: "A Bay Area-based creative whose strategy and design come together to shape inspiring projects that resonate with our time.",
+  description: "Product Designer with a strong technical background, taking products from 0 to 1 by bridging design and engineering to create intuitive, high-impact experiences.",
   icons: "/media/favicon.ico",
 };
 
