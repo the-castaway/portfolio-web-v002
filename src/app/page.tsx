@@ -107,7 +107,7 @@ export default function Home() {
             pin: false,
             start: `top bottom`,
             end: `bottom top`,
-            scrub: true,
+            scrub: 1,
             markers: false,
             invalidateOnRefresh: true,
             onEnter: () => previewIntroTL.play(),

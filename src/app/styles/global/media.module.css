@@ -4,9 +4,47 @@
     align-items: flex-end;
     width: 100%;
     height: auto;
-    aspect-ratio: 4/5;
     border-radius: 5px;
     overflow: hidden;
+}
+
+.mediaAspect4By5 {
+    aspect-ratio: 4/5;
+}
+
+.mediaAspect4By5 .mediaContainer {
+    aspect-ratio: 9/16;
+}
+
+.mediaAspect5By4 {
+    aspect-ratio: 5/4;
+}
+
+.mediaAspect5By4 .mediaContainer {
+    aspect-ratio: 3/4;
+}
+
+.mediaAspect4By3 {
+    aspect-ratio: 4/3;
+}
+
+.mediaAspect4By3 .mediaContainer {
+    aspect-ratio: 3/4;
+}
+
+.mediaAspect16By9 {
+    aspect-ratio: 16/9;
+}
+
+.mediaAspect16By9 .mediaContainer {
+    aspect-ratio: 5/4;
+}
+
+.mediaContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+
 }
 
 .mediaOverlay {
@@ -21,11 +59,4 @@
     background: linear-gradient(#0E0E1000, #0E0E10);
     z-index: 1;
     transition: all 0.5s ease;
-}
-
-.mediaContainer {
-    position: relative;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 9/16;
 }

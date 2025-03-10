@@ -145,7 +145,7 @@ export default function Project() {
                             </section>
                             <div className={`${styles.projectSection} grid`}>
                                 <div className={styles.projectSectionContentNarrow}>
-                                    <Media src={project.thumbnail_desktop} aspectRatio={"4:5"} />
+                                    <Media src={project.thumbnail_desktop} aspectRatio={"4:5"} isPriority={true} />
                                 </div>
                             </div>
                             <section ref={projectAnchored}>
@@ -158,11 +158,7 @@ export default function Project() {
                                             <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
                                         <div className={styles.projectSectionContentNarrow}>
-                                            <div className={styles.projectPreviewMedia}>
-                                                <div className={styles.projectPreviewMediaContainer}>
-                                                    <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                                </div>
-                                            </div>
+                                            <Media src={project.thumbnail_desktop} aspectRatio={"5:4"} isPriority={true} />
                                         </div>
                                     </div>
                                 </Section>
@@ -175,11 +171,7 @@ export default function Project() {
                                             <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
                                         <div className={styles.projectSectionContentNarrow}>
-                                            <div className={styles.projectPreviewMedia}>
-                                                <div className={styles.projectPreviewMediaContainer}>
-                                                    <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                                </div>
-                                            </div>
+                                            <Media src={project.thumbnail_desktop} aspectRatio={"4:3"} />
                                         </div>
                                     </div>
                                 </Section>
@@ -192,11 +184,7 @@ export default function Project() {
                                             <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
                                         <div className={styles.projectSectionContentWide}>
-                                            <div className={styles.projectPreviewMedia}>
-                                                <div className={styles.projectPreviewMediaContainer}>
-                                                    <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                                </div>
-                                            </div>
+                                            <Media src={project.thumbnail_desktop} aspectRatio={"16:9"} />
                                         </div>
 
                                     </div>
