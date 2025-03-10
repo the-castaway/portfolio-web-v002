@@ -1,0 +1,31 @@
+.media {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mediaOverlay {
+    height: 110%;
+    width: 100%;
+    position: absolute;
+    opacity: .5;
+    top: -5%;
+    left: 0;
+    right: 0;
+    bottom: -5%;
+    background: linear-gradient(#0E0E1000, #0E0E10);
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.mediaContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9/16;
+}

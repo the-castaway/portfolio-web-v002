@@ -8,6 +8,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import styles from "@/app/styles/pages/project.module.css"
 // Components
 import Image from "next/image";
+import Media from "@/app/components/global/media";
 import Section from "@/app/components/projects/section";
 import Anchors from "@/app/components/projects/anchors";
 import Scene from "@/app/components/global/scene/scene";
@@ -144,12 +145,7 @@ export default function Project() {
                             </section>
                             <div className={`${styles.projectSection} grid`}>
                                 <div className={styles.projectSectionContentNarrow}>
-                                    <div className={styles.projectPreviewMedia}>
-                                        {/* <div className={styles.projectPreviewMediaOverlay} /> */}
-                                        <div className={styles.projectPreviewMediaContainer}>
-                                            <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" priority style={{ objectFit: "cover" }} />
-                                        </div>
-                                    </div>
+                                    <Media src={project.thumbnail_desktop} aspectRatio={"4:5"} />
                                 </div>
                             </div>
                             <section ref={projectAnchored}>
