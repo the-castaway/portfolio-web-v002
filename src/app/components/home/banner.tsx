@@ -21,7 +21,7 @@ export default function Banner() {
     // Banner intro timeline
     const getBannerIntroTL = () => {
         const bannerIntroTL = gsap.timeline();
-        const bannerUIDetailsHeight = isMobile ? "50%" : "20%";
+        const bannerUIDetailsHeight = isMobile ? "50%" : "22%";
         const bannerUIDetailsWidth = isMobile ? "85%" : "calc(66vw - 100px)";
         bannerIntroTL
             .to(bannerUIDetails.current,
@@ -43,7 +43,7 @@ export default function Banner() {
 
     // Scroll timeline
     const getScrollTL = () => {
-        const bannerUIDetailsHeight = isMobile ? "55%" : "15%";
+        const bannerUIDetailsHeight = isMobile ? "55%" : "17%";
         const bannerUIDetailsWidth = isMobile ? "90%" : "50%";
         const scrollTL = gsap.timeline({
             scrollTrigger: {

@@ -12,9 +12,9 @@ export const transitionPageIn = () => {
     const transitionPageInTL = gsap.timeline();
     transitionPageInTL
         .set(maskContent, { opacity: 0 })
-        .set(maskBorder, { height: 0, width: 0, })
-        .to(maskBorder, { height: '100vh', width: "100vw", delay: DELAY, duration: DURATION, ease: EASE }, 0)
-        .to(maskContent, { opacity: 1, delay: 0.7, duration: DURATION, ease: EASE }, 0)
+        .set(maskBorder, { opacity: 1, height: 0, width: 0, })
+        .to(maskBorder, { opacity: 0, height: '30vh', width: "30vw", delay: DELAY, duration: DURATION, ease: EASE }, 0)
+        .to(maskContent, { opacity: 1, delay: 0.8, duration: DURATION, ease: EASE }, 0)
 }
 
 export const transitionPageOut = (href: string, router: AppRouterInstance) => {

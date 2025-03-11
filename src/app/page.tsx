@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   // Featured work timeline
-  const getFeaturedTimelines = (ctx: gsap.Context) => {
+  const getFeaturedTL = (ctx: gsap.Context) => {
     const previews = gsap.utils.toArray<HTMLElement>(
       `.${styles.homeFeaturedPreviewMedia}`
     );
@@ -139,7 +139,7 @@ export default function Home() {
     if (!isMobile) {
       const ctx = gsap.context((self) => {
         getFeaturedIntroTL(self);
-        getFeaturedTimelines(self);
+        getFeaturedTL(self);
       });
       return () => ctx.revert();
     }
@@ -163,7 +163,7 @@ export default function Home() {
                 <div className={`${styles.homeIntroDetails} grid`}>
                   <div className={styles.homeIntroDetail}>
                     <p className={`${styles.homeIntroDetailHeader} detail`}>
-                      <span className={`textColorOffWhite`}>
+                      <span className={`textColorOffBlack`}>
                         ABOUT
                       </span>
                     </p>
