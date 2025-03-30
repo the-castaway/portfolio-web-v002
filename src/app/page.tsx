@@ -22,7 +22,7 @@ export default function Home() {
   const homeFeaturedStatic = useRef<HTMLDivElement>(null!)
   const homeFeaturedPreviewsList = useRef<HTMLDivElement>(null!)
   //variables
-  const projects = useMemo(() => Projects.slice(0, 6), []);
+  const projects = useMemo(() => Projects.slice(0, 7), []);
   // Context
   const { isMobile } = useScreenSize();
 
@@ -212,7 +212,7 @@ export default function Home() {
                               <span className={`textColorOffBlack`}>Featured Work</span>
                             </p>
                             <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
-                              {project.number} / 006
+                              {project.number} /00{projects.length}
                             </p>
                             <div className={styles.homeFeaturedPreviewMedia}>
                               <div className={styles.homeFeaturedPreviewMediaOverlay} />
@@ -312,7 +312,7 @@ export default function Home() {
                     }
                   </div>
                   <p className={`${styles.homeFeaturedNumberText} textFontDetail textColorOffWhite`}>
-                    /006
+                    /00{projects.length}
                   </p>
                 </div>
               </div>
