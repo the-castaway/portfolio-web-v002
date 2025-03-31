@@ -4,11 +4,10 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Canvas } from '@react-three/fiber'
-import dynamic from 'next/dynamic';
 // Styles
 import styles from "@/app/styles/global/scene.module.css"
 // Components
-const SceneBrackets = dynamic(() => import('@/app/components/global/scene/sceneBrackets'), { ssr: true });
+import SceneBrackets from '@/app/components/global/scene/sceneBrackets';
 
 export default function Scene() {
     // Refs
