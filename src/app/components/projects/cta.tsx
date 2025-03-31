@@ -78,15 +78,15 @@ export default function CTA({ nextProjectLink, nextProjectName, nextProjectNumbe
                 </div>
                 <div className={styles.ctaSocials}>
                     <p className={`detail`}>
-                        <a className={styles.ctaSocial} href="https://www.google.com">
+                        <a className={styles.ctaSocial} href="https://x.com/the_casta_way">
                             X
                         </a>
                         <span className={`textColorGrey`}>/</span>
-                        <a className={styles.ctaSocial} href="https://www.google.com">
+                        <a className={styles.ctaSocial} href='https://www.instagram.com/the_casta_way/'>
                             IG
                         </a>
                         <span className={`textColorGrey`}>/</span>
-                        <a className={styles.ctaSocial} href="https://www.google.com">
+                        <a className={styles.ctaSocial} href='https://www.linkedin.com/in/the-casta-way/'>
                             LI
                         </a>
                     </p>

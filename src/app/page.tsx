@@ -268,21 +268,21 @@ export default function Home() {
                   </div>
                   <div className={styles.homeCTASocials}>
                     <p className={`detail`}>
-                      <a className={styles.homeCTASocial} href="https://www.google.com">
+                      <a className={styles.homeCTASocial} href="https://x.com/the_casta_way">
                         X
                       </a>
                       <span className={`textColorGrey`}>/</span>
-                      <a className={styles.homeCTASocial} href="https://www.google.com">
+                      <a className={styles.homeCTASocial} href='https://www.instagram.com/the_casta_way/'>
                         IG
                       </a>
                       <span className={`textColorGrey`}>/</span>
-                      <a className={styles.homeCTASocial} href="https://www.google.com">
+                      <a className={styles.homeCTASocial} href='https://www.linkedin.com/in/the-casta-way/'>
                         LI
                       </a>
                     </p>
                   </div>
                   <div className={styles.homeCTAButton}>
-                    <Button href={'https://www.google.com'}>
+                    <Button href={'mailto:hello@jaimecastaneda.com'}>
                       Contact
                     </Button>
                   </div>

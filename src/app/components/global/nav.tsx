@@ -195,7 +195,7 @@ const Nav = () => {
                                 </p>
                             </div>
                             <div className={styles.navModalContentContactList}>
-                                <a href='www.google.com' className={styles.navModalContentContactLink}>
+                                <a href='mailto:hello@jaimecastaneda.com' className={styles.navModalContentContactLink}>
                                     <div className={styles.navModalContentContactLinkText}>
                                         <p className={`${styles.navModalContentContactTextNumber} detail`}>
                                             <span className={`textColorGrey`}>
@@ -207,7 +207,7 @@ const Nav = () => {
                                         </p>
                                     </div>
                                 </a>
-                                <a href='www.google.com' className={styles.navModalContentContactLink}>
+                                <a href='https://www.linkedin.com/in/the-casta-way/' className={styles.navModalContentContactLink}>
                                     <div className={styles.navModalContentContactLinkText}>
                                         <p className={`${styles.navModalContentContactTextNumber} detail`}>
                                             <span className={`textColorGrey`}>
@@ -219,7 +219,7 @@ const Nav = () => {
                                         </p>
                                     </div>
                                 </a>
-                                <a href='www.google.com' className={styles.navModalContentContactLink}>
+                                <a href='https://www.instagram.com/the_casta_way/' className={styles.navModalContentContactLink}>
                                     <div className={styles.navModalContentContactLinkText}>
                                         <p className={`${styles.navModalContentContactTextNumber} detail`}>
                                             <span className={`textColorGrey`}>
