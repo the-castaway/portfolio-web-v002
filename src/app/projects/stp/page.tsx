@@ -18,7 +18,7 @@ import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
 import { Projects } from '@/app//projects/projects';
 
-const PROJECT_NUMBER = 0;
+const PROJECT_NUMBER = 1;
 
 export default function Project() {
     // Project
@@ -139,10 +139,10 @@ export default function Project() {
                                     <div className={styles.projectIntroTitle}>
                                         <h1>{project.name}</h1>
                                         <p className={`textColorGrey`}>
-                                            The Interactive Product Tour is a scalable, 3D module that brings hardware products to life. Users can rotate, zoom, and explore key features through interactive hotspots that reveal detailed information. When a hotspot is clicked, the model dynamically animates—rotating, moving, and zooming into the area of interest.
+                                            Scroll to Play is an interactive module that seamlessly integrates video or image sequences into the scrolling experience. It either plays a series of images frame by frame or buffers a video in sync with the user's scroll, providing an immersive, cinematic effect.
                                         </p>
                                         <p className={`textColorGrey`}>
-                                            Designed for flexibility, this module enables Meta to seamlessly integrate any hardware product while supporting unlimited hotspots and diverse media types. It has become the standard for all future product pages at Meta.
+                                            Built for maximum flexibility, this module empowers Meta developers to insert unlimited content, media (whether videos or image sequences), and control how and when elements appear, animate, and interact. Its adaptable framework ensures a smooth, engaging experience across various use cases.
                                         </p>
                                         {isMobile ? <>{projectDetails}</> : null}
                                     </div>
@@ -159,14 +159,20 @@ export default function Project() {
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>ThreeJS, GSAP, Web, Motion</i>
+                                                <i>GSAP, Canvas, Motion, Ecoding</i>
                                             </h2>
                                             <p className={`textColorGrey`}>
-                                                As Meta embraced the metaverse and prioritized immersive technologies, its corporate site needed to reflect this shift. To enhance learning engagement, improve add-to-cart metrics, and bring immersive experiences to the web, we developed a suite of interactive modules. The Interactive Product Tour was the first 3D experience in Meta’s corporate stack, setting the foundation for future modules with scalable code, reusable libraries, and comprehensive documentation.
+                                                To push immersive web experiences beyond individual projects, we developed Scroll to Play—a highly scalable module designed to enhance entire platforms and sites. One of the most dynamic modules at Meta, it shares a common backend while delivering vastly different front-end visuals, making it both modular and adaptable.
+                                            </p>
+                                            <p className={`textColorGrey`}>
+                                                Performance was a key focus, ensuring smooth playback by optimizing payload size—limiting image sequences or buffering at lower resolutions for lower-end devices. Built using Canvas for rendering and GSAP for animation, the module allows developers to control how much scrolling is required to cycle through media.
+                                            </p>
+                                            <p className={`textColorGrey`}>
+                                                I designed and built the first version of this module, which quickly gained traction across Meta. With widespread adoption, it has since evolved through contributions from dozens of teams.
                                             </p>
                                         </div>
                                         <div className={styles.projectSectionContentNarrow}>
-                                            <Media src={"/media/projects/ipt/overview.webp"} aspectRatio={"4:5"} isPriority={true} />
+                                            <Media src={"/media/projects/stp/overview.webp"} aspectRatio={"4:5"} isPriority={true} />
                                         </div>
                                     </div>
                                 </Section>
