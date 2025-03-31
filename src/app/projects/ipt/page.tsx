@@ -183,7 +183,7 @@ export default function Project() {
                                                     The Reasoning
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    Top-down desire for immersive experiences on web surfaces. This is in an effort to closer align goals to company initiatives which revolved around the metaverse and digital immersion,
+                                                    Top-down desire for immersive experiences on web surfaces. This is in an effort to closer align goals to company initiatives which revolved around the metaverse and digital immersion.
                                                 </p>
                                                 <p className={`textColorGrey`}>
                                                     Bottom-up desire to grow and implement WebGL codebase. I needed a good excuse to greenlight a ThreeJS proof of concept.
