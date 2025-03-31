@@ -139,7 +139,7 @@ export default function Project() {
                                     <div className={styles.projectIntroTitle}>
                                         <h1>{project.name}</h1>
                                         <p className={`textColorGrey`}>
-                                            The Comms Portal is Meta’s central hub for all things Communications and Public Affairs, designed to empower employees and partners in crafting messaging with the right tone, visuals, and funding. With a bold, navigation-focused design, it ensures seamless access to key resources and features custom search capabilities integrated with Meta AI.
+                                            The Comms Portal is Meta's central hub for all things Communications and Public Affairs, designed to empower employees and partners in crafting messaging with the right tone, visuals, and funding. With a bold, navigation-focused design, it ensures seamless access to key resources and features custom search capabilities integrated with Meta AI.
                                         </p>
                                         <p className={`textColorGrey`}>
                                             Built for scalability, the portal leverages a robust framework of bespoke components, enabling developers to spin up pages in minutes. Its typography-driven design minimizes reliance on visual assets, streamlining content creation and reducing the need for external sourcing.
@@ -240,10 +240,10 @@ export default function Project() {
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>Let’s conceptualize</i>
+                                                <i>Let's conceptualize</i>
                                             </h2>
                                             <p className={`textColorGrey`}>
-                                                Simple, easy-to-use componentry and onboarding were key to driving content owner adoption, which was critical to the project's success. We developed extensive Figma libraries integrated with Meta’s DimSum documentation system, linking to live CMS examples and backend component code—ensuring real-time updates with every edit.
+                                                Simple, easy-to-use componentry and onboarding were key to driving content owner adoption, which was critical to the project's success. We developed extensive Figma libraries integrated with Meta's DimSum documentation system, linking to live CMS examples and backend component code—ensuring real-time updates with every edit.
                                             </p>
                                             <p className={`textColorGrey`}>
                                                 We prioritized a minimal-asset design, allowing non-visual content owners to create pages that adhered to the design system while maintaining a high visual standard.

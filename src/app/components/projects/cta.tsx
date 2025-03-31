@@ -1,5 +1,4 @@
 "use client"
-import { ReactNode } from "react";
 // Components
 import Link from "@/app/components/global/link";
 // Styles

@@ -7,7 +7,6 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
 import styles from "@/app/styles/pages/project.module.css"
 // Components
-import Image from "next/image";
 import Media from "@/app/components/global/media";
 import Section from "@/app/components/projects/section";
 import Anchors from "@/app/components/projects/anchors";
