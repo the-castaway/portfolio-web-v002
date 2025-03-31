@@ -17,6 +17,7 @@ export default function Scene() {
 
     // Scroll timeline
     const getScrollTL = (ctx: gsap.Context) => {
+        if (!sceneLogo.current || !sceneBrackets.current) return;
         ctx.add(() => {
             gsap.set(sceneLogo.current, { opacity: 1 });
             gsap.set(sceneBrackets.current, { opacity: 0 });
@@ -84,16 +85,14 @@ export default function Scene() {
 
     // Initiate timelines
     useLayoutEffect(() => {
-        // Plugins
-        gsap.registerPlugin(ScrollTrigger)
-
+        gsap.registerPlugin(ScrollTrigger);
         const ctx = gsap.context((self) => {
-            getScrollTL(self);
-        })
+            requestAnimationFrame(() => getScrollTL(self));
+        });
+
         return () => {
             ctx.revert();
-            ScrollTrigger.refresh();
-        }
+        };
     }, [])
 
     return (

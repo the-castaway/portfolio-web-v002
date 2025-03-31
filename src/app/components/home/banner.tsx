@@ -1,7 +1,6 @@
 "use client"
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "@/app/styles/home/banner.module.css"
 // Context 
@@ -54,6 +53,7 @@ export default function Banner() {
                 end: () => innerHeight / 2,
                 scrub: 1,
                 markers: false,
+                invalidateOnRefresh: true,
             }
         });
         scrollTL.to(bannerTopLeft.current, {
@@ -81,15 +81,13 @@ export default function Banner() {
     }
 
     // Initialize timelines
-    useLayoutEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+    useEffect(() => {
         const ctx = gsap.context(() => {
             getBannerIntroTL();
             getScrollTL();
         })
         return () => {
             ctx.revert();
-            ScrollTrigger.refresh();
         }
     }, [isMobile])
 

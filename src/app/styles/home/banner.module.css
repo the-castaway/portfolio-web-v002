@@ -34,7 +34,7 @@
     position: absolute;
     top: 0%;
     left: 0%;
-    transform: translate(-20px, -100%);
+    transform: translate3D(-20px, -100%, 0);
     height: auto;
     width: auto;
     display: flex;
@@ -64,7 +64,7 @@
     position: absolute;
     top: 0%;
     right: 0%;
-    transform: translate(20px, -100%);
+    transform: translate3D(20px, -100%, 0);
     height: auto;
     width: auto;
     display: flex;
@@ -94,7 +94,7 @@
     position: absolute;
     bottom: 0%;
     right: 0%;
-    transform: translate(20px, 100%);
+    transform: translate3D(20px, 100%, 0);
     height: auto;
     width: auto;
     display: flex;
@@ -125,7 +125,7 @@
     position: absolute;
     bottom: 0%;
     left: 0%;
-    transform: translate(-20px, 100%);
+    transform: translate3D(-20px, 100%, 0);
     height: auto;
     width: auto;
     display: flex;

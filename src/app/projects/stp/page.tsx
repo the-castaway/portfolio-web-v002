@@ -2,7 +2,6 @@
 "use client"
 import { useEffect, useRef } from "react";
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 // Styles
 import styles from "@/app/styles/pages/project.module.css"
@@ -75,7 +74,7 @@ export default function Project() {
 
     // Initialize GSAP timelines and plugins
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+        gsap.registerPlugin(ScrollSmoother);
         ScrollSmoother.create({
             content: "#smooth-content",
             wrapper: "#smooth-wrapper",

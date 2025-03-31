@@ -39,15 +39,12 @@ export default function Scene() {
 
     // Initiate timelines
     useLayoutEffect(() => {
-        // Plugins
-        gsap.registerPlugin(ScrollTrigger)
-
+        gsap.registerPlugin(ScrollTrigger);
         const ctx = gsap.context((self) => {
-            getScrollTL(self);
+            requestAnimationFrame(() => getScrollTL(self));
         })
         return () => {
             ctx.revert();
-            ScrollTrigger.refresh();
         }
     }, [])
 

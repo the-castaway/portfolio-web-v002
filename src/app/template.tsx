@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { transitionPageIn, transitionHomeIn } from "@/app/utils/transition/transition";
 import { usePathname } from "next/navigation";
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "@/app/styles/global/transition.module.css";
 // Components
@@ -14,6 +15,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
         const ctx = gsap.context(() => {
             if (pathname !== "/") {
                 transitionPageIn()
@@ -24,6 +26,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         })
         window.scrollTo(0, 0);
         return () => {
+            ScrollTrigger.refresh();
             ctx.revert();
         }
     }, [pathname])
