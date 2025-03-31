@@ -11,10 +11,10 @@ export const transitionPageIn = () => {
     const maskBorder = document.getElementById("mask-border");
     const transitionPageInTL = gsap.timeline();
     transitionPageInTL
-        .set(maskContent, { opacity: 0 })
+        //.set(maskContent, { opacity: 0 })
         .set(maskBorder, { opacity: 1, height: 0, width: 0, })
         .to(maskBorder, { opacity: 0, height: '30vh', width: "30vw", delay: DELAY, duration: DURATION, ease: EASE }, 0)
-        .to(maskContent, { opacity: 1, delay: 0.8, duration: DURATION, ease: EASE }, 0)
+    //.to(maskContent, { opacity: 1, delay: 0.8, duration: DURATION, ease: EASE }, 0)
 }
 
 export const transitionPageOut = (href: string, router: AppRouterInstance) => {
@@ -22,9 +22,9 @@ export const transitionPageOut = (href: string, router: AppRouterInstance) => {
     const maskBorder = document.getElementById("mask-border");
     const transitionPageOutTL = gsap.timeline();
     transitionPageOutTL
-        .set(maskContent, { opacity: 1 })
+        //.set(maskContent, { opacity: 1 })
         .set(maskBorder, { opacity: 0, height: "30vh", width: "30vh", rotate: 90, })
-        .to(maskContent, { opacity: 0, delay: 0, duration: DURATION / 2, ease: EASE }, 0)
+        //.to(maskContent, { opacity: 0, delay: 0, duration: DURATION / 2, ease: EASE }, 0)
         .to(maskBorder, { opacity: 1, height: 0, width: 0, rotate: 0, delay: 0.3, duration: DURATION, ease: EASE, onComplete: () => { router.push(href) } }, 0)
 }
 

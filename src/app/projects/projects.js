@@ -60,7 +60,7 @@ export const Projects = [
         thumbnail_desktop: '/media/projects/about/thumbnail.webp',
     },
     {
-        key: 5,
+        key: 6,
         number: "007",
         name: "Wavely Job Board",
         involvement: ["Product Design", "Prototyping", "UI/UX Design"],
