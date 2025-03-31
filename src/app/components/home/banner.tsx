@@ -88,8 +88,8 @@ export default function Banner() {
             getScrollTL();
         })
         return () => {
-            ctx.kill();
             ctx.revert();
+            ScrollTrigger.refresh();
         }
     }, [isMobile])
 

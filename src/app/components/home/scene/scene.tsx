@@ -92,7 +92,7 @@ export default function Scene() {
         })
         return () => {
             ctx.revert();
-            ctx.kill();
+            ScrollTrigger.refresh();
         }
     }, [])
 
