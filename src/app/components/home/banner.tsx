@@ -11,6 +11,10 @@ export default function Banner() {
     // Refs
     const banner = useRef<HTMLDivElement>(null!);
     const bannerUIDetails = useRef<HTMLDivElement>(null!);
+    const bannerTopLeft = useRef<HTMLDivElement>(null!);
+    const bannerTopRight = useRef<HTMLDivElement>(null!);
+    const bannerBottomRight = useRef<HTMLDivElement>(null!);
+    const bannerBottomLeft = useRef<HTMLDivElement>(null!);
     const bannerTopLeftText = useRef<HTMLDivElement>(null!);
     const bannerTopRightText = useRef<HTMLDivElement>(null!);
     const bannerBottomRightText = useRef<HTMLDivElement>(null!);
@@ -38,12 +42,6 @@ export default function Banner() {
                     duration: 0.5,
                     delay: 0.8,
                 }, 0)
-            .set(bannerUIDetails.current,
-                {
-                    width: bannerIntroWidth,
-                    height: bannerIntroHeight,
-                }, 1
-            )
         return bannerIntroTL;
     }
 
@@ -60,12 +58,27 @@ export default function Banner() {
                 markers: false,
             }
         });
-        scrollTL.to(bannerUIDetails.current, {
-            width: bannerWidthEnd,
-            height: bannerHeightEnd,
+        scrollTL.to(bannerTopLeft.current, {
+            x: 40,
+            y: 20,
             opacity: 0,
             duration: 0.5,
-        }, ">")
+        }, 0).to(bannerTopRight.current, {
+            x: -40,
+            y: 20,
+            opacity: 0,
+            duration: 0.5,
+        }, 0).to(bannerBottomRight.current, {
+            x: -40,
+            y: -20,
+            opacity: 0,
+            duration: 0.5,
+        }, 0).to(bannerBottomLeft.current, {
+            x: 40,
+            y: -20,
+            opacity: 0,
+            duration: 0.5,
+        }, 0)
         return scrollTL;
     }
 
@@ -77,6 +90,7 @@ export default function Banner() {
             getScrollTL();
         })
         return () => {
+            ctx.kill();
             ctx.revert();
         }
     }, [isMobile])
@@ -85,7 +99,7 @@ export default function Banner() {
         <div ref={banner} className={styles.homeBanner}>
             <div className={styles.homeBannerUI}>
                 <div ref={bannerUIDetails} className={styles.homeBannerUIDetails}>
-                    <div className={styles.homeBannerUIDetailsTopLeft}>
+                    <div ref={bannerTopLeft} className={styles.homeBannerUIDetailsTopLeft}>
                         <div className={styles.homeBannerUIDetailsTopLeftCorner} />
                         <p ref={bannerTopLeftText} className={`${styles.homeBannerUIDetailsTopLeftText} detail textColorGrey`}>
                             <span className={`textColorBlue`}>
@@ -93,7 +107,7 @@ export default function Banner() {
                             </span>
                         </p>
                     </div>
-                    <div className={styles.homeBannerUIDetailsTopRight}>
+                    <div ref={bannerTopRight} className={styles.homeBannerUIDetailsTopRight}>
                         <p ref={bannerTopRightText} className={`${styles.homeBannerUIDetailsTopRightText} detail textColorGrey`}>
                             <span className={`textColorDarkGrey`}>
                                 @the_casta_way
@@ -101,7 +115,7 @@ export default function Banner() {
                         </p>
                         <div className={styles.homeBannerUIDetailsTopRightCorner} />
                     </div>
-                    <div className={styles.homeBannerUIDetailsBottomRight}>
+                    <div ref={bannerBottomRight} className={styles.homeBannerUIDetailsBottomRight}>
                         <p ref={bannerBottomRightText} className={`${styles.homeBannerUIDetailsBottomRightText} detail textColorGrey`}>
                             <span className={`textColorDarkGrey`}>
                                 ©2025 V.002
@@ -109,7 +123,7 @@ export default function Banner() {
                         </p>
                         <div className={styles.homeBannerUIDetailsBottomRightCorner} />
                     </div>
-                    <div className={styles.homeBannerUIDetailsBottomLeft}>
+                    <div ref={bannerBottomLeft} className={styles.homeBannerUIDetailsBottomLeft}>
                         <div className={styles.homeBannerUIDetailsBottomLeftCorner} />
                         <p ref={bannerBottomLeftText} className={`${styles.homeBannerUIDetailsBottomLeftText} detail textColorGrey`}>
                             <span className={`textColorDarkGrey`}>

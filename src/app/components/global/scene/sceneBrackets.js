@@ -64,6 +64,29 @@ export default function SceneBrackets() {
         })
         return () => {
             ctx.revert();
+            if (brackets.current) {
+                brackets.current.traverse((obj) => {
+                    if (obj.geometry) {
+                        obj.geometry.dispose();
+                        obj.geometry = null;
+                    }
+                    if (obj.material) {
+                        if (Array.isArray(obj.material)) {
+                            obj.material.forEach((mat) => {
+                                mat.dispose();
+                                mat = null;
+                            });
+                        } else {
+                            obj.material.dispose();
+                            obj.material = null;
+                        }
+                    }
+                    if (obj.texture) {
+                        obj.texture.dispose();
+                        obj.texture = null;
+                    }
+                });
+            }
         }
     }, [])
 
