@@ -17,6 +17,7 @@ import CTA from "@/app/components/projects/cta";
 import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
 import { Projects } from '@/app//projects/projects';
+
 const PROJECT_NUMBER = 0;
 
 export default function Project() {
@@ -137,7 +138,12 @@ export default function Project() {
                                 <div className={`${styles.projectIntroContent} grid`}>
                                     <div className={styles.projectIntroTitle}>
                                         <h1>{project.name}</h1>
-                                        <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                        <p className={`textColorGrey`}>
+                                            The Interactive Product Tour is a scalable, 3D module that brings hardware products to life. Users can rotate, zoom, and explore key features through interactive hotspots that reveal detailed information. When a hotspot is clicked, the model dynamically animates—rotating, moving, and zooming into the area of interest.
+                                        </p>
+                                        <p className={`textColorGrey`}>
+                                            Designed for flexibility, this module enables Meta to seamlessly integrate any hardware product while supporting unlimited hotspots and diverse media types. It has become the standard for all future product pages at Meta.
+                                        </p>
                                         {isMobile ? <>{projectDetails}</> : null}
                                     </div>
 
@@ -153,25 +159,86 @@ export default function Project() {
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>Parallax, GSAP, Web, Motion</i>
+                                                <i>ThreeJS, GSAP, Web, Motion</i>
                                             </h2>
-                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                            <p className={`textColorGrey`}>
+                                                As Meta embraced the metaverse and prioritized immersive technologies, its corporate site needed to reflect this shift. To enhance learning engagement, improve add-to-cart metrics, and bring immersive experiences to the web, we developed a suite of interactive modules. The Interactive Product Tour was the first 3D experience in Meta’s corporate stack, setting the foundation for future modules with scalable code, reusable libraries, and comprehensive documentation.
+                                            </p>
                                         </div>
                                         <div className={styles.projectSectionContentNarrow}>
-                                            <Media src={project.thumbnail_desktop} aspectRatio={"5:4"} isPriority={true} />
+                                            <Media src={"/media/projects/ipt/overview.webp"} aspectRatio={"4:5"} isPriority={true} />
                                         </div>
                                     </div>
                                 </Section>
-                                <Section id={'Background'}>
+                                <Section id={'Considerations'}>
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>Background</i>
+                                                <i>Things to keep in mind</i>
                                             </h2>
-                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
                                         </div>
-                                        <div className={styles.projectSectionContentNarrow}>
-                                            <Media src={project.thumbnail_desktop} aspectRatio={"4:3"} />
+                                        <div className={styles.projectSectionContentColumnLeft}>
+                                            <div className={styles.projectSectionText}>
+                                                <h2 className={`detail textColorOffWhite`}>
+                                                    The Reasoning
+                                                </h2>
+                                                <p className={`textColorGrey`}>
+                                                    Top-down desire for immersive experiences on web surfaces. This is in an effort to closer align goals to company initiatives which revolved around the metaverse and digital immersion,
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Bottom-up desire to grow and implement WebGL codebase. I needed a good excuse to greenlight a ThreeJS proof of concept.
+                                                </p>
+                                            </div>
+                                            <div className={styles.projectSectionText}>
+                                                <h2 className={`detail textColorOffWhite`}>
+                                                    THE DYNAMICS
+                                                </h2>
+                                                <p className={`textColorGrey`}>
+                                                    Limited resourcing.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Tight deadline.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Short testing window.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Limited access to product teams.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Inability to import large packages to existing web app,
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.projectSectionContentColumnRight}>
+                                            <div className={styles.projectSectionText}>
+                                                <h2 className={`detail textColorOffWhite`}>
+                                                    The Goals
+                                                </h2>
+                                                <p className={`textColorGrey`}>
+                                                    Successfully implement Three JS experience without causing regression across the web app. Don’t break anything.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Replace existing carousel module and improve on it’s learning engagement metrics.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    Sell headsets…. Increase Add to Cart metric. Profit.
+                                                </p>
+                                            </div>
+                                            <div className={styles.projectSectionText}>
+                                                <h2 className={`detail textColorOffWhite`}>
+                                                    The Context
+                                                </h2>
+                                                <p className={`textColorGrey`}>
+                                                    PRO: Companies like IKEA and Wayfair boosted sales by 35% and 20%, respectively, after integrating 3D experiences into their e-commerce platforms.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    PRO: 3D previews has been linked to a 40% increase in customer satisfaction.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    CON: Every second of delay in loading time can reduce conversions by up to 7% and increase bounce rates by 32%.
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </Section>
@@ -179,14 +246,113 @@ export default function Project() {
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>Concept</i>
+                                                <i>Let’s conceptualize</i>
                                             </h2>
-                                            <p className={`textColorGrey`}>The interactive product tour is designed to be featured on our product pages using canvas elements, leveraging WebGL and Three.js for 3D rendering, and GSAP for animating transitions between states.</p>
+                                            <p className={`textColorGrey`}>Throughout the design process, we worked closely with engineering, product, legal, and marcomms to ensure our solutions aligned with technical, business, and brand requirements. We designed a solution that lets users select the hardware they want to explore, accommodating a wide range of use cases.</p>
                                         </div>
-                                        <div className={styles.projectSectionContentWide}>
-                                            <Media src={project.thumbnail_desktop} aspectRatio={"16:9"} />
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/overview1.webp"
+                                                    alt="IPT scene overview 1"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/overview2.webp"
+                                                    alt="IPT scene overview 2"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/overview3.webp"
+                                                    alt="IPT scene overview 3"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
                                         </div>
-
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectSectionText}>
+                                                <p className={`textColorGrey`}>
+                                                    Our flexible hotspot framework enables precise placement of interactive hotspots on any piece of hardware, seamlessly integrating additional content that appears upon selection. This allows for an intuitive and immersive user experience, enhancing product exploration and engagement.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/hotspot1.webp"
+                                                    alt="IPT scene hotspot 1"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/hotspot2.webp"
+                                                    alt="IPT scene hotspot 2"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/hotspot3.webp"
+                                                    alt="IPT scene hotspot 3"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/hotspot4.webp"
+                                                    alt="IPT scene hotspot 4"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/hotspot5.webp"
+                                                    alt="IPT scene hotspot 5"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/hotspot6.webp"
+                                                    alt="IPT scene hotspot 6"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <video
+                                                    autoPlay
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                >
+                                                    <source src="/media/projects/ipt/demo.webm" type="video/webm" />
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        </div>
                                     </div>
                                 </Section>
                                 <Section id={'Results'}>
@@ -197,45 +363,43 @@ export default function Project() {
                                                     Results
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    The results of this module were significant. We contributed to the goal of creating more interactive and immersive experiences while also substantially improving key metrics. The average time spent on the page increased by over 30 seconds, the learning engagement metric improved by over 8%, and the add-to-cart rate increased by 1%.
+                                                    The results of this module were significant. We contributed to the goal of creating more interactive and immersive experiences while also substantially improving key metrics. The average time spent on the page increased by over 30%, the learning engagement metric improved by over 40%, and the add-to-cart rate increased by 3%.
                                                 </p>
                                             </div>
                                             <div className={styles.projectResults}>
                                                 <div className={styles.projectResultsStats}>
                                                     <div className={styles.projectResultsStat}>
                                                         <p className={`detail textColorDarkGrey`}>
-                                                            Bounce Rate
+                                                            Time Spent
                                                         </p>
                                                         <p className={styles.projectResultsStatNumber}>
-                                                            +8%
+                                                            +30%
                                                         </p>
-
                                                     </div>
                                                     <div className={styles.projectResultsStat}>
                                                         <p className={`detail textColorDarkGrey`}>
-                                                            Bounce Rate
+                                                            Learning Engagement
                                                         </p>
                                                         <p className={styles.projectResultsStatNumber}>
-                                                            +8%
+                                                            +40%
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div className={styles.projectResultsStats}>
                                                     <div className={styles.projectResultsStat}>
                                                         <p className={`detail textColorDarkGrey`}>
-                                                            Bounce Rate
+                                                            Add to Cart
                                                         </p>
                                                         <p className={styles.projectResultsStatNumber}>
-                                                            +8%
+                                                            +3%
                                                         </p>
-
                                                     </div>
                                                     <div className={styles.projectResultsStat}>
                                                         <p className={`detail textColorDarkGrey`}>
                                                             Bounce Rate
                                                         </p>
                                                         <p className={styles.projectResultsStatNumber}>
-                                                            +8%
+                                                            -8%
                                                         </p>
                                                     </div>
                                                 </div>
@@ -246,34 +410,24 @@ export default function Project() {
                                                         Collaborators
                                                     </p>
                                                 </div>
-                                                <a href={'https://www.google.com'} className={styles.projectResultsCollab}>
+                                                <a href={'https://www.linkedin.com/in/kupsco/'} className={styles.projectResultsCollab}>
                                                     <p className={`detail textColorGrey`}>
-                                                        [ ENG ]
+                                                        [ PM ]
                                                     </p>
                                                     <p className={styles.projectResultsCollabName}>
                                                         <b>Dan Kupsco</b>
                                                     </p>
                                                 </a>
-                                                <a href={'https://www.google.com'} className={styles.projectResultsCollab}>
+                                                <a href={'https://www.linkedin.com/in/eugeneteu/'} className={styles.projectResultsCollab}>
                                                     <p className={`detail textColorGrey`}>
                                                         [ ENG ]
                                                     </p>
                                                     <p className={styles.projectResultsCollabName}>
-                                                        <b>Dan Kupsco</b>
-                                                    </p>
-                                                </a>
-                                                <a href={'https://www.google.com'} className={styles.projectResultsCollab}>
-                                                    <p className={`detail textColorGrey`}>
-                                                        [ ENG ]
-                                                    </p>
-                                                    <p className={styles.projectResultsCollabName}>
-                                                        <b>Dan Kupsco</b>
+                                                        <b>Eugene Teu</b>
                                                     </p>
                                                 </a>
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </Section>
                             </section>
@@ -285,20 +439,22 @@ export default function Project() {
                 {/* Scene */}
                 <Scene />
                 {/* Project Static Text */}
-                {isMobile ? null : <section className={`${styles.projectStatic} grid`}>
-                    <div className={styles.projectStaticContent}>
-                        <div ref={projectStaticDetails} className={styles.projectStaticDetails}>
-                            {projectDetails}
+                {
+                    isMobile ? null : <section className={`${styles.projectStatic} grid`}>
+                        <div className={styles.projectStaticContent}>
+                            <div ref={projectStaticDetails} className={styles.projectStaticDetails}>
+                                {projectDetails}
+                            </div>
+                            <div ref={projectStaticAnchors} className={styles.projectStaticAnchors}>
+                                <p className={`detail`}>
+                                    <span className={`textColorOffBlack`}>Project Info</span>
+                                </p>
+                                <Anchors />
+                            </div>
                         </div>
-                        <div ref={projectStaticAnchors} className={styles.projectStaticAnchors}>
-                            <p className={`detail`}>
-                                <span className={`textColorOffBlack`}>Project Info</span>
-                            </p>
-                            <Anchors />
-                        </div>
-                    </div>
-                </section>}
-            </main>
-        </div>
+                    </section>
+                }
+            </main >
+        </div >
     );
 }

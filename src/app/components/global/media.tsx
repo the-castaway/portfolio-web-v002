@@ -62,7 +62,7 @@ export default function Media({ src, aspectRatio, isPriority = false }: Props) {
 
     return (
         <div ref={media} className={`${styles.media} ${mediaAspectRatio[aspectRatio]}`}>
-            <div className={styles.mediaOverlay} />
+            {/* <div className={styles.mediaOverlay} /> */}
             <div ref={mediaContainer} className={styles.mediaContainer}>
                 <Image src={src} alt="media" fill={true} sizes="100%" priority={isPriority ? true : false} loading={isPriority ? "eager" : "lazy"} style={{ objectFit: "cover" }} />
             </div>
