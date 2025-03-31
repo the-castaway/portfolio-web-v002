@@ -1,7 +1,8 @@
 "use client"
-import { useEffect } from "react"
-import { transitionPageIn, transitionHomeIn } from "@/app/utils/transition/transition"
-import { usePathname } from "next/navigation"
+import { useEffect } from "react";
+import { transitionPageIn, transitionHomeIn } from "@/app/utils/transition/transition";
+import { usePathname } from "next/navigation";
+import gsap from 'gsap';
 // Styles
 import styles from "@/app/styles/global/transition.module.css";
 // Components
@@ -13,14 +14,20 @@ export default function Template({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        if (pathname !== "/") {
-            transitionPageIn()
-        }
-        else if (pathname === "/") {
-            transitionHomeIn()
-        }
+        const ctx = gsap.context(() => {
+            if (pathname !== "/") {
+                transitionPageIn()
+            }
+            else if (pathname === "/") {
+                transitionHomeIn()
+            }
+
+        })
         window.scrollTo(0, 0);
-    }, [])
+        return () => {
+            ctx.revert();
+        }
+    }, [pathname])
 
     return (
         <>
