@@ -47,8 +47,6 @@ export default function Banner() {
 
     // Scroll timeline
     const getScrollTL = () => {
-        const bannerHeightEnd = isMobile ? "55%" : "17%";
-        const bannerWidthEnd = isMobile ? "90%" : "50%";
         const scrollTL = gsap.timeline({
             scrollTrigger: {
                 pin: false,
