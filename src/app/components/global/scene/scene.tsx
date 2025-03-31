@@ -47,6 +47,7 @@ export default function Scene() {
         })
         return () => {
             ctx.revert();
+            ctx.kill();
         }
     }, [])
 
