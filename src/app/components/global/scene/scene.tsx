@@ -17,6 +17,7 @@ export default function Scene() {
     // Scroll timeline
     const getScrollTL = (ctx: gsap.Context) => {
         ctx.add(() => {
+            gsap.set(sceneBrackets.current, { opacity: 0 });
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,

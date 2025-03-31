@@ -19,6 +19,8 @@ export default function Scene() {
     // Scroll timeline
     const getScrollTL = (ctx: gsap.Context) => {
         ctx.add(() => {
+            gsap.set(sceneLogo.current, { opacity: 1 });
+            gsap.set(sceneBrackets.current, { opacity: 0 });
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,
@@ -28,18 +30,19 @@ export default function Scene() {
                     markers: false,
                     invalidateOnRefresh: true,
                 }
-            }).to(sceneLogo.current, {
-                opacity: 0,
-                zIndex: -2,
-            }, 0
-            ).to(sceneBrackets.current, {
-                opacity: 1,
-                zIndex: -1,
-                delay: 0.2,
-                ease: 'ease',
-            },
-                0
-            )
+            })
+                .to(sceneLogo.current, {
+                    opacity: 0,
+                    zIndex: -2,
+                }, 0
+                ).to(sceneBrackets.current, {
+                    opacity: 1,
+                    zIndex: -1,
+                    delay: 0.2,
+                    ease: 'ease',
+                },
+                    0
+                )
         });
         ctx.add(() => {
             gsap.timeline({
