@@ -37,6 +37,7 @@ export default function Media({ src, aspectRatio, isPriority = false }: Props) {
         const scrollTL = gsap.timeline({
             scrollTrigger: {
                 trigger: media.current,
+                scroller: window,
                 pin: false,
                 start: `top bottom`,
                 end: `bottom top`,

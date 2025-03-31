@@ -20,6 +20,7 @@ export default function Scene() {
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,
+                    scroller: window,
                     start: () => ScrollTrigger.maxScroll(window) - 200,
                     end: () => ScrollTrigger.maxScroll(window),
                     scrub: 1,
@@ -41,6 +42,7 @@ export default function Scene() {
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         const ctx = gsap.context((self) => {
+            ScrollTrigger.refresh();
             requestAnimationFrame(() => getScrollTL(self));
         })
         return () => {

@@ -26,7 +26,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
         })
         window.scrollTo(0, 0);
         return () => {
-            ScrollTrigger.refresh();
             ctx.revert();
         }
     }, [pathname])

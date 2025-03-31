@@ -16,12 +16,12 @@ export default function Anchors() {
         const ctx = gsap.context(() => {
             // Select all sections with `data-anchor`
             const sectionElements = gsap.utils.toArray<HTMLElement>("section[data-anchor]");
-            //const scrollWrapper = document.getElementById(`smooth-wrapper`)
             const sectionIds = sectionElements.map((el) => el.getAttribute("id")!);
             setSections(sectionIds);
             sectionElements.forEach((section) => {
                 ScrollTrigger.create({
                     trigger: section,
+                    scroller: window,
                     start: "top center",
                     end: "bottom center",
                     onEnter: () => setActiveSection(section.id),

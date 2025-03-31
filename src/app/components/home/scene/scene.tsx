@@ -24,7 +24,8 @@ export default function Scene() {
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,
-                    start: 0,
+                    scroller: window,
+                    start: "top top",
                     end: () => innerHeight / 2,
                     scrub: 1,
                     markers: false,
@@ -48,8 +49,9 @@ export default function Scene() {
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,
-                    start: innerHeight,
-                    end: () => innerHeight * 2.5,
+                    scroller: window,
+                    start: () => window.innerHeight,
+                    end: () => window.innerHeight * 2.5,
                     scrub: 1,
                     markers: false,
                     invalidateOnRefresh: true,
@@ -66,6 +68,7 @@ export default function Scene() {
             gsap.timeline({
                 scrollTrigger: {
                     pin: false,
+                    scroller: window,
                     start: () => ScrollTrigger.maxScroll(window) - 200,
                     end: () => ScrollTrigger.maxScroll(window),
                     scrub: 1,
@@ -87,6 +90,7 @@ export default function Scene() {
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         const ctx = gsap.context((self) => {
+            ScrollTrigger.refresh();
             requestAnimationFrame(() => getScrollTL(self));
         });
 

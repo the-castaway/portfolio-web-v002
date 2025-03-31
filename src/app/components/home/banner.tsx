@@ -1,6 +1,7 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Styles
 import styles from "@/app/styles/home/banner.module.css"
 // Context 
@@ -22,69 +23,74 @@ export default function Banner() {
     const { isMobile } = useScreenSize();
 
     // Banner intro timeline
-    const getBannerIntroTL = () => {
-        const bannerIntroTL = gsap.timeline();
+    const getBannerIntroTL = (ctx: gsap.Context) => {
         const bannerIntroHeight = isMobile ? "50%" : "22%";
         const bannerIntroWidth = isMobile ? "85%" : "calc(66vw - 100px)";
-        bannerIntroTL
-            .to(bannerUIDetails.current,
-                {
-                    width: bannerIntroWidth,
-                    height: bannerIntroHeight,
-                    duration: 0.5,
-                    delay: 0.5,
-                    ease: 'ease'
-                }, 0)
-            .to([bannerTopLeftText.current, bannerTopRightText.current, bannerBottomRightText.current, bannerBottomLeftText.current],
-                {
-                    opacity: 1,
-                    duration: 0.5,
-                    delay: 0.8,
-                }, 0)
-        return bannerIntroTL;
+        ctx.add(() => {
+            const bannerIntroTL = gsap.timeline();
+            bannerIntroTL
+                .to(bannerUIDetails.current,
+                    {
+                        width: bannerIntroWidth,
+                        height: bannerIntroHeight,
+                        duration: 0.5,
+                        delay: 0.5,
+                        ease: 'ease'
+                    }, 0)
+                .to([bannerTopLeftText.current, bannerTopRightText.current, bannerBottomRightText.current, bannerBottomLeftText.current],
+                    {
+                        opacity: 1,
+                        duration: 0.5,
+                        delay: 0.8,
+                    }, 0)
+        })
     }
 
     // Scroll timeline
-    const getScrollTL = () => {
-        const scrollTL = gsap.timeline({
-            scrollTrigger: {
-                pin: false,
-                start: 0,
-                end: () => innerHeight / 2,
-                scrub: 1,
-                markers: false,
-                invalidateOnRefresh: true,
-            }
-        });
-        scrollTL.to(bannerTopLeft.current, {
-            x: 40,
-            y: 20,
-            opacity: 0,
-            duration: 0.5,
-        }, 0).to(bannerTopRight.current, {
-            x: -40,
-            y: 20,
-            opacity: 0,
-            duration: 0.5,
-        }, 0).to(bannerBottomRight.current, {
-            x: -40,
-            y: -20,
-            opacity: 0,
-            duration: 0.5,
-        }, 0).to(bannerBottomLeft.current, {
-            x: 40,
-            y: -20,
-            opacity: 0,
-            duration: 0.5,
-        }, 0)
-        return scrollTL;
+    const getScrollTL = (ctx: gsap.Context) => {
+        ctx.add(() => {
+            const scrollTL = gsap.timeline({
+                scrollTrigger: {
+                    pin: false,
+                    scroller: window,
+                    start: "top top",
+                    end: () => window.innerHeight / 2,
+                    scrub: 1,
+                    markers: false,
+                    invalidateOnRefresh: true,
+                }
+            });
+            scrollTL.to(bannerTopLeft.current, {
+                x: 40,
+                y: 20,
+                opacity: 0,
+                duration: 0.5,
+            }, 0).to(bannerTopRight.current, {
+                x: -40,
+                y: 20,
+                opacity: 0,
+                duration: 0.5,
+            }, 0).to(bannerBottomRight.current, {
+                x: -40,
+                y: -20,
+                opacity: 0,
+                duration: 0.5,
+            }, 0).to(bannerBottomLeft.current, {
+                x: 40,
+                y: -20,
+                opacity: 0,
+                duration: 0.5,
+            }, 0)
+        })
     }
 
     // Initialize timelines
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            getBannerIntroTL();
-            getScrollTL();
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        const ctx = gsap.context((self) => {
+            requestAnimationFrame(() => getBannerIntroTL(self));
+            ScrollTrigger.refresh();
+            requestAnimationFrame(() => getScrollTL(self));
         })
         return () => {
             ctx.revert();
