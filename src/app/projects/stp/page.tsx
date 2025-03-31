@@ -1,4 +1,4 @@
-// `app/projects/ipt.tsx` is the UI for the `/projects/ipt` URL
+// `app/projects/stp.tsx` is the UI for the `/projects/stp` URL
 "use client"
 import { useEffect, useRef } from "react";
 import gsap from 'gsap';
