@@ -43,8 +43,10 @@ export default function Banner() {
 
     // Scroll timeline
     const getScrollTL = () => {
-        const bannerUIDetailsHeight = isMobile ? "55%" : "17%";
-        const bannerUIDetailsWidth = isMobile ? "90%" : "50%";
+        const bannerHeightEnd = isMobile ? "55%" : "17%";
+        const bannerWidthEnd = isMobile ? "90%" : "50%";
+        const bannerHeightStart = isMobile ? "50%" : "22%";
+        const bannerWidthStart = isMobile ? "85%" : "calc(66vw - 100px)";
         const scrollTL = gsap.timeline({
             scrollTrigger: {
                 pin: false,
@@ -54,12 +56,18 @@ export default function Banner() {
                 markers: false,
             }
         });
+        scrollTL.set(bannerUIDetails.current,
+            {
+                width: bannerWidthStart,
+                height: bannerHeightStart,
+            }, 0
+        )
         scrollTL.to(bannerUIDetails.current, {
-            width: bannerUIDetailsWidth,
-            height: bannerUIDetailsHeight,
+            width: bannerWidthEnd,
+            height: bannerHeightEnd,
             opacity: 0,
             duration: 0.5,
-        }, 0)
+        }, ">")
         return scrollTL;
     }
 
