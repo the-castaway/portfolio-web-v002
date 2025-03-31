@@ -21,7 +21,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
             else if (pathname === "/") {
                 transitionHomeIn()
             }
-
         })
         window.scrollTo(0, 0);
         return () => {

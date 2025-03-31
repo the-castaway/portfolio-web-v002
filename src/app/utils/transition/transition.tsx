@@ -27,7 +27,6 @@ export const transitionPageOut = (href: string, router: AppRouterInstance) => {
         .set(maskBorder, { opacity: 0, height: "30vh", width: "30vh", rotate: 90, })
         .to(maskContent, { opacity: 0, delay: 0, duration: DURATION / 2, ease: EASE }, 0)
         .to(maskBorder, { opacity: 1, height: 0, width: 0, rotate: 0, delay: 0.3, duration: DURATION, ease: EASE, onComplete: () => { router.push(href) } }, 0)
-
 }
 
 export const transitionHomeIn = () => {
