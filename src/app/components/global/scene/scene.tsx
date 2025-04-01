@@ -18,6 +18,7 @@ export default function Scene() {
         ctx.add(() => {
             gsap.set(sceneBrackets.current, { opacity: 0 });
             gsap.timeline({
+                override: "auto",
                 scrollTrigger: {
                     pin: false,
                     scroller: window,
@@ -27,12 +28,16 @@ export default function Scene() {
                     markers: false,
                     invalidateOnRefresh: true,
                 }
-            }).to(sceneBrackets.current, {
-                opacity: 1,
-                y: 0,
-                delay: 0.2,
-                ease: 'ease',
-            },
+            }).fromTo(sceneBrackets.current,
+                {
+                    opacity: 0,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    delay: 0.2,
+                    ease: 'ease',
+                },
                 0
             )
         });
