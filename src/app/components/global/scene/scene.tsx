@@ -18,7 +18,7 @@ export default function Scene() {
         ctx.add(() => {
             gsap.set(sceneBrackets.current, { opacity: 0 });
             gsap.timeline({
-                override: "auto",
+                overwrite: "auto",
                 scrollTrigger: {
                     pin: false,
                     scroller: window,
@@ -37,8 +37,7 @@ export default function Scene() {
                     y: 0,
                     delay: 0.2,
                     ease: 'ease',
-                },
-                0
+                }
             )
         });
     }
@@ -48,7 +47,7 @@ export default function Scene() {
         gsap.registerPlugin(ScrollTrigger);
         const ctx = gsap.context((self) => {
             ScrollTrigger.refresh();
-            requestAnimationFrame(() => getScrollTL(self));
+            getScrollTL(self);
         })
         return () => {
             ctx.revert();
