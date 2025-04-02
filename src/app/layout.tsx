@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 // Context
 import { ScreenSizeProvider } from "./context/screenSizeContext";
-// // Components
-// import Nav from "./components/global/nav";
 // Styles
 import "./styles/global.css";
 
@@ -34,6 +32,7 @@ export const metadata: Metadata = {
   title: "Jaime Castaneda | 2025 Folio",
   description: "Product Designer with a strong technical background, taking products from 0 to 1 by bridging design and engineering to create intuitive, high-impact experiences.",
   icons: "/media/favicon.ico",
+  openGraph: { images: "/media/og.webp" }
 };
 
 export default function RootLayout({
