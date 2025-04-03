@@ -57,7 +57,17 @@ export default function Scene() {
     return (
         <div className={styles.scene}>
             <div ref={sceneBrackets} className={styles.sceneBrackets}>
-                <Canvas className={styles.sceneCanvas} gl={{ antialias: false }} dpr={[1, 1.5]}>
+                <Canvas
+                    className={styles.sceneCanvas}
+                    gl={{ antialias: false, alpha: true }}
+                    dpr={[1, 1.5]}
+                    onCreated={({ gl }) => {
+                        // Check if WebGL2 context was created; if not, Three.js will fall back to WebGL1
+                        if (!(gl.getContext() instanceof WebGL2RenderingContext) && !(gl.getContext() instanceof WebGLRenderingContext)) {
+                            console.error("Failed to create WebGL context");
+                        }
+                    }}
+                >
                     <Suspense fallback={null}>
                         <SceneBrackets />
                     </Suspense>
