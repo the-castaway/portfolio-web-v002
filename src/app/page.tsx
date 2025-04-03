@@ -239,7 +239,7 @@ export default function Home() {
                             <div className={styles.homeFeaturedPreviewMedia}>
                               <div className={styles.homeFeaturedPreviewMediaOverlay} />
                               <div className={styles.homeFeaturedPreviewMediaContainer}>
-                                <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" loading="lazy" style={{ objectFit: "cover" }} />
+                                <Image src={project.thumbnail_desktop} alt="thumbnail" fill={true} sizes="100%" loading="eager" priority style={{ objectFit: "cover" }} />
                               </div>
                             </div>
                           </Link>)
