@@ -35,6 +35,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Jaime Castaneda | 2025 Folio",
     description: "Product Designer with a strong technical background.",
+    url: "https://www.jaimecastaneda.com", // Replace with your actual domain
+    type: "website",
     images: [
       {
         url: "/media/og.webp",
