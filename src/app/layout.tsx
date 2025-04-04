@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/media/og.webp",
+        url: "https://www.jaimecastaneda.com/media/og.webp",
         width: 1200,
         height: 630,
         alt: "Portfolio Preview",
