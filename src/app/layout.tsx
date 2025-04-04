@@ -32,7 +32,18 @@ export const metadata: Metadata = {
   title: "Jaime Castaneda | 2025 Folio",
   description: "Product Designer with a strong technical background, taking products from 0 to 1 by bridging design and engineering to create intuitive, high-impact experiences.",
   icons: "/media/favicon.ico",
-  openGraph: { images: "/media/og.webp" }
+  openGraph: {
+    title: "Jaime Castaneda | 2025 Folio",
+    description: "Product Designer with a strong technical background.",
+    images: [
+      {
+        url: "/media/og.webp",
+        width: 1200,
+        height: 630,
+        alt: "Portfolio Preview",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
