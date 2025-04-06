@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+// Components
+import Script from "next/script";
 // Context
 import { ScreenSizeProvider } from "./context/screenSizeContext";
 // Styles
@@ -56,6 +58,22 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-450099457`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+  
+            gtag('config', 'G-450099457');
+          `}
+        </Script>
+      </head>
       <body className={`${urbanist.variable} ${urbanistItalic.variable} ${jetBrainsMono.variable} ${jetBrainsMonoItalic.variable}`}>
         <ScreenSizeProvider>
           {children}
