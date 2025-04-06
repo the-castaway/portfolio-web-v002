@@ -6,7 +6,7 @@ export const Projects = [
         involvement: ["UI Design", "Front-end Eng", "3D Modeling"],
         company: "Meta Platforms",
         href: 'ipt',
-        thumbnail_mobile: '/media/projects/ipt/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/ipt/thumbnail_mobile.webp',
         thumbnail_desktop: '/media/projects/ipt/thumbnail.webp',
     },
     {
@@ -16,7 +16,7 @@ export const Projects = [
         involvement: ["UI Design", "Product Design", "Prototyping"],
         company: "Meta Platforms",
         href: 'stp',
-        thumbnail_mobile: '/media/projects/stp/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/stp/thumbnail_mobile.webp',
         thumbnail_desktop: '/media/projects/stp/thumbnail.webp',
     },
     {
@@ -26,7 +26,7 @@ export const Projects = [
         involvement: ["Product Design", "UX Research", "Front-end Eng"],
         company: "Meta Platforms",
         href: 'cp',
-        thumbnail_mobile: '/media/projects/cp/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/cp/thumbnail_mobile.webp',
         thumbnail_desktop: '/media/projects/cp/thumbnail.webp',
     },
     {
@@ -36,8 +36,8 @@ export const Projects = [
         involvement: ["Product Design", "Front-end Eng", "Motion"],
         company: "Meta Platforms",
         href: 'cv',
-        thumbnail_mobile: '/media/projects/cv/thumbnail.webp',
-        thumbnail_desktop: '/media/projects/cv/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/cv/thumbnail_mobile.webp',
+        thumbnail_desktop: '/media/projects/cv/thumbnail_mobile.webp',
     },
     {
         key: 4,
@@ -46,7 +46,7 @@ export const Projects = [
         involvement: ["Prototyping", "Product Design", "Front-end Eng"],
         company: "Meta Platforms",
         href: 'news',
-        thumbnail_mobile: '/media/projects/news/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/news/thumbnail_mobile.webp',
         thumbnail_desktop: '/media/projects/news/thumbnail.webp',
     },
     {
@@ -56,7 +56,7 @@ export const Projects = [
         involvement: ["Product Design", "Front-end Eng", "UI/UX Design"],
         company: "Meta Platforms",
         href: 'about',
-        thumbnail_mobile: '/media/projects/about/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/about/thumbnail_mobile.webp',
         thumbnail_desktop: '/media/projects/about/thumbnail.webp',
     },
     {
@@ -66,7 +66,7 @@ export const Projects = [
         involvement: ["Product Design", "Prototyping", "UI/UX Design"],
         company: "Wavely",
         href: 'wavely',
-        thumbnail_mobile: '/media/projects/wavely/thumbnail.webp',
+        thumbnail_mobile: '/media/projects/wavely/thumbnail_mobile.webp',
         thumbnail_desktop: '/media/projects/wavely/thumbnail.webp',
     },
 
