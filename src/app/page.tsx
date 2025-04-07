@@ -163,7 +163,7 @@ export default function Home() {
                 <div className={`${styles.homeIntroDetails} grid`}>
                   <div className={styles.homeIntroDetail}>
                     <p className={`${styles.homeIntroDetailHeader} detail`}>
-                      <span className={`textColorOffBlack`}>
+                      <span className={`textColorDarkGrey`}>
                         ABOUT
                       </span>
                     </p>
@@ -179,7 +179,7 @@ export default function Home() {
                 <div className={`${styles.homeIntroDetails} grid`}>
                   <div className={styles.homeIntroDetail}>
                     <p className={`${styles.homeIntroDetailHeader} detail`}>
-                      <span className={`textColorOffBlack`}>
+                      <span className={`textColorDarkGrey`}>
                         PURVIEW
                       </span>
                     </p>

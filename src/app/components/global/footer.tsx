@@ -89,14 +89,14 @@ export default function Footer() {
         <footer id='footer' className={`${styles.footer} grid`}>
             <div className={styles.footerSignature}>
                 <p className={`detail`}>
-                    <span ref={footerSignatureText} className={`textColorDarkGrey`}>
+                    <span ref={footerSignatureText} className={`textColorOffBlack`}>
                         ://JAIMECASTANEDA
                     </span>
                 </p>
             </div>
             <div className={styles.footerVersion}>
                 <p className={`detail`}>
-                    <span ref={footerVersionText} className={`textColorDarkGrey`}>
+                    <span ref={footerVersionText} className={`textColorOffBlack`}>
                         ©2025 V.002
                     </span>
                 </p>
