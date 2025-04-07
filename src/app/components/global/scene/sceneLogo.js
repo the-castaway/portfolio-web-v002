@@ -189,7 +189,7 @@ export default function SceneLogo() {
             {/* Rig */}
             <Rig />
             {/* Environment */}
-            <Environment files="/media/3D/environment.exr" environmentIntensity={1} resolution={1024} />
+            <Environment files="/media/3D/environment.zip.exr" environmentIntensity={1} resolution={1024} />
         </>
     );
 }
