@@ -352,6 +352,25 @@ export default function Project() {
                                                 </video>
                                             </div>
                                         </div>
+
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectSectionText}>
+                                                <p className={`textColorGrey`}>
+                                                    We identified distinct user behaviors across platforms — desktop users tended to be further along in their decision-making and were more focused on detailed performance specs and capabilities, reflecting a higher purchase intent. Mobile users tended to be in a more casual browsing mindset, but features like AR and real-world previews captured their attention. These interactive experiences often acted as a bridge — sparking enough interest to continue their journey on desktop.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
+                                                <Image
+                                                    src="/media/projects/ipt/mobile.webp"
+                                                    alt="IPT mobile"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </Section>
                                 <Section id={'Results'}>
