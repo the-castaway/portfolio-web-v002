@@ -120,7 +120,7 @@ export default function Banner() {
                     <div ref={bannerBottomRight} className={styles.homeBannerUIDetailsBottomRight}>
                         <p ref={bannerBottomRightText} className={`${styles.homeBannerUIDetailsBottomRightText} detail textColorGrey`}>
                             <span className={`textColorDarkGrey`}>
-                                ©2025 V.002
+                                V.002
                             </span>
                         </p>
                         <div className={styles.homeBannerUIDetailsBottomRightCorner} />

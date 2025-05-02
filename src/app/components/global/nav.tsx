@@ -149,7 +149,7 @@ const Nav = () => {
                 </div>
                 <div className={styles.navCurrentlyContainer}>
                     <p className={`detail`}>
-                        Currently<br /><span className={`textColorGrey`}>@Meta</span>
+                        Currently<br /><span className={`textColorGrey`}>Available</span>
                     </p>
                 </div>
                 <div className={styles.navGeoContainer}>
