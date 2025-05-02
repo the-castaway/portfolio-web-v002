@@ -22,7 +22,7 @@ export default function Home() {
   const homeFeaturedStatic = useRef<HTMLDivElement>(null!)
   const homeFeaturedPreviewsList = useRef<HTMLDivElement>(null!)
   //variables
-  const projects = useMemo(() => Projects.slice(0, 7), []);
+  const projects = useMemo(() => Projects.slice(0, 8), []);
   // Context
   const { isMobile } = useScreenSize();
 

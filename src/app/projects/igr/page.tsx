@@ -17,7 +17,7 @@ import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
 import { Projects } from '@/app//projects/projects';
 
-const PROJECT_NUMBER = 6;
+const PROJECT_NUMBER = 1;
 
 export default function Project() {
     // Project
@@ -138,7 +138,7 @@ export default function Project() {
                                     <div className={styles.projectIntroTitle}>
                                         <h1>{project.name}</h1>
                                         <p className={`textColorGrey`}>
-                                            The About Meta Platform is Meta’s main corporate site, providing information about the company’s initiatives, community, products, and services. It also serves as a hub for critical communications, tailored for users. As Meta’s primary marketing and communications (marcomms) channel, it plays a crucial role in shaping the world’s understanding of the company.
+                                            Instagram Recap is an annual, personalized experience that highlights creators’ key metrics and engagement trends from the past year. Powered by Meta AI, it guides users through their top-performing content, most engaged followers, and favorite interactions. The experience surfaces insights like the number of Reels and Stories created, suggests AI-driven content prompts, and helps creators better understand and optimize their content strategy moving forward.
                                         </p>
                                         {isMobile ? <>{projectDetails}</> : null}
                                     </div>
@@ -155,17 +155,20 @@ export default function Project() {
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>SEO, Search, GSAP, Web</i>
+                                                <i>Prototype, Motion, UX Design</i>
                                             </h2>
                                             <p className={`textColorGrey`}>
-                                                The About Meta Platform plays a vital role in shaping brand sentiment and how the world perceives Meta. As the company evolved—particularly with its shift toward the metaverse and immersive digital products—the platform transformed alongside it. SEO is a major priority, ensuring we capture and educate as much interested traffic as possible.
+                                                As Meta deepens the integration of Meta AI across its apps, the Instagram Recap was designed to showcase its value in a creator-first, engaging format. More than just a retrospective, the Recap experience provides content creators with actionable insights—like top-performing Reels and Stories, key audience engagement stats, and personalized highlights from their year.
                                             </p>
                                             <p className={`textColorGrey`}>
-                                                I led all Comms-driven initiatives on the About platform, playing a key role in shaping its design system, libraries, and componentry used across Meta’s main web properties. I also designed and developed immersive experiences, bringing innovation to these initiatives.
+                                                Built with a subtle marketing angle, Recap also encourages social sharing of key stats, helping creators celebrate their impact with followers. AI-generated content prompts lower the barrier to entry for creators who are new to using AI, guiding them to experiment and improve their content strategy.
+                                            </p>
+                                            <p className={`textColorGrey`}>
+                                                I led UI/UX design and prototyping for this project, collaborating closely with the MARCOMS team—a long-standing vision finally brought to life. It was both a creative challenge and a passion project that combined storytelling, product design, and the power of AI.
                                             </p>
                                         </div>
                                         <div className={styles.projectSectionContentNarrow}>
-                                            <Media src={"/media/projects/about/overview.webp"} aspectRatio={"4:5"} isPriority={true} />
+                                            <Media src={"/media/projects/igr/overview.webp"} aspectRatio={"4:5"} isPriority={true} />
                                         </div>
                                     </div>
                                 </Section>
@@ -182,13 +185,10 @@ export default function Project() {
                                                     The Reasoning
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    Create a central hub for users to access key company information.
+                                                    MARCOMS wanted to integrate messaging into the FoA experience more gracefully. Their perspective: “We already have eyes on the product — why cannibalize that attention?”
                                                 </p>
                                                 <p className={`textColorGrey`}>
-                                                    Top-down initiative to strengthen Meta’s web presence and establish it as a legitimate, authoritative brand.
-                                                </p>
-                                                <p className={`textColorGrey`}>
-                                                    Enhance company sentiment and build user trust through transparency and accessibility.
+                                                    There was low adoption of Meta AI among creators for content workflows. Our goal was to explore whether increased visibility and seamless integration could drive broader usage and spark creative experimentation.
                                                 </p>
                                             </div>
                                             <div className={styles.projectSectionText}>
@@ -196,13 +196,13 @@ export default function Project() {
                                                     THE DYNAMICS
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    As the main corporate site, it sets the precedent for the style and tech stack used across supporting sites.
+                                                    Difficulty scheduling consistent engineering sprints for sustained support.
                                                 </p>
                                                 <p className={`textColorGrey`}>
-                                                    Scalable componentry is essential to accommodate and unify supporting sites.
+                                                    Creator content cadence varies significantly, requiring flexible system design.
                                                 </p>
                                                 <p className={`textColorGrey`}>
-                                                    Multiple key content owners span across marketing, comms, policy, and other teams, requiring a flexible and collaborative system.
+                                                    Needed prompts that are both useful for creators and engaging for broader audiences.
                                                 </p>
                                             </div>
                                         </div>
@@ -212,13 +212,16 @@ export default function Project() {
                                                     The Goals
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    Empower users to find trust-inspiring information about Meta.
+                                                    Coverage of Meta AI supporting creators within/ and outside of app experiences
                                                 </p>
                                                 <p className={`textColorGrey`}>
-                                                    Enable users to explore new products and avenues of innovation.
+                                                    Increase shares in the last weeks of Q4 without causing regression.
                                                 </p>
                                                 <p className={`textColorGrey`}>
-                                                    Increase brand sentiment metrics through transparency and engagement.
+                                                    Experience completion rate of 50%.
+                                                </p>
+                                                <p className={`textColorGrey`}>
+                                                    +20% increase in prompt/tool usage from baseline in the Meta AI Studio tool.
                                                 </p>
                                             </div>
                                             <div className={styles.projectSectionText}>
@@ -226,10 +229,10 @@ export default function Project() {
                                                     The Context
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    Supporting sites need design system and tech stack guidance to maintain consistency.
+                                                    Wrapped-style year-in-review experiences—popularized by platforms like Spotify—set high expectations for shareable, personalized recaps.
                                                 </p>
                                                 <p className={`textColorGrey`}>
-                                                    Desire to migrate and merge corporate sites under the About Meta Platform for streamlined management and unified user experience.
+                                                    Content creation rates vary widely across users, so the experience was designed to accommodate both highly active and infrequent creators with tailored insights.
                                                 </p>
                                             </div>
                                         </div>
@@ -239,17 +242,35 @@ export default function Project() {
                                     <div className={`${styles.projectSection} grid`}>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <h2 className={`highlight`}>
-                                                <i>Let’s conceptualize</i>
+                                                <i>Let's conceptualize</i>
                                             </h2>
                                             <p className={`textColorGrey`}>
-                                                Our brand partners invested significant time and effort in defining Meta’s brand, and it was crucial for us to translate that vision to the web. Key elements like perspective, depth, custom gradients, and white space played an essential role in executing the brand styling accurately and creating a cohesive user experience.
+                                                For users who meet a minimum content creation threshold, the Recap launches with a full-screen takeover following the initial splash screen. Designed to temporarily divert users from their typical in-app flow, the experience highlights key metrics such as the number of Reels created and showcases their most popular content. This approach offers a moment of reflection and celebration, reinforcing the creator's impact over the past year.
                                             </p>
                                         </div>
                                         <div className={styles.projectSectionContentNarrow}>
                                             <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
                                                 <Image
-                                                    src="/media/projects/about/home1.webp"
-                                                    alt="About scene home 1"
+                                                    src="/media/projects/igr/recap1.webp"
+                                                    alt="IGR 1"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "4 / 5" }}>
+                                                <Image
+                                                    src="/media/projects/igr/recap2.webp"
+                                                    alt="IGR 2"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "4 / 5" }}>
+                                                <Image
+                                                    src="/media/projects/igr/recap3.webp"
+                                                    alt="IGR 3"
                                                     fill
                                                     sizes="100%"
                                                     style={{ objectFit: "cover" }}
@@ -257,8 +278,35 @@ export default function Project() {
                                             </div>
                                             <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
                                                 <Image
-                                                    src="/media/projects/about/home2.webp"
-                                                    alt="About scene home 2"
+                                                    src="/media/projects/igr/recap4.webp"
+                                                    alt="IGR 4"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectSectionText}>
+                                                <p className={`textColorGrey`}>
+                                                    For users with lower levels of content creation, the experience begins at a later stage, focusing instead on community engagement—such as which users interacted with them most and how often they engaged with their favorite accounts. The experience concludes with personalized AI-generated prompts, designed to encourage exploration of Meta AI and Meta AI Studio, helping users get started with AI-driven content creation tools.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "4 / 5" }}>
+                                                <Image
+                                                    src="/media/projects/igr/recap5.webp"
+                                                    alt="IGR 5"
+                                                    fill
+                                                    sizes="100%"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                            <div className={styles.projectMedia} style={{ aspectRatio: "4 / 5" }}>
+                                                <Image
+                                                    src="/media/projects/igr/recap6.webp"
+                                                    alt="IGR 6"
                                                     fill
                                                     sizes="100%"
                                                     style={{ objectFit: "cover" }}
@@ -266,35 +314,26 @@ export default function Project() {
                                             </div>
                                             <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
                                                 <Image
-                                                    src="/media/projects/about/home3.webp"
-                                                    alt="About scene home 3"
+                                                    src="/media/projects/igr/recap7.webp"
+                                                    alt="IGR 7"
                                                     fill
                                                     sizes="100%"
                                                     style={{ objectFit: "cover" }}
                                                 />
                                             </div>
-                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
-                                                <Image
-                                                    src="/media/projects/about/home4.webp"
-                                                    alt="About scene home 4"
-                                                    fill
-                                                    sizes="100%"
-                                                    style={{ objectFit: "cover" }}
-                                                />
+                                        </div>
+                                        <div className={styles.projectSectionContentNarrow}>
+                                            <div className={styles.projectSectionText}>
+                                                <p className={`textColorGrey`}>
+                                                    Users can access the experience through inline gateways within the app. Those with the lowest levels of content creation and engagement are funneled to these optional entry points, rather than being taken directly into the Recap experience. These gateways provide a more passive and context-aware introduction, ensuring the experience remains relevant without disrupting typical usage. Inline access also allows all users to revisit the experience at any time.
+                                                </p>
                                             </div>
+                                        </div>
+                                        <div className={styles.projectSectionContentNarrow}>
                                             <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
                                                 <Image
-                                                    src="/media/projects/about/home5.webp"
-                                                    alt="About scene home 5"
-                                                    fill
-                                                    sizes="100%"
-                                                    style={{ objectFit: "cover" }}
-                                                />
-                                            </div>
-                                            <div className={styles.projectMedia} style={{ aspectRatio: "16 / 9" }}>
-                                                <Image
-                                                    src="/media/projects/about/home6.webp"
-                                                    alt="About scene home 6"
+                                                    src="/media/projects/igr/flow.webp"
+                                                    alt="IGR Flow"
                                                     fill
                                                     sizes="100%"
                                                     style={{ objectFit: "cover" }}
@@ -311,85 +350,8 @@ export default function Project() {
                                                     Results
                                                 </h2>
                                                 <p className={`textColorGrey`}>
-                                                    The About Meta Platform has a proven track record of success, reaching millions of users daily and significantly boosting brand awareness. Over the years, it has consistently met and exceeded its goals, serving as a key driver in shaping public perception and engagement with Meta’s initiatives.
+                                                    Although not yet launched, this project marks a significant first for the MARCOMS team by pioneering a native approach to messaging within Meta’s ecosystem. Rather than relying solely on external social platforms, this initiative integrates messaging directly into the family of apps. This innovative strategy not only elevates user engagement but also reinforces Meta AI’s value by delivering campaign narratives in a more authentic and seamless manner.
                                                 </p>
-                                            </div>
-                                            <div className={styles.projectResults}>
-                                                <div className={styles.projectResultsStats}>
-                                                    <div className={styles.projectResultsStat}>
-                                                        <p className={`detail textColorDarkGrey`}>
-                                                            UNAIDED BRAND AWARENESS
-                                                        </p>
-                                                        <p className={styles.projectResultsStatNumber}>
-                                                            +50%
-                                                        </p>
-                                                    </div>
-                                                    <div className={styles.projectResultsStat}>
-                                                        <p className={`detail textColorDarkGrey`}>
-                                                            AIDED BRAND AWARENESS
-                                                        </p>
-                                                        <p className={styles.projectResultsStatNumber}>
-                                                            +80%
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className={styles.projectResultsStats}>
-                                                    <div className={styles.projectResultsStat}>
-                                                        <p className={`detail textColorDarkGrey`}>
-                                                            Bounce Rate
-                                                        </p>
-                                                        <p className={styles.projectResultsStatNumber}>
-                                                            19%
-                                                        </p>
-                                                    </div>
-                                                    <div className={styles.projectResultsStat}>
-                                                        <p className={`detail textColorDarkGrey`}>
-                                                            Time Spent
-                                                        </p>
-                                                        <p className={styles.projectResultsStatNumber}>
-                                                            ~3min
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className={styles.projectResultsCollabs}>
-                                                <div className={styles.projectSectionText}>
-                                                    <p className={`detail textColorGrey`}>
-                                                        Collaborators
-                                                    </p>
-                                                </div>
-                                                <a href={'https://www.linkedin.com/in/kupsco/'} className={styles.projectResultsCollab}>
-                                                    <p className={`detail textColorGrey`}>
-                                                        [ TPM ]
-                                                    </p>
-                                                    <p className={styles.projectResultsCollabName}>
-                                                        <b>Dan Kupsco</b>
-                                                    </p>
-                                                </a>
-                                                <a href={'https://www.linkedin.com/in/majimmy88/'} className={styles.projectResultsCollab}>
-                                                    <p className={`detail textColorGrey`}>
-                                                        [ ENG ]
-                                                    </p>
-                                                    <p className={styles.projectResultsCollabName}>
-                                                        <b>Jimmy Ma</b>
-                                                    </p>
-                                                </a>
-                                                <a href={'https://www.linkedin.com/in/lz422/'} className={styles.projectResultsCollab}>
-                                                    <p className={`detail textColorGrey`}>
-                                                        [ ENG ]
-                                                    </p>
-                                                    <p className={styles.projectResultsCollabName}>
-                                                        <b>Lucy Zhang</b>
-                                                    </p>
-                                                </a>
-                                                <a href={'https://www.linkedin.com/in/ike-ofoegbu/'} className={styles.projectResultsCollab}>
-                                                    <p className={`detail textColorGrey`}>
-                                                        [ ENG ]
-                                                    </p>
-                                                    <p className={styles.projectResultsCollabName}>
-                                                        <b>Ike Ofoegbu</b>
-                                                    </p>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>

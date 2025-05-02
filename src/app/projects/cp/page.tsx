@@ -17,7 +17,7 @@ import { useScreenSize } from "@/app/context/screenSizeContext";
 // Data
 import { Projects } from '@/app//projects/projects';
 
-const PROJECT_NUMBER = 2;
+const PROJECT_NUMBER = 3;
 
 export default function Project() {
     // Project

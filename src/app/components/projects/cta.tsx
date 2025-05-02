@@ -43,7 +43,7 @@ export default function CTA({ nextProjectLink, nextProjectName, nextProjectNumbe
                             </div>
                             <div className={styles.ctaNextCardInfo}>
                                 <div className={`detail textColorGrey`}>
-                                    PR. {nextProjectNumber} /007
+                                    PR. {nextProjectNumber} /008
                                 </div>
                                 <div className={styles.ctaNextCardTitle}>
                                     <p className={`labelLarge`}>
