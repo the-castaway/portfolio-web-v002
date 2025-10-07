@@ -258,7 +258,7 @@ export default function Home() {
                   </div>
                   <div className={styles.homeCTATitle}>
                     <p className={`detail`}>
-                      <span className={`textColorGrey`}>Design and Engineering Lead for Web @Meta</span>
+                      <span className={`textColorGrey`}>Senior Product Designer, User Growth @TikTok</span>
                     </p>
                   </div>
                   <div className={styles.homeCTALocale}>
